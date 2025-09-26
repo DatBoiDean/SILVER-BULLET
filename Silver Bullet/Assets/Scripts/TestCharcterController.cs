@@ -7,7 +7,7 @@ public class TestCharcterController : MonoBehaviour
     public float speed = 1;
     public float jumpForce = 1;
     public Rigidbody2D testRigidBody;
-    bool isGrounded = false;
+    bool isGrounded = false; 
 
     void Start()
     {
@@ -37,17 +37,17 @@ public class TestCharcterController : MonoBehaviour
     }
 
     //ground check methods
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
         }
     }
 
-    private void OnCollisionExit2D(Collision2D other)
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
         }

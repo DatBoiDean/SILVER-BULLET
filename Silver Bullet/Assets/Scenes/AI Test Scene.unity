@@ -361,6 +361,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Test Enemy '
       objectReference: {fileID: 0}
+    - target: {fileID: 4751971740683587564, guid: 02c65def20dcb16439f87319581a1625, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 5566423620390610537, guid: 02c65def20dcb16439f87319581a1625, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.15
@@ -475,6 +479,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6331124015339857526, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: knockback
+      value: 82.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331124015339857526, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: moveSpeed
       value: 5
       objectReference: {fileID: 0}
@@ -483,8 +491,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 854651434}
     - target: {fileID: 8893022857443268861, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: m_Mass
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893022857443268861, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LinearDrag
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8893022857443268861, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_GravityScale

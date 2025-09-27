@@ -6,6 +6,7 @@ public class TestCharcterController : MonoBehaviour
 {
     public float speed = 1;
     public float jumpForce = 1;
+    private float move;
     public Rigidbody2D testRigidBody;
     bool isGrounded = false; 
 
@@ -17,17 +18,8 @@ public class TestCharcterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //leftward movement
-        if (Input.GetKey(KeyCode.A))
-        {
-           testRigidBody.velocity = Vector2.left * speed;
-        }
-
-        //rightward movement
-        if (Input.GetKey(KeyCode.D))
-        {
-            testRigidBody.velocity = Vector2.right * speed;
-        }
+        move = Input.GetAxisRaw("Horizontal");
+        testRigidBody.velocity = new Vector2(move * speed, testRigidBody.velocity.y);
 
         //jump
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)

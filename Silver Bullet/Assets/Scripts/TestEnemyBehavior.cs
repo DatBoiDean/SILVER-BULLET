@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TestEnemyBehavior : MonoBehaviour
 {
-    public Transform target;            // target for ai
+    public GameObject target;            // target for ai
     public float minimumDistance;       // ai not to move until target within distance
     public float enemyMoveSpeed;        // adjustable move speed for enemy
 
@@ -13,8 +13,9 @@ public class TestEnemyBehavior : MonoBehaviour
     {
         if (Vector2.Distance(transform.position, target.transform.position) < minimumDistance)
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, enemyMoveSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, enemyMoveSpeed * Time.deltaTime);
         }
+       
     }
 
 }

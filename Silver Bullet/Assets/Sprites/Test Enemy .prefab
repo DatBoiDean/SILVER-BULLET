@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3508776610565277929}
   - component: {fileID: 2214253712960760597}
   - component: {fileID: 1043775833567431601}
-  - component: {fileID: 171633441079496966}
+  - component: {fileID: 5539338061972075673}
   m_Layer: 6
   m_Name: 'Test Enemy '
   m_TagString: Untagged
@@ -159,7 +159,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &171633441079496966
+--- !u!114 &5539338061972075673
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,9 +168,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4751971740683587564}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b98f1f789b22ebb40ac49a84547c86d9, type: 3}
+  m_Script: {fileID: 11500000, guid: f344fe91ed8f2134dbdb41e0546d93f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
-  minimumDistance: 100
-  enemyMoveSpeed: 4
+  player: {fileID: 4114649912291347994, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+  enemyMoveSpeed: 2
+  playerCharacter:
+    serializedVersion: 2
+    m_Bits: 128
+  isSpotted: 0

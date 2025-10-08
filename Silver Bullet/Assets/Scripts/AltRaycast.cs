@@ -12,27 +12,20 @@ public class AltRaycast : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player"); 
+        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (isSpotted)  
-        {
-            transform.position = Vector2.MoveTowards(enemy.transform.position, player.transform.position, enemyMoveSpeed * Time.deltaTime);
-        }
-    }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        Vector2 disToPlayer = (player.transform.position - enemy.transform.position).normalized;
+        Vector2 disToPlayer = (player.transform.localPosition - enemy.transform.position);
         RaycastHit2D ray = Physics2D.Raycast(transform.position, disToPlayer);     //if collider hits tag, set bool to true, draw ray
         if (ray.collider != null)
         {
             isSpotted = ray.collider.CompareTag("Player");
             if (isSpotted)
             {
+                transform.position = Vector2.MoveTowards(enemy.transform.position, player.transform.localPosition, enemyMoveSpeed * Time.deltaTime);
                 Debug.DrawRay(transform.position, disToPlayer , Color.green);
             }
             else

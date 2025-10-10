@@ -122,6 +122,21 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &541700809 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4114649912291347994, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+  m_PrefabInstance: {fileID: 8962921269143232610}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &816128350 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4751971740683587564, guid: 02c65def20dcb16439f87319581a1625, type: 3}
+  m_PrefabInstance: {fileID: 8500338234471542330}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &816128353 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 1043775833567431601, guid: 02c65def20dcb16439f87319581a1625, type: 3}
+  m_PrefabInstance: {fileID: 8500338234471542330}
+  m_PrefabAsset: {fileID: 0}
 --- !u!50 &854651434 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 8893022857443268861, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
@@ -365,6 +380,14 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2169329197202907910, guid: 02c65def20dcb16439f87319581a1625, type: 3}
+      propertyPath: m_Size.y
+      value: 0.9968991
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169329197202907910, guid: 02c65def20dcb16439f87319581a1625, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.0015504509
+      objectReference: {fileID: 0}
     - target: {fileID: 2937113043487768374, guid: 02c65def20dcb16439f87319581a1625, type: 3}
       propertyPath: maxDistance
       value: 50
@@ -397,13 +420,25 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5013128269683504355, guid: 02c65def20dcb16439f87319581a1625, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 816128350}
+    - target: {fileID: 5013128269683504355, guid: 02c65def20dcb16439f87319581a1625, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 541700809}
+    - target: {fileID: 5013128269683504355, guid: 02c65def20dcb16439f87319581a1625, type: 3}
+      propertyPath: enemyMoveSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5566423620390610537, guid: 02c65def20dcb16439f87319581a1625, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.15
+      value: 1.99
       objectReference: {fileID: 0}
     - target: {fileID: 5566423620390610537, guid: 02c65def20dcb16439f87319581a1625, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 5566423620390610537, guid: 02c65def20dcb16439f87319581a1625, type: 3}
       propertyPath: m_LocalPosition.z
@@ -437,9 +472,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6935218831524121893, guid: 02c65def20dcb16439f87319581a1625, type: 3}
+      propertyPath: enemyRB
+      value: 
+      objectReference: {fileID: 816128353}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 0}
+    - {fileID: 1635163319218692354, guid: 02c65def20dcb16439f87319581a1625, type: 3}
+    - {fileID: 5451972279651954963, guid: 02c65def20dcb16439f87319581a1625, type: 3}
+    - {fileID: 882036338168576324, guid: 02c65def20dcb16439f87319581a1625, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

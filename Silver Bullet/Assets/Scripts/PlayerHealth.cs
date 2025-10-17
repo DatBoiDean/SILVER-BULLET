@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float currentHealth;
-    public float maxHealth;
+    public int currentHealth;
+    public int maxHealth;
     public Slider healthBar;
     // Start is called before the first frame update
     void Start()
@@ -16,17 +16,14 @@ public class PlayerHealth : MonoBehaviour
         healthBar.value = currentHealth;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayerTakeDamage(int amount)
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        currentHealth -= amount;
+        healthBar.value = currentHealth;
+
+        if (currentHealth <= 0)
         {
-            currentHealth -= 1;
-            healthBar.value = currentHealth;
-            if (currentHealth <= 0)
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
     }
-}
+}   

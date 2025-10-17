@@ -6,22 +6,19 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] int currentEnemyHealth;
     [SerializeField] int maxEnemyHealth;
+    public int amount;
     // Start is called before the first frame update
     void Start()
     {
         currentEnemyHealth = maxEnemyHealth;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void EnemyTakeDamage(int amount)
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        currentEnemyHealth -= amount;
+        if (currentEnemyHealth <= 0)
         {
-            currentEnemyHealth -= 1;
-            if (currentEnemyHealth <= 0 ) 
-            {
-                Destroy(gameObject);   
-            }
+            Destroy(gameObject);
         }
     }
 }

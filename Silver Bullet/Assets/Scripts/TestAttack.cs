@@ -7,6 +7,7 @@ public class TestAttack : MonoBehaviour
     public GameObject attackPoint;
     public float radius;
     public LayerMask enemies;
+    public int damage;
 
     //Attack functionality
     void Attack()
@@ -16,6 +17,16 @@ public class TestAttack : MonoBehaviour
         foreach (Collider2D enemyGameObject in enemy)
         {
             Debug.Log("Hit!");
+            if (enemyGameObject.CompareTag("Enemy"))
+            {
+                var enemyHealthComponent = enemyGameObject.GetComponent<EnemyHealth>();
+
+                if (enemyHealthComponent != null)
+                {
+                    enemyHealthComponent.EnemyTakeDamage(1);
+                }
+            }
+                    
         }
     }
 

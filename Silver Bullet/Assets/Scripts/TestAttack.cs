@@ -23,7 +23,7 @@ public class TestAttack : MonoBehaviour
 
                 if (enemyHealthComponent != null)
                 {
-                    enemyHealthComponent.EnemyTakeDamage(1);
+                    enemyHealthComponent.EnemyTakeDamage(damage);
                 }
             }
                     

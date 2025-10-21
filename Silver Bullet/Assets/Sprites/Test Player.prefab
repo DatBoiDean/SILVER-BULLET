@@ -194,6 +194,7 @@ MonoBehaviour:
   enemies:
     serializedVersion: 2
     m_Bits: 64
+  damage: 1
 --- !u!114 &2106024172429248124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef6050fa8b670c45841f51785c19da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currenthealth: 0
+  currentHealth: 0
   maxHealth: 3
   healthBar: {fileID: 2215685368666351608, guid: d7b281f8792cdeb419197f511f082f91, type: 3}
 --- !u!1 &6119025486942758768

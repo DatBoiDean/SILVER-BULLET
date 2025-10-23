@@ -280,6 +280,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 2
+  damageInterval: 3
   damageAmount: 1
-  nextDamageTime: 1
+  nextDamageTime: 3

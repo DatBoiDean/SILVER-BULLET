@@ -6,7 +6,10 @@ using UnityEngine;
 public class ScrewFloor : MonoBehaviour
 {
     [SerializeField] bool Grounded;
+    //To track if this dude is on the ground or not
     [SerializeField] bool Stuck;
+    //To track if this dude is currently stuck or not
+    
     // Start is called before the first frame update
     void Start()
     {

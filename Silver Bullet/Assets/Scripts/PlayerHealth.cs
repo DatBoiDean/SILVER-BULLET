@@ -24,8 +24,8 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Debug.Log("Player Killed at " + gameObject.name);
-            Debug.Log("Loading Lose screen");
+            Debug.Log("Player Killed fired from " + gameObject.name);
+            Debug.Log("Loading Lose screen fired from " + gameObject.name);
             //Feel free to just comment out the Load Scene thing for testing
             SceneManager.LoadScene(2);
             Destroy(gameObject);

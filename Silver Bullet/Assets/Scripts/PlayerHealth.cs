@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int currentHealth;
+    public int currentHealth = 3;
     public int maxHealth;
     public Slider healthBar;
     // Start is called before the first frame update
@@ -23,6 +24,10 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            Debug.Log("Player Killed at " + gameObject.name);
+            Debug.Log("Loading Lose screen");
+            //Feel free to just comment out the Load Scene thing for testing
+            SceneManager.LoadScene(2);
             Destroy(gameObject);
         }
     }

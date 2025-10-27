@@ -23,7 +23,7 @@ public class TryAgain : MonoBehaviour
 
     void Buttoned()
     {
-        Debug.Log("Main Menu fired from " + gameObject.name);
+        Debug.Log("Retry fired from " + gameObject.name);
         SceneManager.LoadScene(3);
     }
 }

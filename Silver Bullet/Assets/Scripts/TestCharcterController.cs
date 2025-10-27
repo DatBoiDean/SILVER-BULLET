@@ -16,7 +16,7 @@ public class TestCharcterController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         move = Input.GetAxisRaw("Horizontal");
         testRigidBody.velocity = new Vector2(move * speed, testRigidBody.velocity.y);

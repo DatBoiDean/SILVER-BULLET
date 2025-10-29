@@ -9,6 +9,7 @@ public class ScrewFloor : MonoBehaviour
     //To track if this dude is on the ground or not
     [SerializeField] bool Stuck;
     //To track if this dude is currently stuck or not
+    [SerializeField] CircleCollider2D feet;
     
     // Start is called before the first frame update
     void Start()
@@ -47,7 +48,8 @@ public class ScrewFloor : MonoBehaviour
                 if (Stuck == false) //... AND isn't already stuck...
                 //This is to basically maximize the odds of Unity not continuously firing off these scripts
                 //  if it's already done the thing this script needs to do
-                { 
+                {
+                    feet.enabled = false;
                     //Find and disable the Circle Collider
                     //Find and disable the movement script (external?)
                 }

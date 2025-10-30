@@ -8,28 +8,54 @@ public class TestCharcterController : MonoBehaviour
     public float jumpForce = 1;
     private float move;
     public Rigidbody2D testRigidBody;
-    bool isGrounded = false; 
+    bool isGrounded = false;
+    bool isFacingRight = true;
+
 
     void Start()
     {
         testRigidBody = GetComponent<Rigidbody2D>();
     }
 
+    void FlipCharacter() // have character face left or right depending on input
+    {
+        isFacingRight = !isFacingRight;
+        
+        Vector2 currentScale = transform.localScale; // get current scale of character
+
+        currentScale.x = -currentScale.x; // flip scale of character
+
+        transform.localScale = currentScale; // set new scale
+
+    }
+
     // Update is called once per frame
-    void FixedUpdate()
+    void FixedUpdate() // handles character movement
     {
         move = Input.GetAxisRaw("Horizontal");
         testRigidBody.velocity = new Vector2(move * speed, testRigidBody.velocity.y);
 
-        //jump
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (move > 0 && !isFacingRight) // flip if moving chacracter left 
+        {
+            FlipCharacter();
+        }
+
+        else if (move < 0 && isFacingRight)
+        {
+            FlipCharacter();
+            Debug.Log("Facing Right");
+        }
+
+
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded) // jump
         {
             testRigidBody.velocity = Vector2.up * jumpForce;
         }
     }
 
-    //ground check methods
-    private void OnCollisionEnter2D(Collision2D collision)
+   
+    private void OnCollisionEnter2D(Collision2D collision) // ground check methods
     {
         if (collision.gameObject.CompareTag("Ground"))
         {

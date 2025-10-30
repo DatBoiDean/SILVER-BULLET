@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 562068309}
   m_Layer: 0
   m_Name: ActualCrusher
-  m_TagString: Untagged
+  m_TagString: Crush
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -869,6 +869,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1678014429}
+  - component: {fileID: 1678014433}
   - component: {fileID: 1678014431}
   - component: {fileID: 1678014428}
   - component: {fileID: 1678014426}
@@ -970,7 +971,7 @@ Transform:
   m_GameObject: {fileID: 1678014425}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 0, z: 0}
+  m_LocalPosition: {x: 2.52, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1066,6 +1067,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1678014433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678014425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd2ffa87c17a87249b1dad65568062ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gettingCrushed: 0
+  grounded: 0
 --- !u!1 &1691567353
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,11 +1312,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949775528}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55d5d61357567944ba6b5b3724fec875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Crushing: 0
+  ypos: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

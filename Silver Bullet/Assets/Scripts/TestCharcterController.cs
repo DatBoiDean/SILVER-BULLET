@@ -8,8 +8,10 @@ public class TestCharcterController : MonoBehaviour
     public float jumpForce = 1;
     private float move;
     public Rigidbody2D testRigidBody;
+
     bool isGrounded = false;
     bool isFacingRight = true;
+    [SerializeField] Animator _animator; 
 
 
     void Start()
@@ -51,6 +53,16 @@ public class TestCharcterController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded) // jump
         {
             testRigidBody.velocity = Vector2.up * jumpForce;
+        }
+
+        if (move != 0) // animation integration
+        {
+            _animator.SetBool("isRunning", true);
+        }
+
+        else
+        {
+            _animator.SetBool("isRunning", false);
         }
     }
 

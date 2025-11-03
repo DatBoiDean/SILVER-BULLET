@@ -21,7 +21,7 @@ public class CrushInstaDeath : MonoBehaviour
         {
             if (grounded == true)
             {
-                Destroy(this);
+                Destroy(gameObject);
             }
         }
     }

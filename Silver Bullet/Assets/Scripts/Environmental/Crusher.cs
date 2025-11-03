@@ -5,6 +5,8 @@ using UnityEngine;
 public class Crusher : MonoBehaviour
 {
     [SerializeField] bool Crushing = false;
+    [SerializeField] float crushSpeed;
+    [SerializeField] float returnSpeed;
     public float ypos;
     // Start is called before the first frame update
     void Start()
@@ -17,17 +19,17 @@ public class Crusher : MonoBehaviour
     {
         if (Crushing == true)
         {
-            transform.Translate(0, -0.75f, 0);
+            transform.Translate(0, crushSpeed * -1f, 0);
         }
         if (Crushing == false)
         {
             if (transform.position.y < ypos)
             {
-                transform.Translate(0, 0.25f, 0);
+                transform.Translate(0, returnSpeed, 0);
             }
             if(transform.position.y > ypos)
             {
-                transform.Translate(0, 0.25f, 0);
+                transform.Translate(0, returnSpeed, 0);
             }
         }
     }

@@ -5,8 +5,12 @@ using UnityEngine;
 public class TestEnemyChaseBolt : MonoBehaviour
 {
     [SerializeField] float detectionDist;
+    [SerializeField] float patrolLeft;
+    [SerializeField] float patrolRight;
+    public float goingLeft;
     public GameObject player;
     public float moveSpeed = 3f;
+    [SerializeField] float patrolSpeed;
     public Rigidbody2D rb;
     private Transform playerTransform;
     [SerializeField] bool isChasing = false;
@@ -15,16 +19,21 @@ public class TestEnemyChaseBolt : MonoBehaviour
     [SerializeField] bool Stuck;
     //To track if this dude is currently stuck or not
     [SerializeField] CircleCollider2D feet;
+    public float xpos;
+    float currentX;
+    
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
+        xpos = transform.position.x;
     }
 
     void FixedUpdate()
     {
 
+        currentX = transform.position.x;
         float dist = Vector3.Distance(player.transform.position, transform.position);
         //Measures distance between this object and the player.
         //print("Dist:" + dist);
@@ -42,26 +51,33 @@ public class TestEnemyChaseBolt : MonoBehaviour
             }
             else
             {
-                // Stop moving if not chasing
+                //StopChase();
+                //gonna need some more time to think about how to do patrols
                 rb.velocity = Vector2.zero;
+                // Stop moving if not chasing
             }
         }
 
         if (dist >= detectionDist)
-            //If Dist is greater than detection dist...
-            {
-                isChasing = false;
-                //Stop chasing
-            }
+        //If Dist is greater than detection dist...
+        {
+            isChasing = false;
+            //Stop chasing
+        }
 
-            if (dist <= detectionDist)
-            //If dist is less than detection distance..
-            {
+        if (dist <= detectionDist)
+        //If dist is less than detection distance..
+        {
             isChasing = true;
             playerTransform = player.transform;
-                //Start chasing.
-            }
+            //Start chasing.
+        }
     }
+    
+    // void StopChase()
+    // {
+    //     rb.velocity = Vector2.zero;
+    // }
 
     void OnCollisionEnter2D(Collision2D collision)
     {

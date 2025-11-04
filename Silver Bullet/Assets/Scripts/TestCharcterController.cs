@@ -19,17 +19,6 @@ public class TestCharcterController : MonoBehaviour
         testRigidBody = GetComponent<Rigidbody2D>();
     }
 
-    void FlipCharacter() // have character face left or right depending on input
-    {
-        isFacingRight = !isFacingRight;
-        
-        Vector2 currentScale = transform.localScale; // get current scale of character
-
-        currentScale.x = -currentScale.x; // flip scale of character
-
-        transform.localScale = currentScale; // set new scale
-
-    }
 
     // Update is called once per frame
     void FixedUpdate() // handles character movement
@@ -66,7 +55,18 @@ public class TestCharcterController : MonoBehaviour
         }
     }
 
-   
+    void FlipCharacter() // have character face left or right depending on input
+    {
+        isFacingRight = !isFacingRight;
+
+        Vector2 currentScale = transform.localScale; // get current scale of character
+
+        currentScale.x = -currentScale.x; // flip scale of character
+
+        transform.localScale = currentScale; // set new scale
+
+    }
+
     private void OnCollisionEnter2D(Collision2D collision) // ground check methods
     {
         if (collision.gameObject.CompareTag("Ground"))

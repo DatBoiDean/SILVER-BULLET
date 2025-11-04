@@ -5,12 +5,11 @@ using UnityEngine;
 public class TestEnemyChaseBolt : MonoBehaviour
 {
     [SerializeField] float detectionDist;
-    [SerializeField] float patrolLeft;
-    [SerializeField] float patrolRight;
-    public float goingLeft;
+    [SerializeField] bool startLeft;
     public GameObject player;
     public float moveSpeed = 3f;
     [SerializeField] float patrolSpeed;
+    [SerializeField] float waitTime;
     public Rigidbody2D rb;
     private Transform playerTransform;
     [SerializeField] bool isChasing = false;
@@ -19,21 +18,27 @@ public class TestEnemyChaseBolt : MonoBehaviour
     [SerializeField] bool Stuck;
     //To track if this dude is currently stuck or not
     [SerializeField] CircleCollider2D feet;
-    public float xpos;
-    float currentX;
+
+    public string patrol;
+    public bool waiting = false;
     
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
-        xpos = transform.position.x;
+        if (startLeft == true)
+        {
+            patrol = "GoLeft";
+        }
+        if (startLeft == false)
+        {
+            patrol = "GoRight";
+        }
     }
 
     void FixedUpdate()
     {
-
-        currentX = transform.position.x;
         float dist = Vector3.Distance(player.transform.position, transform.position);
         //Measures distance between this object and the player.
         //print("Dist:" + dist);
@@ -42,6 +47,7 @@ public class TestEnemyChaseBolt : MonoBehaviour
         {
             if (isChasing && playerTransform != null)
             {
+                waiting = false;
                 // Calculate the direction vector from the enemy to the player
                 Vector2 direction = (playerTransform.position - transform.position).normalized;
 
@@ -55,6 +61,27 @@ public class TestEnemyChaseBolt : MonoBehaviour
                 //gonna need some more time to think about how to do patrols
                 rb.velocity = Vector2.zero;
                 // Stop moving if not chasing
+                if (patrol == "GoLeft")
+                {
+                    rb.velocity = Vector2.left * patrolSpeed;
+                }
+
+                if (patrol == "GoRight")
+                {
+                    rb.velocity = Vector2.right * patrolSpeed;
+                }
+
+                if (patrol == "Wait" && waiting == false)
+                {
+                    if (startLeft == true)
+                    {
+                        patrol = "GoRight";
+                    }
+                    if (startLeft == false)
+                    {
+                        patrol = "GoLeft";
+                    }
+                }
             }
         }
 
@@ -114,6 +141,48 @@ public class TestEnemyChaseBolt : MonoBehaviour
                 }
             }
         }
+        if (isChasing == false)
+        {
+            if (collision.gameObject.CompareTag("LeftMax"))
+            {
+                rb.velocity = Vector2.zero;
+                patrol = "Wait";
+                Invoke("SwitchToRight", waitTime);
+                waiting = true;
+            }
+            if (collision.gameObject.CompareTag("RightMax"))
+            {
+                rb.velocity = Vector2.zero;
+                patrol = "Wait";
+                Invoke("SwitchToLeft", waitTime);
+                waiting = true;
+            }
+        }
+
+        if (isChasing == true)
+        {
+            if (collision.gameObject.CompareTag("LeftMax"))
+            {
+                patrol = "GoRight";
+            } 
+
+            if (collision.gameObject.CompareTag("RightMax"))
+            {
+                patrol = "GoLeft";
+            }
+        }
+    }
+
+    void SwitchToLeft()
+    {
+        patrol = "GoLeft";
+        waiting = false;
+    }
+    
+    void SwitchToRight()
+    {
+        patrol = "GoRight";
+        waiting = false;
     }
 }
 

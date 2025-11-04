@@ -9,6 +9,8 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth = 3;
     public int maxHealth;
     public Slider healthBar;
+    [SerializeField] float invulnTime;
+    public bool invuln;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,16 +21,33 @@ public class PlayerHealth : MonoBehaviour
 
     public void PlayerTakeDamage(int amount)
     {
-        currentHealth -= amount;
-        healthBar.value = currentHealth;
-
-        if (currentHealth <= 0)
+        if (invuln == false)
         {
-            Debug.Log("Player Killed fired from " + gameObject.name);
-            Debug.Log("Loading Lose screen fired from " + gameObject.name);
-            //Feel free to just comment out the Load Scene thing for testing
-            SceneManager.LoadScene(2);
-            Destroy(gameObject);
+            currentHealth -= amount;
+            healthBar.value = currentHealth;
+            if (currentHealth <= 0)
+            {
+                Debug.Log("Player Killed fired from " + gameObject.name);
+                Debug.Log("Loading Lose screen fired from " + gameObject.name);
+                //Feel free to just comment out the Load Scene thing for testing
+                SceneManager.LoadScene(2);
+                Destroy(gameObject);
+            }
+
+            InvulnWait();
         }
+    }
+
+    void InvulnWait()
+    {
+        invuln = true;
+        Debug.Log("Invuln On");
+        Invoke("InvulnOff", invulnTime);
+    }
+
+    void InvulnOff()
+    {
+        invuln = false;
+        Debug.Log("Invuln Off");
     }
 }   

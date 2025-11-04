@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Crush
   - PlayerFeet
+  - LeftMax
+  - RightMax
   layers:
   - Default
   - TransparentFX

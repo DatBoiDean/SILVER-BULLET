@@ -21,6 +21,7 @@ public class TestEnemyChaseBolt : MonoBehaviour
 
     public string patrol;
     public bool waiting = false;
+    public Vector2 direction;
     
 
     void Start()
@@ -49,11 +50,36 @@ public class TestEnemyChaseBolt : MonoBehaviour
             {
                 waiting = false;
                 // Calculate the direction vector from the enemy to the player
-                Vector2 direction = (playerTransform.position - transform.position).normalized;
+                // Vector2 direction = (playerTransform.position - transform.position).normalized;
 
+
+
+                //New approach, made it so it detects where the player's x position is and acts accordingly.
+                //This also has a bonus of letting the thing patrol in the same direction as the player, if the player
+                //shakes them off.
+                if (player.transform.position.x < gameObject.transform.position.x)
+                {
+                    direction = Vector2.left;
+                    patrol = "GoLeft";
+                }
+
+                if (player.transform.position.x > gameObject.transform.position.x)
+                {
+                    direction = Vector2.right;
+                    patrol = "GoRight";
+                }
+
+                if (player.transform.position.x == gameObject.transform.position.x)
+                {
+                    direction = Vector2.zero;
+                }
+
+                
                 // Apply a force or set a velocity to move the enemy
                 // For simple movement, setting the velocity is most direct
+                //Moved this to after the if statements
                 rb.velocity = direction * moveSpeed;
+
             }
             else
             {

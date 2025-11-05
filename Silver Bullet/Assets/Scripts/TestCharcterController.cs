@@ -9,7 +9,7 @@ public class TestCharcterController : MonoBehaviour
     private float move;
     public Rigidbody2D testRigidBody;
 
-    bool isGrounded = false;
+    public bool isGrounded = false;
     bool isFacingRight = true;
     [SerializeField] Animator _animator; 
 
@@ -19,7 +19,18 @@ public class TestCharcterController : MonoBehaviour
         testRigidBody = GetComponent<Rigidbody2D>();
     }
 
-
+    void Update()
+    {
+        //so help me god if this fucking works.
+        if (Input.GetKeyDown(KeyCode.Space)) // jump
+        {
+            if (isGrounded == true)
+            {
+                testRigidBody.velocity = Vector2.up * jumpForce;
+                Debug.Log("Jump Key pressed");
+            }
+        }
+    }
     // Update is called once per frame
     void FixedUpdate() // handles character movement
     {
@@ -39,10 +50,7 @@ public class TestCharcterController : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded) // jump
-        {
-            testRigidBody.velocity = Vector2.up * jumpForce;
-        }
+        
 
         if (move != 0) // animation integration
         {

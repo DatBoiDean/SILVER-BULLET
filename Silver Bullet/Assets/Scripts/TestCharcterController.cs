@@ -28,6 +28,7 @@ public class TestCharcterController : MonoBehaviour
             {
                 testRigidBody.velocity = Vector2.up * jumpForce;
                 Debug.Log("Jump Key pressed");
+                Invoke("jumpAnim", 0.5f); //add variable for time (0.5f for now)
             }
         }
     }
@@ -88,6 +89,19 @@ public class TestCharcterController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
+        }
+    }
+
+    void jumpAnim()
+    {
+        if (testRigidBody.velocity.y != 0)
+        {
+            _animator.SetBool("isJumping", true);
+        }
+
+        else
+        {
+            _animator.SetBool("isJumping", false);
         }
     }
 }

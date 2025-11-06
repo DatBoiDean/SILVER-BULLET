@@ -47,3 +47,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: OGLevel
+    uniqueID: 1865689835
+    locked: 0
+  - name: Newlevel
+    uniqueID: 303114663
+    locked: 0

@@ -670,15 +670,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Screw Enemy (7)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 994775924295295920, guid: af41eb968a1058241951927f94db377a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6874044461583532028, guid: af41eb968a1058241951927f94db377a, type: 3}
       insertIndex: 2
-      addedObject: {fileID: 429487486}
-    - targetCorrespondingSourceObject: {fileID: 6874044461583532028, guid: af41eb968a1058241951927f94db377a, type: 3}
-      insertIndex: 3
       addedObject: {fileID: 429487485}
   m_SourcePrefab: {fileID: 100100000, guid: af41eb968a1058241951927f94db377a, type: 3}
 --- !u!1 &429487484 stripped
@@ -698,24 +696,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 0
-  damageAmount: 0
+  damageInterval: 5
+  damageAmount: 1
   nextDamageTime: 0
---- !u!114 &429487486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 429487484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
 --- !u!1 &472883609
 GameObject:
   m_ObjectHideFlags: 0
@@ -1960,15 +1943,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Screw Enemy (6)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 994775924295295920, guid: af41eb968a1058241951927f94db377a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6874044461583532028, guid: af41eb968a1058241951927f94db377a, type: 3}
       insertIndex: 2
-      addedObject: {fileID: 770599906}
-    - targetCorrespondingSourceObject: {fileID: 6874044461583532028, guid: af41eb968a1058241951927f94db377a, type: 3}
-      insertIndex: 3
       addedObject: {fileID: 770599905}
   m_SourcePrefab: {fileID: 100100000, guid: af41eb968a1058241951927f94db377a, type: 3}
 --- !u!1 &770599904 stripped
@@ -1988,24 +1969,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 0
-  damageAmount: 0
+  damageInterval: 5
+  damageAmount: 1
   nextDamageTime: 0
---- !u!114 &770599906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 770599904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
 --- !u!1 &782213460
 GameObject:
   m_ObjectHideFlags: 0
@@ -2313,15 +2279,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Screw Enemy (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 994775924295295920, guid: af41eb968a1058241951927f94db377a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6874044461583532028, guid: af41eb968a1058241951927f94db377a, type: 3}
       insertIndex: 2
-      addedObject: {fileID: 796401338}
-    - targetCorrespondingSourceObject: {fileID: 6874044461583532028, guid: af41eb968a1058241951927f94db377a, type: 3}
-      insertIndex: 3
       addedObject: {fileID: 796401337}
   m_SourcePrefab: {fileID: 100100000, guid: af41eb968a1058241951927f94db377a, type: 3}
 --- !u!1 &796401336 stripped
@@ -2341,24 +2305,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 0
-  damageAmount: 0
+  damageInterval: 5
+  damageAmount: 1
   nextDamageTime: 0
---- !u!114 &796401338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 796401336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
 --- !u!1 &811883145
 GameObject:
   m_ObjectHideFlags: 0
@@ -2935,15 +2884,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Screw Enemy (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 994775924295295920, guid: af41eb968a1058241951927f94db377a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6874044461583532028, guid: af41eb968a1058241951927f94db377a, type: 3}
       insertIndex: 2
-      addedObject: {fileID: 850282046}
-    - targetCorrespondingSourceObject: {fileID: 6874044461583532028, guid: af41eb968a1058241951927f94db377a, type: 3}
-      insertIndex: 3
       addedObject: {fileID: 850282045}
   m_SourcePrefab: {fileID: 100100000, guid: af41eb968a1058241951927f94db377a, type: 3}
 --- !u!1 &850282044 stripped
@@ -2963,24 +2910,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 0
-  damageAmount: 0
+  damageInterval: 5
+  damageAmount: 1
   nextDamageTime: 0
---- !u!114 &850282046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 850282044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
 --- !u!1 &860367585
 GameObject:
   m_ObjectHideFlags: 0
@@ -3302,15 +3234,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Screw Enemy (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 994775924295295920, guid: af41eb968a1058241951927f94db377a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6874044461583532028, guid: af41eb968a1058241951927f94db377a, type: 3}
       insertIndex: 2
-      addedObject: {fileID: 1042346224}
-    - targetCorrespondingSourceObject: {fileID: 6874044461583532028, guid: af41eb968a1058241951927f94db377a, type: 3}
-      insertIndex: 3
       addedObject: {fileID: 1042346223}
   m_SourcePrefab: {fileID: 100100000, guid: af41eb968a1058241951927f94db377a, type: 3}
 --- !u!1 &1042346222 stripped
@@ -3330,24 +3260,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 0
-  damageAmount: 0
+  damageInterval: 5
+  damageAmount: 1
   nextDamageTime: 0
---- !u!114 &1042346224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042346222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
 --- !u!1 &1080167868
 GameObject:
   m_ObjectHideFlags: 0
@@ -4345,15 +4260,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Screw Enemy (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 994775924295295920, guid: af41eb968a1058241951927f94db377a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6874044461583532028, guid: af41eb968a1058241951927f94db377a, type: 3}
       insertIndex: 2
-      addedObject: {fileID: 1624166331}
-    - targetCorrespondingSourceObject: {fileID: 6874044461583532028, guid: af41eb968a1058241951927f94db377a, type: 3}
-      insertIndex: 3
       addedObject: {fileID: 1624166330}
   m_SourcePrefab: {fileID: 100100000, guid: af41eb968a1058241951927f94db377a, type: 3}
 --- !u!1 &1624166329 stripped
@@ -4373,24 +4286,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 0
-  damageAmount: 0
+  damageInterval: 5
+  damageAmount: 1
   nextDamageTime: 0
---- !u!114 &1624166331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624166329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
 --- !u!1001 &1640380452
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4447,15 +4345,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Screw Enemy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 994775924295295920, guid: af41eb968a1058241951927f94db377a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6874044461583532028, guid: af41eb968a1058241951927f94db377a, type: 3}
       insertIndex: 2
-      addedObject: {fileID: 1640380455}
-    - targetCorrespondingSourceObject: {fileID: 6874044461583532028, guid: af41eb968a1058241951927f94db377a, type: 3}
-      insertIndex: 3
       addedObject: {fileID: 1640380454}
   m_SourcePrefab: {fileID: 100100000, guid: af41eb968a1058241951927f94db377a, type: 3}
 --- !u!1 &1640380453 stripped
@@ -4475,24 +4371,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 0
-  damageAmount: 0
+  damageInterval: 5
+  damageAmount: 1
   nextDamageTime: 0
---- !u!114 &1640380455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640380453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
 --- !u!1 &1650627657
 GameObject:
   m_ObjectHideFlags: 0
@@ -8848,15 +8729,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Screw Enemy (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 994775924295295920, guid: af41eb968a1058241951927f94db377a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6874044461583532028, guid: af41eb968a1058241951927f94db377a, type: 3}
       insertIndex: 2
-      addedObject: {fileID: 1942765745}
-    - targetCorrespondingSourceObject: {fileID: 6874044461583532028, guid: af41eb968a1058241951927f94db377a, type: 3}
-      insertIndex: 3
       addedObject: {fileID: 1942765744}
   m_SourcePrefab: {fileID: 100100000, guid: af41eb968a1058241951927f94db377a, type: 3}
 --- !u!1 &1942765743 stripped
@@ -8876,24 +8755,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 0
-  damageAmount: 0
+  damageInterval: 5
+  damageAmount: 1
   nextDamageTime: 0
---- !u!114 &1942765745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1942765743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
 --- !u!1 &1983391057
 GameObject:
   m_ObjectHideFlags: 0

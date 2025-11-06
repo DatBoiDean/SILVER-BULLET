@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 7295146464955632551}
   - component: {fileID: 1577190442417807839}
   - component: {fileID: 6217270819535317507}
+  - component: {fileID: 985782904697286661}
   m_Layer: 0
   m_Name: Screw Enemy
   m_TagString: Enemy
@@ -236,11 +237,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionDist: 5
   startLeft: 1
-  player: {fileID: 0}
+  player: {fileID: 4114649912291347994, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
   moveSpeed: 3
   patrolSpeed: 5
   waitTime: 3
-  rb: {fileID: 0}
+  rb: {fileID: 6217270819535317507}
   isChasing: 0
   Grounded: 0
   Stuck: 0
@@ -400,6 +401,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &985782904697286661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6874044461583532028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentEnemyHealth: 0
+  maxEnemyHealth: 3
+  amount: 0
 --- !u!1 &7899614352815019477
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class ToggleTimer : MonoBehaviour
     [SerializeField] bool start;
     [SerializeField] float timer;
     [SerializeField] BoxCollider2D target;
+    [SerializeField] SpriteRenderer target2;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,14 +30,18 @@ public class ToggleTimer : MonoBehaviour
     void On()
     {
         Debug.Log(this + " is On");
-        Invoke("Off", timer);
         target.enabled = true;
+        target2.enabled = true;
+        Invoke("Off", timer);
+        
     }
     
     void Off()
     {
         Debug.Log(this + " is Off");
-        Invoke("On", timer);
         target.enabled = false;
+        target2.enabled = false;
+        Invoke("On", timer);
+        
     }
 }

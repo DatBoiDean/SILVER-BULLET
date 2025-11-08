@@ -10,7 +10,7 @@ public class TestEnemyChaseBolt : MonoBehaviour
     public float moveSpeed = 3f;
     [SerializeField] float patrolSpeed;
     [SerializeField] float waitTime;
-    public Rigidbody2D rb;
+    Rigidbody2D rb;
     private Transform playerTransform;
     [SerializeField] bool isChasing = false;
     [SerializeField] bool Grounded;

@@ -64,7 +64,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.027487993, y: 0.5131109}
+  m_Offset: {x: 0.027487993, y: -0.004890859}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -75,7 +75,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.206943, y: 2.0262218}
+  m_Size: {x: 4.206943, y: 0.99021816}
   m_EdgeRadius: 0
 --- !u!1 &4751971740683587564
 GameObject:
@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 5217743941542282021}
   - component: {fileID: 2396723616607477674}
   - component: {fileID: 3549627070546733538}
+  - component: {fileID: 8311314706573865319}
   m_Layer: 6
   m_Name: 'Test Enemy '
   m_TagString: Untagged
@@ -246,7 +247,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4751971740683587564}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2de82dd505942f4d979c43a04cdebd3, type: 3}
   m_Name: 
@@ -283,3 +284,19 @@ MonoBehaviour:
   damageInterval: 3
   damageAmount: 1
   nextDamageTime: 3
+--- !u!114 &8311314706573865319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4751971740683587564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8877cf3831e1854b92272c1b36fe320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+  roamRadius: 5
+  changeDirectionInterval: 3
+  rb: {fileID: 1043775833567431601}

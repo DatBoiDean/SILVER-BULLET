@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TestEnemyChaseBolt : MonoBehaviour
 {
+    [SerializeField] bool canBolt;
     [SerializeField] float detectionDist;
     [SerializeField] bool startLeft;
     public GameObject player;
@@ -17,7 +18,7 @@ public class TestEnemyChaseBolt : MonoBehaviour
     //To track if this dude is on the ground or not
     [SerializeField] bool Stuck;
     //To track if this dude is currently stuck or not
-    [SerializeField] CircleCollider2D feet;
+    [SerializeField] CapsuleCollider2D feet;
 
     public string patrol;
     public bool waiting = false;
@@ -154,16 +155,19 @@ public class TestEnemyChaseBolt : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("PlayerFeet"))
         {
-            if (Grounded == true) //If the thing is grounded...
+            if (canBolt == true)
             {
-                if (Stuck == false) //... AND isn't already stuck...
-                //This is to basically maximize the odds of Unity not continuously firing off these scripts
-                //  if it's already done the thing this script needs to do
+                if (Grounded == true) //If the thing is grounded...
                 {
-                    feet.enabled = false;
-                    Stuck = true;
-                    //Find and disable the Circle Collider
-                    //Find and disable the movement script (external?)
+                    if (Stuck == false) //... AND isn't already stuck...
+                                        //This is to basically maximize the odds of Unity not continuously firing off these scripts
+                                        //  if it's already done the thing this script needs to do
+                    {
+                        feet.enabled = false;
+                        Stuck = true;
+                        //Find and disable the Circle Collider
+                        //Find and disable the movement script (external?)
+                    }
                 }
             }
         }

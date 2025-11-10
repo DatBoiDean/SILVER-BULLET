@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 57
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -184,7 +184,7 @@ TextureImporter:
       name: tilemap-1_4
       rect:
         serializedVersion: 2
-        x: 177
+        x: 0
         y: 102
         width: 58
         height: 48
@@ -205,10 +205,10 @@ TextureImporter:
       name: tilemap-1_5
       rect:
         serializedVersion: 2
-        x: 177
-        y: 50
-        width: 58
-        height: 51
+        x: 59
+        y: 102
+        width: 57
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,10 +226,10 @@ TextureImporter:
       name: tilemap-1_6
       rect:
         serializedVersion: 2
-        x: 177
-        y: 0
-        width: 58
-        height: 50
+        x: 117
+        y: 102
+        width: 59
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,10 +247,10 @@ TextureImporter:
       name: tilemap-1_7
       rect:
         serializedVersion: 2
-        x: 117
-        y: 0
-        width: 59
-        height: 50
+        x: 177
+        y: 102
+        width: 58
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,10 +268,10 @@ TextureImporter:
       name: tilemap-1_8
       rect:
         serializedVersion: 2
-        x: 59
-        y: 0
-        width: 57
-        height: 50
+        x: 0
+        y: 50
+        width: 58
+        height: 51
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,10 +289,10 @@ TextureImporter:
       name: tilemap-1_9
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 58
-        height: 50
+        x: 59
+        y: 50
+        width: 57
+        height: 51
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -310,9 +310,9 @@ TextureImporter:
       name: tilemap-1_10
       rect:
         serializedVersion: 2
-        x: 0
+        x: 117
         y: 50
-        width: 58
+        width: 59
         height: 51
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -331,9 +331,9 @@ TextureImporter:
       name: tilemap-1_11
       rect:
         serializedVersion: 2
-        x: 59
+        x: 177
         y: 50
-        width: 57
+        width: 58
         height: 51
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -352,10 +352,10 @@ TextureImporter:
       name: tilemap-1_12
       rect:
         serializedVersion: 2
-        x: 117
-        y: 50
-        width: 59
-        height: 51
+        x: 0
+        y: 0
+        width: 58
+        height: 50
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -373,10 +373,10 @@ TextureImporter:
       name: tilemap-1_13
       rect:
         serializedVersion: 2
-        x: 117
-        y: 102
-        width: 59
-        height: 48
+        x: 59
+        y: 0
+        width: 57
+        height: 50
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -394,10 +394,10 @@ TextureImporter:
       name: tilemap-1_14
       rect:
         serializedVersion: 2
-        x: 59
-        y: 102
-        width: 57
-        height: 48
+        x: 117
+        y: 0
+        width: 59
+        height: 50
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -415,10 +415,10 @@ TextureImporter:
       name: tilemap-1_15
       rect:
         serializedVersion: 2
-        x: 0
-        y: 102
+        x: 177
+        y: 0
         width: 58
-        height: 48
+        height: 50
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

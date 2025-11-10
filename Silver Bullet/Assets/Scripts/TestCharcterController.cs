@@ -82,7 +82,11 @@ public class TestCharcterController : MonoBehaviour
         {
             isGrounded = true;
         }
-    }
+        if (collision.gameObject.CompareTag("Spikes"))
+        {
+            testRigidBody.velocity = Vector2.up * jumpForce;
+        }
+        }
 
     private void OnCollisionExit2D(Collision2D collision)
     {

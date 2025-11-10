@@ -78,6 +78,14 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("Invuln Off");
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Spikes"))
+        {
+            PlayerTakeDamage(1);
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Fear"))

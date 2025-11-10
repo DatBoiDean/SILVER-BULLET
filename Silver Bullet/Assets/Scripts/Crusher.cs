@@ -11,7 +11,7 @@ public class Crusher : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ypos = transform.position.y;
+        ypos = transform.position.y - 2;
     }
 
     // Update is called once per frame
@@ -19,19 +19,26 @@ public class Crusher : MonoBehaviour
     {
         if (Crushing == true)
         {
-            transform.Translate(0, crushSpeed * -1f, 0);
-        }
-        if (Crushing == false)
-        {
+            if (transform.position.y > ypos)
+            {
+                transform.Translate(0, crushSpeed * -1f, 0);
+            }
             if (transform.position.y < ypos)
             {
-                transform.Translate(0, returnSpeed, 0);
-            }
-            if(transform.position.y > ypos)
-            {
-                transform.Translate(0, returnSpeed, 0);
+                Destroy(gameObject,0f);
             }
         }
+        // if (Crushing == false)
+        // {
+        //     if (transform.position.y < ypos)
+        //     {
+        //         transform.Translate(0, returnSpeed, 0);
+        //     }
+        //     if(transform.position.y > ypos)
+        //     {
+        //         transform.Translate(0, returnSpeed, 0);
+        //     }
+        // }
     }
 
     void OnTriggerEnter2D(Collider2D collision)

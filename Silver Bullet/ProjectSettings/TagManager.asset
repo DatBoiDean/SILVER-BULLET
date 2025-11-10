@@ -11,7 +11,6 @@ TagManager:
   - LeftMax
   - RightMax
   - SteamUp
-  - Win
   layers:
   - Default
   - TransparentFX

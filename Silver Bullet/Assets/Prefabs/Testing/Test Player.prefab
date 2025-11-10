@@ -77,13 +77,15 @@ GameObject:
   m_Component:
   - component: {fileID: 1492900556885310369}
   - component: {fileID: 8805001103175705496}
+  - component: {fileID: 2106024172429248124}
+  - component: {fileID: 6331124015339857526}
+  - component: {fileID: 7671127585192774968}
+  - component: {fileID: 6160076110977145742}
+  - component: {fileID: 1649125806091996349}
+  - component: {fileID: 1053060233612658289}
   - component: {fileID: 943079139807435157}
   - component: {fileID: 1396515531393218052}
   - component: {fileID: 8893022857443268861}
-  - component: {fileID: 6331124015339857526}
-  - component: {fileID: 6160076110977145742}
-  - component: {fileID: 2106024172429248124}
-  - component: {fileID: 1053060233612658289}
   m_Layer: 0
   m_Name: Test Player
   m_TagString: Player
@@ -160,6 +162,106 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2106024172429248124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4114649912291347994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ef6050fa8b670c45841f51785c19da4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 3
+  healthBar: {fileID: 2215685368666351608, guid: d7b281f8792cdeb419197f511f082f91, type: 3}
+  invulnTime: 3
+  invulnWait: 0
+  invuln: 0
+  fear: 0
+--- !u!114 &6331124015339857526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4114649912291347994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ea5d63cdac5ba14891cec04a46103bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 7.5
+  jumpForce: 4
+  testRigidBody: {fileID: 8893022857443268861}
+  isGrounded: 0
+  _animator: {fileID: 1053060233612658289}
+--- !u!114 &7671127585192774968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4114649912291347994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baa20b8463caa8746a49e9373160fef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  steamFling: 10
+--- !u!114 &6160076110977145742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4114649912291347994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656afe50355eaab40b1292f57c9e6128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPoint: {fileID: 6119025486942758768}
+  radius: 0.5
+  enemies:
+    serializedVersion: 2
+    m_Bits: 64
+  damage: 1
+--- !u!114 &1649125806091996349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4114649912291347994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b753fd136b0fa424b9b52bdbdd6e0e41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &1053060233612658289
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4114649912291347994}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bc970228e2f5c894b91b5b250d71352f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!58 &943079139807435157
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -267,81 +369,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &6331124015339857526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4114649912291347994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ea5d63cdac5ba14891cec04a46103bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 7.5
-  jumpForce: 4
-  testRigidBody: {fileID: 8893022857443268861}
-  isGrounded: 0
-  _animator: {fileID: 1053060233612658289}
---- !u!114 &6160076110977145742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4114649912291347994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 656afe50355eaab40b1292f57c9e6128, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackPoint: {fileID: 6119025486942758768}
-  radius: 0.5
-  enemies:
-    serializedVersion: 2
-    m_Bits: 64
-  damage: 1
---- !u!114 &2106024172429248124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4114649912291347994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ef6050fa8b670c45841f51785c19da4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 3
-  healthBar: {fileID: 2215685368666351608, guid: d7b281f8792cdeb419197f511f082f91, type: 3}
-  invulnTime: 0
-  invulnWait: 0
-  invuln: 0
-  fear: 0
---- !u!95 &1053060233612658289
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4114649912291347994}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bc970228e2f5c894b91b5b250d71352f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6119025486942758768
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public class ToggleTimer : MonoBehaviour
 {
     [SerializeField] bool start;
     [SerializeField] float timer;
-    [SerializeField] PolygonCollider2D target;
+    [SerializeField] BoxCollider2D target;
     [SerializeField] SpriteRenderer target2;
     // Start is called before the first frame update
     void Start()

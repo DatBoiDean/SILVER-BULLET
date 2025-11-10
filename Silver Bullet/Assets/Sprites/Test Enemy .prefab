@@ -297,6 +297,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  roamRadius: 5
+  roamRadius: 3
   changeDirectionInterval: 3
   rb: {fileID: 1043775833567431601}

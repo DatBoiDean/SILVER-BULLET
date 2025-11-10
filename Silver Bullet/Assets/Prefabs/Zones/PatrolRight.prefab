@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5053775263988661798}
   - component: {fileID: 8246147473740144222}
   m_Layer: 0
-  m_Name: Right Zone
+  m_Name: PatrolRight
   m_TagString: RightMax
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

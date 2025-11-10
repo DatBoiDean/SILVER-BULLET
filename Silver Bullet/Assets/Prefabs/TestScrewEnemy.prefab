@@ -177,16 +177,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4951782724474978493}
-  - component: {fileID: 985782904697286661}
-  - component: {fileID: 994775924295295920}
   - component: {fileID: 770539110782078216}
-  - component: {fileID: 1813230653304500892}
   - component: {fileID: 2030736997418475594}
   - component: {fileID: 7295146464955632551}
   - component: {fileID: 1577190442417807839}
   - component: {fileID: 6217270819535317507}
   m_Layer: 0
-  m_Name: Screw Enemy
+  m_Name: TestScrewEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -210,36 +207,6 @@ Transform:
   - {fileID: 5370719711949998224}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &985782904697286661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6874044461583532028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 3
-  amount: 0
---- !u!114 &994775924295295920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6874044461583532028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageInterval: 5
-  damageAmount: 1
-  nextDamageTime: 0
 --- !u!114 &770539110782078216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,32 +221,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gettingCrushed: 0
   grounded: 0
---- !u!114 &1813230653304500892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6874044461583532028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac8f23768741a7c4ba70f13169f720e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectionDist: 5
-  startLeft: 1
-  player: {fileID: 4114649912291347994, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
-  moveSpeed: 3
-  patrolSpeed: 5
-  waitTime: 3
-  rb: {fileID: 6217270819535317507}
-  isChasing: 0
-  Grounded: 0
-  Stuck: 0
-  feet: {fileID: 2030736997418475594}
-  patrol: 
-  waiting: 0
-  direction: {x: 0, y: 0}
 --- !u!58 &2030736997418475594
 CircleCollider2D:
   m_ObjectHideFlags: 0

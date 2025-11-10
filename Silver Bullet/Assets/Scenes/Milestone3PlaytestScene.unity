@@ -227,7 +227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38289a68d24910345bbb5bb061ba2153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!1001 &44375710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -236,6 +235,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1053060233612658289, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -288,13 +291,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3921144016705109014, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: m_Size.x
+      value: 0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 3921144016705109014, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 3921144016705109014, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4114649912291347994, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4566217908210092935, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6331124015339857526, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: jumpForce
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805001103175705496, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: m_Size.x
+      value: 1.4791666
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805001103175705496, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: m_Size.y
+      value: 3.4166667
       objectReference: {fileID: 0}
     - target: {fileID: 8893022857443268861, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_CollisionDetection
@@ -698,9 +725,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 0
-  damageAmount: 0
-  nextDamageTime: 0
 --- !u!114 &429487486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -713,9 +737,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
 --- !u!1 &472883609
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,9 +2009,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 0
-  damageAmount: 0
-  nextDamageTime: 0
 --- !u!114 &770599906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2003,9 +2021,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
 --- !u!1 &782213460
 GameObject:
   m_ObjectHideFlags: 0
@@ -2148,7 +2163,7 @@ GameObject:
   - component: {fileID: 782606530}
   m_Layer: 0
   m_Name: Grid
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2265,9 +2280,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 0
-  damageAmount: 0
-  nextDamageTime: 0
 --- !u!114 &796401338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2280,9 +2292,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
 --- !u!1 &811883145
 GameObject:
   m_ObjectHideFlags: 0
@@ -2887,9 +2896,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 0
-  damageAmount: 0
-  nextDamageTime: 0
 --- !u!114 &850282046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2902,9 +2908,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
 --- !u!1 &860367585
 GameObject:
   m_ObjectHideFlags: 0
@@ -3254,9 +3257,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 0
-  damageAmount: 0
-  nextDamageTime: 0
 --- !u!114 &1042346224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3269,9 +3269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
 --- !u!1 &1080167868
 GameObject:
   m_ObjectHideFlags: 0
@@ -4297,9 +4294,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 0
-  damageAmount: 0
-  nextDamageTime: 0
 --- !u!114 &1624166331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4312,9 +4306,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
 --- !u!1001 &1640380452
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4399,9 +4390,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 0
-  damageAmount: 0
-  nextDamageTime: 0
 --- !u!114 &1640380455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4414,9 +4402,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
 --- !u!1 &1650627657
 GameObject:
   m_ObjectHideFlags: 0
@@ -4428,9 +4413,10 @@ GameObject:
   - component: {fileID: 1650627658}
   - component: {fileID: 1650627660}
   - component: {fileID: 1650627659}
+  - component: {fileID: 1650627661}
   m_Layer: 0
   m_Name: TIlesets
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6751,6 +6737,42 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &1650627661
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650627657}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0
 --- !u!1 &1661714728
 GameObject:
   m_ObjectHideFlags: 0
@@ -7355,9 +7377,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 0
-  damageAmount: 0
-  nextDamageTime: 0
 --- !u!114 &1942765745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7370,9 +7389,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
 --- !u!1 &1983391057
 GameObject:
   m_ObjectHideFlags: 0

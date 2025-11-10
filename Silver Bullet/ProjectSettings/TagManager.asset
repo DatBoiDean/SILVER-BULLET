@@ -11,6 +11,8 @@ TagManager:
   - LeftMax
   - RightMax
   - SteamUp
+  - Spikes
+  - Fear
   layers:
   - Default
   - TransparentFX

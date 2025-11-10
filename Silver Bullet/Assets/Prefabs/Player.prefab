@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7.5
-  jumpForce: 4
+  jumpForce: 6
   testRigidBody: {fileID: 8893022857443268861}
   isGrounded: 0
   _animator: {fileID: 1053060233612658289}
@@ -249,7 +249,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4114649912291347994}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: bc970228e2f5c894b91b5b250d71352f, type: 2}
   m_CullingMode: 0

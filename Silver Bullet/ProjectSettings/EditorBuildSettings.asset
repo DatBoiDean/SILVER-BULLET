@@ -17,10 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lose Menu.unity
     guid: bf686aec18215ab4d908f80a43e4932c
-  - enabled: 0
-    path: Assets/Scenes/AI Test Scene.unity
-    guid: 2434e04f07ab4fd40bbd5d1e4fe4d905
   - enabled: 1
-    path: Assets/SILVEREBULLETWITRHUPDATEDTILESET.unity
-    guid: 5e382b30696d603419f6ec3432129b6f
+    path: Assets/Scenes/ShadyGroveTest.unity
+    guid: 530ba8466d0a3014eaa34e9451c5fd4e
   m_configObjects: {}

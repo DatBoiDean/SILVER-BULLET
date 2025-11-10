@@ -209,7 +209,7 @@ Transform:
   m_GameObject: {fileID: 40137702}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.474542, y: 0.8481915, z: -10}
+  m_LocalPosition: {x: -13.534542, y: -0.11080849, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -236,6 +236,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 579923850060360728, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 579923850060360728, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 943079139807435157, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: m_Radius
+      value: 1.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 943079139807435157, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 943079139807435157, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000920866532511704, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000920866532511704, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.9
+      objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -250,11 +278,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.87
+      value: -12.93
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8481915
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -296,6 +324,10 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 8805001103175705496, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c3433d471114da64abb3801e5f6f7add, type: 3}
     - target: {fileID: 8893022857443268861, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_CollisionDetection
       value: 1
@@ -698,9 +730,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 0
-  damageAmount: 0
-  nextDamageTime: 0
 --- !u!114 &429487486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -713,9 +742,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
 --- !u!1 &472883609
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,9 +2014,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 0
-  damageAmount: 0
-  nextDamageTime: 0
 --- !u!114 &770599906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2003,9 +2026,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
 --- !u!1 &782213460
 GameObject:
   m_ObjectHideFlags: 0
@@ -2265,9 +2285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 0
-  damageAmount: 0
-  nextDamageTime: 0
 --- !u!114 &796401338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2280,9 +2297,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
 --- !u!1 &811883145
 GameObject:
   m_ObjectHideFlags: 0
@@ -2887,9 +2901,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 0
-  damageAmount: 0
-  nextDamageTime: 0
 --- !u!114 &850282046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2902,9 +2913,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
 --- !u!1 &860367585
 GameObject:
   m_ObjectHideFlags: 0
@@ -3254,9 +3262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 0
-  damageAmount: 0
-  nextDamageTime: 0
 --- !u!114 &1042346224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3269,9 +3274,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
 --- !u!1 &1080167868
 GameObject:
   m_ObjectHideFlags: 0
@@ -4077,7 +4079,7 @@ Transform:
   m_GameObject: {fileID: 1537220520}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -0.11, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4297,9 +4299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 0
-  damageAmount: 0
-  nextDamageTime: 0
 --- !u!114 &1624166331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4312,9 +4311,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
 --- !u!1001 &1640380452
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4399,9 +4395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 0
-  damageAmount: 0
-  nextDamageTime: 0
 --- !u!114 &1640380455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4414,9 +4407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
 --- !u!1 &1650627657
 GameObject:
   m_ObjectHideFlags: 0
@@ -4428,9 +4418,10 @@ GameObject:
   - component: {fileID: 1650627658}
   - component: {fileID: 1650627660}
   - component: {fileID: 1650627659}
+  - component: {fileID: 1650627661}
   m_Layer: 0
   m_Name: TIlesets
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6751,6 +6742,42 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &1650627661
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650627657}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0
 --- !u!1 &1661714728
 GameObject:
   m_ObjectHideFlags: 0
@@ -7355,9 +7382,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61a363962ec16f4b8574d9395b3db22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 0
-  damageAmount: 0
-  nextDamageTime: 0
 --- !u!114 &1942765745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7370,9 +7394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15de94ec2fc8cee4293c37ab0eb2e998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
 --- !u!1 &1983391057
 GameObject:
   m_ObjectHideFlags: 0

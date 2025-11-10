@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public GameObject player;
+    GameObject player;
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("CameraMount");
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame

@@ -13,7 +13,6 @@ public class TestCharcterController : MonoBehaviour
     bool isFacingRight = true;
     [SerializeField] Animator _animator; 
 
-
     void Start()
     {
         testRigidBody = GetComponent<Rigidbody2D>();
@@ -28,10 +27,16 @@ public class TestCharcterController : MonoBehaviour
             {
                 testRigidBody.velocity = Vector2.up * jumpForce;
                 Debug.Log("Jump Key pressed");
-                Invoke("jumpAnim", 0.5f); //add variable for time (0.5f for now)
+
+                // REMOVED: Invoke to delayed jump bool setter (caused flapping/lag and stuck states)
+                // Invoke("jumpAnim", 0.5f); //add variable for time (0.5f for now)
+
+                // NEW (minimal): fire a one-shot trigger to enter Jump state without needing isJumping bool
+                _animator.SetTrigger("JumpTrigger");
             }
         }
     }
+
     // Update is called once per frame
     void FixedUpdate() // handles character movement
     {
@@ -42,22 +47,16 @@ public class TestCharcterController : MonoBehaviour
         {
             FlipCharacter();
         }
-
         else if (move < 0 && isFacingRight)
         {
             FlipCharacter();
             Debug.Log("Facing Right");
         }
 
-
-
-        
-
         if (move != 0) // animation integration
         {
             _animator.SetBool("isRunning", true);
         }
-
         else
         {
             _animator.SetBool("isRunning", false);
@@ -69,11 +68,8 @@ public class TestCharcterController : MonoBehaviour
         isFacingRight = !isFacingRight;
 
         Vector2 currentScale = transform.localScale; // get current scale of character
-
         currentScale.x = -currentScale.x; // flip scale of character
-
         transform.localScale = currentScale; // set new scale
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision) // ground check methods
@@ -81,12 +77,15 @@ public class TestCharcterController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+
+            // NOTE: With trigger-based jump, no need to set isJumping=false here.
+            // Animator leaves Jump via Exit Time to Idle/Run based on isRunning.
         }
         if (collision.gameObject.CompareTag("Spikes"))
         {
             testRigidBody.velocity = Vector2.up * jumpForce;
         }
-        }
+    }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -96,16 +95,18 @@ public class TestCharcterController : MonoBehaviour
         }
     }
 
+    // REMOVED: jumpAnim() method (was toggling isJumping via delayed velocity check and caused state ping-pong)
+    /*
     void jumpAnim()
     {
         if (testRigidBody.velocity.y != 0)
         {
             _animator.SetBool("isJumping", true);
         }
-
         else
         {
             _animator.SetBool("isJumping", false);
         }
     }
+    */
 }

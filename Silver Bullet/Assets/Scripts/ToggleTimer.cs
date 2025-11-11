@@ -29,7 +29,7 @@ public class ToggleTimer : MonoBehaviour
 
     void On()
     {
-        Debug.Log(this + " is On");
+        //Debug.Log(this + " is On");
         target.enabled = true;
         target2.enabled = true;
         Invoke("Off", timer);
@@ -38,7 +38,7 @@ public class ToggleTimer : MonoBehaviour
     
     void Off()
     {
-        Debug.Log(this + " is Off");
+        //Debug.Log(this + " is Off");
         target.enabled = false;
         target2.enabled = false;
         Invoke("On", timer);

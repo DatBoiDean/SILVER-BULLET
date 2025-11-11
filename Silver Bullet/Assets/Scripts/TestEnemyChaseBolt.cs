@@ -5,6 +5,8 @@ using UnityEngine;
 public class TestEnemyChaseBolt : MonoBehaviour
 {
     [SerializeField] bool canBolt;
+    [SerializeField] float gravity;
+    Vector2 gravitypull;
     [SerializeField] float detectionDist;
     [SerializeField] bool startLeft;
     public GameObject player;
@@ -37,6 +39,12 @@ public class TestEnemyChaseBolt : MonoBehaviour
         {
             patrol = "GoRight";
         }
+        gravitypull = Vector2.down * gravity;
+    }
+
+    void Update()
+    {
+        rb.AddForce(gravitypull);
     }
 
     void FixedUpdate()

@@ -13,6 +13,7 @@ TagManager:
   - SteamUp
   - Spikes
   - Fear
+  - Wall
   layers:
   - Default
   - TransparentFX

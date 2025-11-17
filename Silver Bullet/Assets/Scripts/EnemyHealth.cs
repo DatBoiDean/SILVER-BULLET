@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] int currentEnemyHealth;
-    [SerializeField] int maxEnemyHealth;
+    public int currentEnemyHealth;
+    public int maxEnemyHealth;
     public int amount;
     // Start is called before the first frame update
     void Start()

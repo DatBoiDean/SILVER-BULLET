@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1961155161893717504}
   - component: {fileID: 4722020303706153728}
   - component: {fileID: 7041224298127198740}
-  - component: {fileID: 8259670145650290825}
   - component: {fileID: 5179795777745950955}
   - component: {fileID: 8351387745368313516}
   - component: {fileID: 806344154005990720}
@@ -121,21 +120,6 @@ MonoBehaviour:
   currentEnemyHealth: 0
   maxEnemyHealth: 2
   amount: 0
---- !u!114 &8259670145650290825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4565864420739115820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d2e32ef5a3f2144fa29db4caf97ad40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageInterval: 1
-  damageAmount: 1
-  nextDamageTime: 0
 --- !u!114 &5179795777745950955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,6 +161,8 @@ MonoBehaviour:
   patrol: 
   waiting: 0
   direction: {x: 0, y: 0}
+  anim: {fileID: 0}
+  sinkTriggerName: Sink
 --- !u!70 &806344154005990720
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

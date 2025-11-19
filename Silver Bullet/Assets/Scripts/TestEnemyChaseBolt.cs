@@ -25,11 +25,19 @@ public class TestEnemyChaseBolt : MonoBehaviour
     public string patrol;
     public bool waiting = false;
     public Vector2 direction;
+    
+    // NEW: Animator reference to control Screwbot's animations (Idle / Walk lean / Sink)
+    [SerializeField] Animator anim;  // NEW: auto finds animator in start
 
-    // NEW: Reference to the Animator that controls Screwbot's animations (Idle, lean-walk, Sink)
-    [SerializeField] Animator anim;
-    // NEW: Name of the Trigger in the Animator that plays the sink animation (you use "Sink")
-    [SerializeField] string sinkTriggerName = "Sink";
+    // NEW: SpriteRenderer reference so we can flip along the X axis to face the player
+    [SerializeField] SpriteRenderer spriteRenderer; // NEW: optional – auto-found in Start if left empty
+
+    // NEW: Name of the Trigger parameter in the Animator that plays the sink animation
+    [SerializeField] string sinkTriggerName = "Sink"; // NEW: matches my "Sink" trigger in the Screwbot controller
+
+    // NEW: Per-enemy patrol zone limits (set when this enemy hits its PatrolLeft/PatrolRight)
+    float leftLimitX = float.NegativeInfinity;   // NEW: X of PatrolLeft / LeftMax for THIS enemy
+    float rightLimitX = float.PositiveInfinity;  // NEW: X of PatrolRight / RightMax for THIS enemy
 
     void Start()
     {
@@ -45,11 +53,17 @@ public class TestEnemyChaseBolt : MonoBehaviour
         }
         gravitypull = Vector2.down * gravity;
 
-        // NEW: Auto-grab Animator if not assigned in Inspector (as long as Animator is on this object)
-        if (anim == null)
-        {
-            anim = GetComponent<Animator>();
-        }
+        // NEW: If no Animator was assigned in the Inspector, try to grab the one on this GameObject
+        if (anim == null)              
+        {                                
+            anim = GetComponent<Animator>(); // NEW: lets this script work as long as an Animator is on the same object
+        }                                
+
+        // NEW: Auto-grab SpriteRenderer if not assigned
+        if (spriteRenderer == null) 
+        {                           
+            spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        }                           
     }
 
     void Update()
@@ -62,7 +76,23 @@ public class TestEnemyChaseBolt : MonoBehaviour
         float dist = Vector3.Distance(player.transform.position, transform.position);
         //Measures distance between this object and the player.
         //print("Dist:" + dist);
-        //ONLY enable this line of code for debugging!!!
+        //use this for debugging
+
+        // NEW: Checks if player is inside enemypatrol zone (between its left/right limits)
+        bool playerWithinPatrol = true; // NEW: default true until we know our limits
+        if (player != null)           
+        {                              
+            float px = player.transform.position.x; // NEW
+
+            // NEW: if both limits have been set, enforce the zone
+            if (leftLimitX != float.NegativeInfinity && rightLimitX != float.PositiveInfinity) // NEW
+            {
+                float minX = Mathf.Min(leftLimitX, rightLimitX); // NEW: just in case they get swapped
+                float maxX = Mathf.Max(leftLimitX, rightLimitX); 
+                playerWithinPatrol = (px >= minX && px <= maxX); // NEW: true if player X is within our patrol limits
+            }
+        }
+
         if (Stuck == false)
         {
             if (isChasing && playerTransform != null)
@@ -77,19 +107,15 @@ public class TestEnemyChaseBolt : MonoBehaviour
                 //This also has a bonus of letting the thing patrol in the same direction as the player, if the player
                 //shakes them off.
 
-                // UPDATED: Use a horizontal distance value with a small "dead zone" to avoid jitter when very close
-                float dx = playerTransform.position.x - transform.position.x; // NEW: horizontal offset to player
+                // CHANGED: always choose left/right based on player position (no dead zone)
+                float dx = playerTransform.position.x - transform.position.x; // player - enemy X offset
 
-                if (Mathf.Abs(dx) < 0.1f) // NEW: if almost exactly on top horizontally, stop sliding to prevent flip-flopping
-                {
-                    direction = Vector2.zero; // NEW: no movement when close enough
-                }
-                else if (dx < 0f) // NEW: player is to the left
+                if (dx < 0f) // player is to the left
                 {
                     direction = Vector2.left;
                     patrol = "GoLeft";
                 }
-                else // NEW: player is to the right
+                else // player is to the right (or exactly aligned)
                 {
                     direction = Vector2.right;
                     patrol = "GoRight";
@@ -98,7 +124,9 @@ public class TestEnemyChaseBolt : MonoBehaviour
                 // Apply a force or set a velocity to move the enemy
                 // For simple movement, setting the velocity is most direct
                 //Moved this to after the if statements
-                rb.velocity = direction * moveSpeed; // CHASE: slide towards player using moveSpeed
+
+                // Keep smooth horizontal slide while preserving vertical velocity
+                rb.velocity = new Vector2(direction.x * moveSpeed, rb.velocity.y);
             }
             else
             {
@@ -129,31 +157,43 @@ public class TestEnemyChaseBolt : MonoBehaviour
                 }
             }
 
-            // NEW: Drive the isWalking bool in the Animator based on horizontal velocity
-            // NEW: When Screwbot is moving left/right, play the lean/glide "Walk" animation; when stopped, go Idle
-            if (anim != null)
-            {
-                bool isMovingHorizontally = Mathf.Abs(rb.velocity.x) > 0.01f; // NEW: small threshold avoids micro-jitter
-                anim.SetBool("IsWalking", isMovingHorizontally);              // NEW: uses your "isWalking" bool parameter
-            }
+            // NEW: Update the isWalking bool in the Animator based on horizontal velocity
+            // NEW: When Screwbot is moving left/right, play the lean/glide (Walk) animation; when stopped, go back to Idle
+            if (anim != null) // NEW
+            {                 // NEW
+                bool isMovingHorizontally = Mathf.Abs(rb.velocity.x) > 0.01f; // NEW: small threshold to avoid jitter
+                anim.SetBool("isWalking", isMovingHorizontally);              // NEW: uses your "isWalking" bool in Screwbot
+            }                 // NEW
+
+            // NEW: Flip sprite based on movement direction so it faces where it's sliding
+            if (spriteRenderer != null) // NEW
+            {                           // NEW
+                if (Mathf.Abs(rb.velocity.x) > 0.01f) // NEW: only flip when actually moving
+                {
+                    // NEW: Assume default art faces RIGHT; flip when moving LEFT
+                    spriteRenderer.flipX = rb.velocity.x < 0f; // NEW
+                }
+            }                           // NEW
         }
 
-        if (dist >= detectionDist)
-        //If Dist is greater than detection dist...
+        // === CHASE TOGGLE, NOW ZONE-AWARE ===
+
+        if (!playerWithinPatrol || dist >= detectionDist)
+        //If Dist is greater than detection dist OR player is outside this enemy's patrol zone...
         {
             isChasing = false;
             //Stop chasing
         }
 
-        if (dist <= detectionDist)
-        //If dist is less than detection distance..
+        if (playerWithinPatrol && dist <= detectionDist)
+        //If dist is less than detection distance AND player is inside this enemy's patrol zone..
         {
             isChasing = true;
             playerTransform = player.transform;
             //Start chasing.
         }
     }
-
+    
     // void StopChase()
     // {
     //     rb.velocity = Vector2.zero;
@@ -179,6 +219,23 @@ public class TestEnemyChaseBolt : MonoBehaviour
     //changed to a trigger effect since it could mess with things
     //  when I was making it all trigger based.
     {
+        // patrol boundary logic + bolt logic stays the same as previous version...
+
+        bool isLeftBoundary = collision.gameObject.CompareTag("LeftMax") ||
+                              collision.gameObject.name.StartsWith("PatrolLeft");
+        bool isRightBoundary = collision.gameObject.CompareTag("RightMax") ||
+                               collision.gameObject.name.StartsWith("PatrolRight");
+
+        // NEW: when we hit OUR patrol boundaries, remember their X positions for this enemy
+        if (isLeftBoundary)                                      
+        {                                                        
+            leftLimitX = collision.bounds.center.x;              
+        }                                                        
+        if (isRightBoundary)                                     
+        {                                                        
+            rightLimitX = collision.bounds.center.x;             
+        }                                                       
+
         if (collision.gameObject.CompareTag("PlayerFeet"))
         {
             if (canBolt == true)
@@ -194,25 +251,25 @@ public class TestEnemyChaseBolt : MonoBehaviour
                         //Find and disable the Circle Collider
                         //Find and disable the movement script (external?)
 
-                        // NEW: When the enemy gets bolted into the ground, play the Sink animation once
+                        // NEW: When Screwbot sinks / gets stuck, fire the Sink trigger to play the sink animation
                         if (anim != null && !string.IsNullOrEmpty(sinkTriggerName))
-                        {
-                            anim.SetTrigger(sinkTriggerName); // NEW: fires the "Sink" Trigger on the Screwbot Animator
-                        }
+                        {                                                          
+                            anim.SetTrigger(sinkTriggerName); // NEW: plays the "Sink" animation in the Screwbot controller
+                        }                                                           
                     }
                 }
             }
         }
         if (isChasing == false)
         {
-            if (collision.gameObject.CompareTag("LeftMax"))
+            if (isLeftBoundary)
             {
                 rb.velocity = Vector2.zero;
                 patrol = "Wait";
                 Invoke("SwitchToRight", waitTime);
                 waiting = true;
             }
-            if (collision.gameObject.CompareTag("RightMax"))
+            if (isRightBoundary)
             {
                 rb.velocity = Vector2.zero;
                 patrol = "Wait";
@@ -223,12 +280,12 @@ public class TestEnemyChaseBolt : MonoBehaviour
 
         if (isChasing == true)
         {
-            if (collision.gameObject.CompareTag("LeftMax"))
+            if (isLeftBoundary)
             {
                 patrol = "GoRight";
-            }
+            } 
 
-            if (collision.gameObject.CompareTag("RightMax"))
+            if (isRightBoundary)
             {
                 patrol = "GoLeft";
             }
@@ -240,7 +297,7 @@ public class TestEnemyChaseBolt : MonoBehaviour
         patrol = "GoLeft";
         waiting = false;
     }
-
+    
     void SwitchToRight()
     {
         patrol = "GoRight";

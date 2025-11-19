@@ -26,6 +26,11 @@ public class TestEnemyChaseBolt : MonoBehaviour
     public bool waiting = false;
     public Vector2 direction;
     
+    // NEW: Animator reference to control Screwbot's animations (Idle / Walk lean / Sink)
+    [SerializeField] Animator anim;  // NEW: drag the Animator here in the Inspector, or it will auto-find in Start
+
+    // NEW: Name of the Trigger parameter in the Animator that plays the sink animation
+    [SerializeField] string sinkTriggerName = "Sink"; // NEW: matches your "Sink" trigger in the Screwbot controller
 
     void Start()
     {
@@ -40,6 +45,12 @@ public class TestEnemyChaseBolt : MonoBehaviour
             patrol = "GoRight";
         }
         gravitypull = Vector2.down * gravity;
+
+        // NEW: If no Animator was assigned in the Inspector, try to grab the one on this GameObject
+        if (anim == null)               // NEW
+        {                                // NEW
+            anim = GetComponent<Animator>(); // NEW: lets this script work as long as an Animator is on the same object
+        }                                // NEW
     }
 
     void Update()
@@ -118,6 +129,14 @@ public class TestEnemyChaseBolt : MonoBehaviour
                     }
                 }
             }
+
+            // NEW: Update the isWalking bool in the Animator based on horizontal velocity
+            // NEW: When Screwbot is moving left/right, play the lean/glide (Walk) animation; when stopped, go back to Idle
+            if (anim != null) // NEW
+            {                 // NEW
+                bool isMovingHorizontally = Mathf.Abs(rb.velocity.x) > 0.01f; // NEW: small threshold to avoid jitter
+                anim.SetBool("IsWalking", isMovingHorizontally);              // NEW: uses your "isWalking" bool in Screwbot
+            }                 // NEW
         }
 
         if (dist >= detectionDist)
@@ -175,6 +194,12 @@ public class TestEnemyChaseBolt : MonoBehaviour
                         Stuck = true;
                         //Find and disable the Circle Collider
                         //Find and disable the movement script (external?)
+
+                        // NEW: When Screwbot sinks / gets stuck, fire the Sink trigger to play the sink animation
+                        if (anim != null && !string.IsNullOrEmpty(sinkTriggerName)) // NEW
+                        {                                                           // NEW
+                            anim.SetTrigger(sinkTriggerName); // NEW: plays the "Sink" animation in the Screwbot controller
+                        }                                                           // NEW
                     }
                 }
             }
@@ -223,4 +248,3 @@ public class TestEnemyChaseBolt : MonoBehaviour
         waiting = false;
     }
 }
-

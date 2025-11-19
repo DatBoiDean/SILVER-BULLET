@@ -25,12 +25,11 @@ public class TestEnemyChaseBolt : MonoBehaviour
     public string patrol;
     public bool waiting = false;
     public Vector2 direction;
-    
-    // NEW: Animator reference to control Screwbot's animations (Idle / Walk lean / Sink)
-    [SerializeField] Animator anim;  // NEW: drag the Animator here in the Inspector, or it will auto-find in Start
 
-    // NEW: Name of the Trigger parameter in the Animator that plays the sink animation
-    [SerializeField] string sinkTriggerName = "Sink"; // NEW: matches your "Sink" trigger in the Screwbot controller
+    // NEW: Reference to the Animator that controls Screwbot's animations (Idle, lean-walk, Sink)
+    [SerializeField] Animator anim;
+    // NEW: Name of the Trigger in the Animator that plays the sink animation (you use "Sink")
+    [SerializeField] string sinkTriggerName = "Sink";
 
     void Start()
     {
@@ -46,11 +45,11 @@ public class TestEnemyChaseBolt : MonoBehaviour
         }
         gravitypull = Vector2.down * gravity;
 
-        // NEW: If no Animator was assigned in the Inspector, try to grab the one on this GameObject
-        if (anim == null)               // NEW
-        {                                // NEW
-            anim = GetComponent<Animator>(); // NEW: lets this script work as long as an Animator is on the same object
-        }                                // NEW
+        // NEW: Auto-grab Animator if not assigned in Inspector (as long as Animator is on this object)
+        if (anim == null)
+        {
+            anim = GetComponent<Animator>();
+        }
     }
 
     void Update()
@@ -77,29 +76,29 @@ public class TestEnemyChaseBolt : MonoBehaviour
                 //New approach, made it so it detects where the player's x position is and acts accordingly.
                 //This also has a bonus of letting the thing patrol in the same direction as the player, if the player
                 //shakes them off.
-                if (player.transform.position.x < gameObject.transform.position.x)
+
+                // UPDATED: Use a horizontal distance value with a small "dead zone" to avoid jitter when very close
+                float dx = playerTransform.position.x - transform.position.x; // NEW: horizontal offset to player
+
+                if (Mathf.Abs(dx) < 0.1f) // NEW: if almost exactly on top horizontally, stop sliding to prevent flip-flopping
+                {
+                    direction = Vector2.zero; // NEW: no movement when close enough
+                }
+                else if (dx < 0f) // NEW: player is to the left
                 {
                     direction = Vector2.left;
                     patrol = "GoLeft";
                 }
-
-                if (player.transform.position.x > gameObject.transform.position.x)
+                else // NEW: player is to the right
                 {
                     direction = Vector2.right;
                     patrol = "GoRight";
                 }
 
-                if (player.transform.position.x == gameObject.transform.position.x)
-                {
-                    direction = Vector2.zero;
-                }
-
-                
                 // Apply a force or set a velocity to move the enemy
                 // For simple movement, setting the velocity is most direct
                 //Moved this to after the if statements
-                rb.velocity = direction * moveSpeed;
-
+                rb.velocity = direction * moveSpeed; // CHASE: slide towards player using moveSpeed
             }
             else
             {
@@ -130,13 +129,13 @@ public class TestEnemyChaseBolt : MonoBehaviour
                 }
             }
 
-            // NEW: Update the isWalking bool in the Animator based on horizontal velocity
-            // NEW: When Screwbot is moving left/right, play the lean/glide (Walk) animation; when stopped, go back to Idle
-            if (anim != null) // NEW
-            {                 // NEW
-                bool isMovingHorizontally = Mathf.Abs(rb.velocity.x) > 0.01f; // NEW: small threshold to avoid jitter
-                anim.SetBool("IsWalking", isMovingHorizontally);              // NEW: uses your "isWalking" bool in Screwbot
-            }                 // NEW
+            // NEW: Drive the isWalking bool in the Animator based on horizontal velocity
+            // NEW: When Screwbot is moving left/right, play the lean/glide "Walk" animation; when stopped, go Idle
+            if (anim != null)
+            {
+                bool isMovingHorizontally = Mathf.Abs(rb.velocity.x) > 0.01f; // NEW: small threshold avoids micro-jitter
+                anim.SetBool("IsWalking", isMovingHorizontally);              // NEW: uses your "isWalking" bool parameter
+            }
         }
 
         if (dist >= detectionDist)
@@ -154,7 +153,7 @@ public class TestEnemyChaseBolt : MonoBehaviour
             //Start chasing.
         }
     }
-    
+
     // void StopChase()
     // {
     //     rb.velocity = Vector2.zero;
@@ -195,11 +194,11 @@ public class TestEnemyChaseBolt : MonoBehaviour
                         //Find and disable the Circle Collider
                         //Find and disable the movement script (external?)
 
-                        // NEW: When Screwbot sinks / gets stuck, fire the Sink trigger to play the sink animation
-                        if (anim != null && !string.IsNullOrEmpty(sinkTriggerName)) // NEW
-                        {                                                           // NEW
-                            anim.SetTrigger(sinkTriggerName); // NEW: plays the "Sink" animation in the Screwbot controller
-                        }                                                           // NEW
+                        // NEW: When the enemy gets bolted into the ground, play the Sink animation once
+                        if (anim != null && !string.IsNullOrEmpty(sinkTriggerName))
+                        {
+                            anim.SetTrigger(sinkTriggerName); // NEW: fires the "Sink" Trigger on the Screwbot Animator
+                        }
                     }
                 }
             }
@@ -227,7 +226,7 @@ public class TestEnemyChaseBolt : MonoBehaviour
             if (collision.gameObject.CompareTag("LeftMax"))
             {
                 patrol = "GoRight";
-            } 
+            }
 
             if (collision.gameObject.CompareTag("RightMax"))
             {
@@ -241,7 +240,7 @@ public class TestEnemyChaseBolt : MonoBehaviour
         patrol = "GoLeft";
         waiting = false;
     }
-    
+
     void SwitchToRight()
     {
         patrol = "GoRight";

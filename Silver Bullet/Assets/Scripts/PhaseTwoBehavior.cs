@@ -8,21 +8,20 @@ public class PhaseTwoBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(enemyHealth != null)
+        if (enemyHealth != null)
         {
             Debug.Log("Boss Health Component Found");
 
-            if (enemyHealth.currentEnemyHealth == 2) 
-            {
-                Debug.Log("Phase Two Triggered");
-            }
         }
 
+    }
+
+        // Update is called once per frame
+    void Update()
+    {
+        if (enemyHealth.currentEnemyHealth == 2) 
+        {
+            Debug.Log("Phase Two Triggered");
+        }
     }
 }

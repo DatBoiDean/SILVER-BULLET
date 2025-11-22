@@ -149,6 +149,7 @@ MonoBehaviour:
   canBolt: 1
   gravity: 100
   detectionDist: 5
+  waitDist: 1
   startLeft: 0
   player: {fileID: 0}
   moveSpeed: 5
@@ -162,6 +163,7 @@ MonoBehaviour:
   waiting: 0
   direction: {x: 0, y: 0}
   anim: {fileID: 0}
+  spriteRenderer: {fileID: 0}
   sinkTriggerName: Sink
 --- !u!70 &806344154005990720
 CapsuleCollider2D:

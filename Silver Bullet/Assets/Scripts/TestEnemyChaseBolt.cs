@@ -8,6 +8,7 @@ public class TestEnemyChaseBolt : MonoBehaviour
     [SerializeField] float gravity;
     Vector2 gravitypull;
     [SerializeField] float detectionDist;
+    [SerializeField] float waitDist;
     [SerializeField] bool startLeft;
     public GameObject player;
     public float moveSpeed = 3f;
@@ -80,6 +81,7 @@ public class TestEnemyChaseBolt : MonoBehaviour
 
         // NEW: Checks if player is inside enemypatrol zone (between its left/right limits)
         bool playerWithinPatrol = true; // NEW: default true until we know our limits
+                                                    //what does "until we know our limits" mean???
         if (player != null)           
         {                              
             float px = player.transform.position.x; // NEW
@@ -174,24 +176,38 @@ public class TestEnemyChaseBolt : MonoBehaviour
                     spriteRenderer.flipX = rb.velocity.x < 0f; // NEW
                 }
             }                           // NEW
+                                            //Do we really need to list every addition as "new"?
         }
 
         // === CHASE TOGGLE, NOW ZONE-AWARE ===
 
-        if (!playerWithinPatrol || dist >= detectionDist)
+        if (!playerWithinPatrol || dist >= detectionDist || dist <= waitDist)
         //If Dist is greater than detection dist OR player is outside this enemy's patrol zone...
         {
             isChasing = false;
             //Stop chasing
         }
 
-        if (playerWithinPatrol && dist <= detectionDist)
+        if (playerWithinPatrol && dist <= detectionDist && dist >= waitDist)
         //If dist is less than detection distance AND player is inside this enemy's patrol zone..
         {
             isChasing = true;
             playerTransform = player.transform;
             //Start chasing.
         }
+
+        if (dist >= waitDist)
+        {
+            patrol = "Wait";
+            waiting = true;
+        }
+
+        if (dist <= waitDist)
+        {
+            patrol = "Wait";
+            waiting = true;
+        }
+        //Evan's lazy man's way of making the enemy just not move when theyre too close. i sure hope it actually works
     }
     
     // void StopChase()
@@ -218,6 +234,7 @@ public class TestEnemyChaseBolt : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     //changed to a trigger effect since it could mess with things
     //  when I was making it all trigger based.
+      // holy SHIT i have a lot more screen space when coding on the projector. i feel so powerful. unlimited. 
     {
         // patrol boundary logic + bolt logic stays the same as previous version...
 

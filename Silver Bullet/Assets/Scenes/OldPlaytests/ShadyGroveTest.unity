@@ -60179,6 +60179,7 @@ MonoBehaviour:
   canBolt: 1
   gravity: 71.4
   detectionDist: 6.8
+  waitDist: 1
   startLeft: 0
   player: {fileID: 0}
   moveSpeed: 4.77

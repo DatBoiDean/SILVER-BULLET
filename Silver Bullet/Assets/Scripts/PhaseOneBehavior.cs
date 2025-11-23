@@ -6,24 +6,31 @@ public class PhaseOneBehavior : MonoBehaviour
 {
     public EnemyHealth enemyHealth;
     [SerializeField] Rigidbody2D obstacle;
+    [SerializeField] float riseSpeed; //assign in inspector
+    [SerializeField] float riseTimer;
+    private Rigidbody2D spawnedObstacle;
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Phase 1 Triggered");
-        Rigidbody2D spawnedObstacle = Instantiate(obstacle, transform.position, transform.rotation);
-        spawnedObstacle.velocity = transform.TransformDirection(Vector2.up * 2);
-
-        Invoke("DestroyOnBossHit", 2f); 
+        spawnedObstacle = Instantiate(obstacle, transform.position, transform.rotation); //create clone of object since Unity doesn't like destroying prefabs
+        spawnedObstacle.velocity = transform.TransformDirection(Vector2.up * riseSpeed);
     }
 
-    // Update is called once per frame
-
-
-    void DestoryOnBossHit(Rigidbody2D spawnedObstacle) 
+    private void Update()
     {
+        riseTimer += Time.deltaTime;
+
+        if (riseTimer >= 1f && spawnedObstacle != null) //stop upward movement to create object rising effect
+        {
+            spawnedObstacle.velocity = Vector2.zero;
+
+        }
+
         if (enemyHealth.currentEnemyHealth == 2)
         {
-            Destroy(spawnedObstacle);
+            Destroy(obstacle);
+            Debug.Log("Spawned Obstacle destroyed");
         }
     }
 }

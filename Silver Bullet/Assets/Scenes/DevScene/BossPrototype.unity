@@ -198,6 +198,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: {fileID: 1334033507}
   obstacle: {fileID: 1076891090753366842, guid: 9beb79254a2804441b3ad9898c4a3402, type: 3}
+  riseSpeed: 2
+  riseTimer: 0
 --- !u!4 &213700667
 Transform:
   m_ObjectHideFlags: 0

@@ -29,7 +29,7 @@ public class PhaseOneBehavior : MonoBehaviour
 
         if (enemyHealth.currentEnemyHealth == 2)
         {
-            Destroy(obstacle);
+            Destroy(spawnedObstacle);
             Debug.Log("Spawned Obstacle destroyed");
         }
     }

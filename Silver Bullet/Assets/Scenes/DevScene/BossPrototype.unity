@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 40211931}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.42, y: -4.08, z: 1.4552026}
+  m_LocalPosition: {x: -1.44, y: 4.31, z: 1.4552026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 213700667}
   - component: {fileID: 213700666}
   m_Layer: 0
-  m_Name: Phase 1 trigger
+  m_Name: Phase 1 Obstacle Spawner
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -197,9 +197,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: {fileID: 1334033507}
-  obstacle: {fileID: 1076891090753366842, guid: 9beb79254a2804441b3ad9898c4a3402, type: 3}
-  riseSpeed: 2
-  riseTimer: 0
+  obstacleToSpawn: {fileID: 163096909690562254, guid: 9beb79254a2804441b3ad9898c4a3402, type: 3}
+  spawnDelay: 2
 --- !u!4 &213700667
 Transform:
   m_ObjectHideFlags: 0
@@ -209,12 +208,59 @@ Transform:
   m_GameObject: {fileID: 213700665}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.14, y: -4.09, z: 1.4552026}
+  m_LocalPosition: {x: -3.89, y: -4.08, z: 1.4552026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &257336336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 257336338}
+  - component: {fileID: 257336337}
+  m_Layer: 0
+  m_Name: '2nd Phase 1 Obstacle Spawner '
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &257336337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257336336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf661fe5353725f4e9096e719d3e2897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: {fileID: 1334033507}
+  obstacleToSpawn: {fileID: 163096909690562254, guid: 9beb79254a2804441b3ad9898c4a3402, type: 3}
+  spawnDelay: 3
+--- !u!4 &257336338
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257336336}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.68085593, y: 0.19088003, z: -0.68085593, w: -0.19088003}
+  m_LocalPosition: {x: 0.3, y: -4.08, z: 1.4552026}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: -211.322}
 --- !u!1 &354715583
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,7 +534,7 @@ GameObject:
   - component: {fileID: 878552337}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Ground
+  m_TagString: Ceiling
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -766,7 +812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55579b0fb162f514f9d98c9939d1d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
+  currentEnemyHealth: 3
   maxEnemyHealth: 3
   amount: 0
 --- !u!61 &1334033508
@@ -906,7 +952,7 @@ Transform:
   m_GameObject: {fileID: 1620079868}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.29, y: -4.06, z: 1.4552026}
+  m_LocalPosition: {x: 2.16, y: 4.2, z: 1.4552026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -969,6 +1015,53 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 491b78499120d4a498cc2338cbe4bde1, type: 3}
+--- !u!1 &1930853568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1930853570}
+  - component: {fileID: 1930853569}
+  m_Layer: 0
+  m_Name: '3rd Phase 1 Obstacle Spawner '
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1930853569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930853568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf661fe5353725f4e9096e719d3e2897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: {fileID: 1334033507}
+  obstacleToSpawn: {fileID: 163096909690562254, guid: 9beb79254a2804441b3ad9898c4a3402, type: 3}
+  spawnDelay: 4
+--- !u!4 &1930853570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930853568}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.59, y: -4.08, z: 1.4552026}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2119950451
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -999,11 +1092,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.3671
+      value: -7.55
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.4388
+      value: -2.77
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1086,5 +1179,7 @@ SceneRoots:
   - {fileID: 1680790403}
   - {fileID: 1334033510}
   - {fileID: 213700667}
+  - {fileID: 257336338}
+  - {fileID: 1930853570}
   - {fileID: 40211933}
   - {fileID: 1620079869}

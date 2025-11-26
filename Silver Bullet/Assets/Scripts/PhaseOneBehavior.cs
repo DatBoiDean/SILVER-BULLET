@@ -5,32 +5,22 @@ using UnityEngine;
 public class PhaseOneBehavior : MonoBehaviour
 {
     public EnemyHealth enemyHealth;
-    [SerializeField] Rigidbody2D obstacle;
-    [SerializeField] float riseSpeed; //assign in inspector
-    [SerializeField] float riseTimer;
-    private Rigidbody2D spawnedObstacle;
+    [SerializeField] GameObject obstacleToSpawn;
+    [SerializeField] float spawnDelay = 1f;
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Phase 1 Triggered");
-        spawnedObstacle = Instantiate(obstacle, transform.position, transform.rotation); //create clone of object since Unity doesn't like destroying prefabs
-        spawnedObstacle.velocity = transform.TransformDirection(Vector2.up * riseSpeed);
+        StartCoroutine(PhaseOneRoutine());
+        Debug.Log("Phase One Behavior Triggered");
+
     }
 
-    private void Update()
+    IEnumerator PhaseOneRoutine()
     {
-        riseTimer += Time.deltaTime;
-
-        if (riseTimer >= 1f && spawnedObstacle != null) //stop upward movement to create object rising effect
+        while (enemyHealth.currentEnemyHealth == enemyHealth.maxEnemyHealth) // spawn this type of obstacle while boss health is full
         {
-            spawnedObstacle.velocity = Vector2.zero;
-
-        }
-
-        if (enemyHealth.currentEnemyHealth == 2)
-        {
-            Destroy(spawnedObstacle);
-            Debug.Log("Spawned Obstacle destroyed");
+            Instantiate(obstacleToSpawn, transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(spawnDelay);
         }
     }
 }

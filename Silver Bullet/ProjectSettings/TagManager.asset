@@ -15,6 +15,7 @@ TagManager:
   - Fear
   - Wall
   - Win
+  - Ceiling
   layers:
   - Default
   - TransparentFX

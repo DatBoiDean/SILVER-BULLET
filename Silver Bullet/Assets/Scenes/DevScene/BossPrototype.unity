@@ -198,7 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: {fileID: 1334033507}
   obstacleToSpawn: {fileID: 163096909690562254, guid: 9beb79254a2804441b3ad9898c4a3402, type: 3}
-  spawnDelay: 2
+  spawnDelay: 1.5
 --- !u!4 &213700667
 Transform:
   m_ObjectHideFlags: 0
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: {fileID: 1334033507}
   obstacleToSpawn: {fileID: 163096909690562254, guid: 9beb79254a2804441b3ad9898c4a3402, type: 3}
-  spawnDelay: 3
+  spawnDelay: 2.84
 --- !u!4 &257336338
 Transform:
   m_ObjectHideFlags: 0
@@ -1046,7 +1046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: {fileID: 1334033507}
   obstacleToSpawn: {fileID: 163096909690562254, guid: 9beb79254a2804441b3ad9898c4a3402, type: 3}
-  spawnDelay: 4
+  spawnDelay: 2.92
 --- !u!4 &1930853570
 Transform:
   m_ObjectHideFlags: 0

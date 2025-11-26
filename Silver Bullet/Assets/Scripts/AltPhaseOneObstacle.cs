@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhaseOneObstacleBehavior : MonoBehaviour
+public class AltPhaseOneObstacle : MonoBehaviour
 {
     [SerializeField] Rigidbody2D obstacleRB;
     [SerializeField] float moveSpeed;
@@ -15,7 +15,7 @@ public class PhaseOneObstacleBehavior : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Ceiling"))
+        if (collision.collider.CompareTag("Player") || collision.collider.CompareTag("Ceiling"))
         {
             Destroy(gameObject);
             Debug.Log("Obstacle Destroyed");

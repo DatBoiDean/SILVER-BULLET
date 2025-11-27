@@ -69,7 +69,10 @@ public class TestEnemyChaseBolt : MonoBehaviour
 
     void Update()
     {
-        rb.AddForce(gravitypull);
+        if (Grounded == false)
+        {
+            rb.AddForce(gravitypull);
+        }
     }
 
     void FixedUpdate()

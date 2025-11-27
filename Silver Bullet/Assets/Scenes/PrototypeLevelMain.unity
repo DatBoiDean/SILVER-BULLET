@@ -2077,7 +2077,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2132422714311580189, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.9945717
+      value: 4.76
       objectReference: {fileID: 0}
     - target: {fileID: 2132422714311580189, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2114,6 +2114,22 @@ PrefabInstance:
     - target: {fileID: 4565864420739115820, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
       propertyPath: m_Name
       value: ScrewEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351387745368313516, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
+      propertyPath: canBolt
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351387745368313516, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
+      propertyPath: gravity
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351387745368313516, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
+      propertyPath: waitDist
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351387745368313516, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
+      propertyPath: detectionDist
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -198,8 +198,17 @@ public class TestEnemyChaseBolt : MonoBehaviour
 
         if (dist >= waitDist)
         {
-            patrol = "Wait";
-            waiting = true;
+            if (isChasing == true)
+            {
+                waiting = false;
+            }
+            if (isChasing == false)
+            {
+                if (patrol == "GoLeft")
+                {
+                    
+                }
+            }
         }
 
         if (dist <= waitDist)

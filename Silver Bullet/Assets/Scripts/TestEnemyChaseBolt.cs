@@ -247,20 +247,20 @@ public class TestEnemyChaseBolt : MonoBehaviour
     {
         // patrol boundary logic + bolt logic stays the same as previous version...
 
-        bool isLeftBoundary = collision.gameObject.CompareTag("LeftMax") ||
-                              collision.gameObject.name.StartsWith("PatrolLeft");
-        bool isRightBoundary = collision.gameObject.CompareTag("RightMax") ||
-                               collision.gameObject.name.StartsWith("PatrolRight");
+        // bool isLeftBoundary = collision.gameObject.CompareTag("LeftMax") ||
+        //                       collision.gameObject.name.StartsWith("PatrolLeft");
+        // bool isRightBoundary = collision.gameObject.CompareTag("RightMax") ||
+        //                        collision.gameObject.name.StartsWith("PatrolRight");
 
-        // NEW: when we hit OUR patrol boundaries, remember their X positions for this enemy
-        if (isLeftBoundary)                                      
-        {                                                        
-            leftLimitX = collision.bounds.center.x;              
-        }                                                        
-        if (isRightBoundary)                                     
-        {                                                        
-            rightLimitX = collision.bounds.center.x;             
-        }                                                       
+        // // NEW: when we hit OUR patrol boundaries, remember their X positions for this enemy
+        // if (isLeftBoundary)                                      
+        // {                                                        
+        //     leftLimitX = collision.bounds.center.x;              
+        // }                                                        
+        // if (isRightBoundary)                                     
+        // {                                                        
+        //     rightLimitX = collision.bounds.center.x;             
+        // }                                                       
 
         if (collision.gameObject.CompareTag("PlayerFeet"))
         {
@@ -286,16 +286,46 @@ public class TestEnemyChaseBolt : MonoBehaviour
                 }
             }
         }
-        if (isChasing == false)
+        // if (isChasing == false)
+        // {
+        //     if (isLeftBoundary)
+        //     {
+        //         rb.velocity = Vector2.zero;
+        //         patrol = "Wait";
+        //         Invoke("SwitchToRight", waitTime);
+        //         waiting = true;
+        //     }
+        //     if (isRightBoundary)
+        //     {
+        //         rb.velocity = Vector2.zero;
+        //         patrol = "Wait";
+        //         Invoke("SwitchToLeft", waitTime);
+        //         waiting = true;
+        //     }
+        // }
+
+        // if (isChasing == true)
+        // {
+        //     if (isLeftBoundary)
+        //     {
+        //         patrol = "GoRight";
+        //     } 
+
+        //     if (isRightBoundary)
+        //     {
+        //         patrol = "GoLeft";
+        //     }
+        // }
+    if (isChasing == false)
         {
-            if (isLeftBoundary)
+            if (collision.gameObject.CompareTag("LeftMax"))
             {
                 rb.velocity = Vector2.zero;
                 patrol = "Wait";
                 Invoke("SwitchToRight", waitTime);
                 waiting = true;
             }
-            if (isRightBoundary)
+            if (collision.gameObject.CompareTag("RightMax"))
             {
                 rb.velocity = Vector2.zero;
                 patrol = "Wait";
@@ -306,12 +336,12 @@ public class TestEnemyChaseBolt : MonoBehaviour
 
         if (isChasing == true)
         {
-            if (isLeftBoundary)
+            if (collision.gameObject.CompareTag("LeftMax"))
             {
                 patrol = "GoRight";
             } 
 
-            if (isRightBoundary)
+            if (collision.gameObject.CompareTag("RightMax"))
             {
                 patrol = "GoLeft";
             }
@@ -323,10 +353,11 @@ public class TestEnemyChaseBolt : MonoBehaviour
         patrol = "GoLeft";
         waiting = false;
     }
-    
+
     void SwitchToRight()
     {
         patrol = "GoRight";
         waiting = false;
     }
+        
 }

@@ -5,23 +5,21 @@ using UnityEngine;
 public class PhaseTwoBehavior : MonoBehaviour
 {
     public EnemyHealth enemyHealth;
+    [SerializeField] GameObject obstacleToSpawn;
+    [SerializeField] float spawnDelay = 1f;
     // Start is called before the first frame update
-    void Start()
+
+    IEnumerator PhaseOneRoutine()
     {
-        if (enemyHealth != null)
+        while (enemyHealth.currentEnemyHealth == 2) // spawn this type of obstacle while boss health is full
         {
-            Debug.Log("Boss Health Component Found");
-
+            Instantiate(obstacleToSpawn, transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(spawnDelay);
         }
-
     }
 
-        // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (enemyHealth.currentEnemyHealth == 2) 
-        {
-            Debug.Log("Phase Two Triggered");
-        }
+        StartCoroutine(PhaseOneRoutine());
     }
 }

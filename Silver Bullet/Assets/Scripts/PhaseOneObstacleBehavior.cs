@@ -15,10 +15,9 @@ public class PhaseOneObstacleBehavior : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Ceiling"))
+        if (collision.collider.CompareTag("Ceiling") || collision.collider.CompareTag("Player"))
         {
             Destroy(gameObject);
-            Debug.Log("Obstacle Destroyed");
         }
     }
 }

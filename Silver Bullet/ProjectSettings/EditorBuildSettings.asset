@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Lose Menu.unity
     guid: bf686aec18215ab4d908f80a43e4932c
   - enabled: 1
-    path: Assets/Scenes/OldPlaytests/ShadyGroveTest.unity
-    guid: 530ba8466d0a3014eaa34e9451c5fd4e
+    path: Assets/Scenes/PrototypeLevelMain.unity
+    guid: 95cd9248095ccd74ca2e01c6a656b5ec
+  - enabled: 1
+    path: Assets/Scenes/DevScene/BossPrototype.unity
+    guid: 0932a8995338e024595df12c6c45abfb
   m_configObjects: {}

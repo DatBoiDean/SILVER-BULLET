@@ -53,7 +53,7 @@ public class TestCharcterController : MonoBehaviour
             Debug.Log("Facing Right");
         }
 
-        if (move != 0) // animation integration
+        if (Input.GetAxis("Horizontal") != 0) // animation integration
         {
             _animator.SetBool("isRunning", true);
         }
@@ -87,7 +87,7 @@ public class TestCharcterController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Spikes"))
         {
-            testRigidBody.velocity = Vector2.up * jumpForce;
+            testRigidBody.velocity = Vector2.up * jumpForce * 1.5f;
         }
     }
     void OnCollisionStay2D(Collision2D collision)

@@ -9,7 +9,7 @@ public class TestCharcterController : MonoBehaviour
     private float move;
     public Rigidbody2D testRigidBody;
 
-    public bool isGrounded = false;
+    public bool isGrounded = true;
     bool isFacingRight = true;
     [SerializeField] Animator _animator; 
 
@@ -81,9 +81,29 @@ public class TestCharcterController : MonoBehaviour
             // NOTE: With trigger-based jump, no need to set isJumping=false here.
             // Animator leaves Jump via Exit Time to Idle/Run based on isRunning.
         }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            isGrounded = true;
+        }
         if (collision.gameObject.CompareTag("Spikes"))
         {
             testRigidBody.velocity = Vector2.up * jumpForce;
+        }
+    }
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        //theres some real fucky stuff happening w the collision stuff
+        //so this is my attempt at solving it
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+
+            // NOTE: With trigger-based jump, no need to set isJumping=false here.
+            // Animator leaves Jump via Exit Time to Idle/Run based on isRunning.
+        }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            isGrounded = true;
         }
     }
 
@@ -93,7 +113,12 @@ public class TestCharcterController : MonoBehaviour
         {
             isGrounded = false;
         }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            isGrounded = false;
+        }
     }
+
 
     // REMOVED: jumpAnim() method (was toggling isJumping via delayed velocity check and caused state ping-pong)
     /*

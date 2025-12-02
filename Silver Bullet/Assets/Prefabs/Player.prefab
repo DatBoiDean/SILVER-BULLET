@@ -232,7 +232,7 @@ MonoBehaviour:
   speed: 7.5
   jumpForce: 6
   testRigidBody: {fileID: 8893022857443268861}
-  isGrounded: 0
+  isGrounded: 1
   _animator: {fileID: 1053060233612658289}
 --- !u!114 &6160076110977145742
 MonoBehaviour:

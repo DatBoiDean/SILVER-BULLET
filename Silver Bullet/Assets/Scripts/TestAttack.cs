@@ -8,12 +8,13 @@ public class TestAttack : MonoBehaviour
     public float radius;
     public LayerMask enemies;
     public int damage;
+    [SerializeField] Animator _animator; 
 
     //Attack functionality
     void Attack()
     {
         Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, enemies);
-
+        _animator.SetTrigger("Attack");
         foreach (Collider2D enemyGameObject in enemy)
         {
             Debug.Log("Hit!");

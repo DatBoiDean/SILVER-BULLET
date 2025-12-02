@@ -7,6 +7,10 @@ public class EnemyAttack : MonoBehaviour
     public int damageAmount;
     public float nextDamageTime;
     public GameObject player;
+    [SerializeField] bool canBolt;
+    [SerializeField] bool Stuck;
+    [SerializeField] bool Grounded;
+    //same logic, gonna make it so that enemies cant attack when stuck 
 void Start()
     {
         player = GameObject.Find("Player"); 
@@ -14,10 +18,15 @@ void Start()
 
 void Update()
     {
+        if (Stuck == false)
+            {
         //This method uses distance measuring to attack the player, instead of simply being in contact with the collider
         float dist = Vector3.Distance(player.transform.position, transform.position);
         if (dist <= attackRange)
         {
+            
+                
+            
             if (Time.time >= nextDamageTime)
             {
                 var playerHealthComponent = player.GetComponent<PlayerHealth>();
@@ -30,16 +39,52 @@ void Update()
                     nextDamageTime = Time.time + damageInterval;
                 }
             }
+            
         }
+
 
         if (dist > attackRange)
         {
-            nextDamageTime = 0;
+            nextDamageTime = damageInterval;
+        }
+            }
+    }
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            Grounded = true;
         }
     }
 
-        //Commented all of this out so I can do a distance measure for attacking range,
-        //      instead of using triggers. 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            Grounded = true;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("PlayerFeet"))
+        {
+            if (canBolt == true)
+            {
+                if (Grounded == true) //If the thing is grounded...
+                {
+                    if (Stuck == false)
+                    {
+                        Stuck = true;
+                    }
+                }
+            }
+        }
+    }
+
+    //Commented all of this out so I can do a distance measure for attacking range,
+    //      instead of using triggers. 
 
     // private void OnTriggerStay2D(Collider2D other)
     // {

@@ -38,6 +38,10 @@ void Update()
 
                     nextDamageTime = Time.time + damageInterval;
                 }
+                else
+                {
+                    Debug.Log("Player health component not found");
+                }
             }
             
         }

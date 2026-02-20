@@ -19,39 +19,39 @@ void Start()
 void Update()
     {
         if (Stuck == false)
-            {
-        //This method uses distance measuring to attack the player, instead of simply being in contact with the collider
-        float dist = Vector3.Distance(player.transform.position, transform.position);
-        if (dist <= attackRange)
         {
-            
-                
-            
-            if (Time.time >= nextDamageTime)
+            //This method uses distance measuring to attack the player, instead of simply being in contact with the collider
+            float dist = Vector3.Distance(player.transform.position, transform.position);
+            if (dist <= attackRange)
             {
-                var playerHealthComponent = player.GetComponent<PlayerHealth>();
 
-                if (playerHealthComponent != null)
+
+
+                if (Time.time >= nextDamageTime)
                 {
-                    Debug.Log("Player health component found");
-                    playerHealthComponent.PlayerTakeDamage(damageAmount);
+                    var playerHealthComponent = player.GetComponent<PlayerHealth>();
 
-                    nextDamageTime = Time.time + damageInterval;
+                    if (playerHealthComponent != null)
+                    {
+                        Debug.Log("Player health component found");
+                        playerHealthComponent.PlayerTakeDamage(1);
+
+                        nextDamageTime = Time.time + damageInterval;
+                    }
+                    else
+                    {
+                        Debug.Log("Player health component not found");
+                    }
                 }
-                else
-                {
-                    Debug.Log("Player health component not found");
-                }
+
             }
-            
-        }
 
 
-        if (dist > attackRange)
-        {
-            nextDamageTime = damageInterval;
-        }
+            if (dist > attackRange)
+            {
+                nextDamageTime = damageInterval;
             }
+        }
     }
 
     void OnCollisionStay2D(Collision2D collision)

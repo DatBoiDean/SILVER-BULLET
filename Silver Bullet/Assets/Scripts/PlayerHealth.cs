@@ -46,11 +46,11 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void PlayerTakeDamage(int amount)
+    public void PlayerTakeDamage(int damageAmount)
     {
         if (invuln == false)
         {
-            currentHealth -= amount;
+            currentHealth -= damageAmount;
             healthBar.value = currentHealth;
             if (currentHealth <= 0)
             {

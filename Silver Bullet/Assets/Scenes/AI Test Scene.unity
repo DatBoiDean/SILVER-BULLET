@@ -470,12 +470,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionDist: 5
-  waitDist: 1
+  waitDist: 2
   startLeft: 0
   player: {fileID: 38306616}
   moveSpeed: 5
   patrolSpeed: 3
-  waitTime: 2
+  waitTime: 4
   isChasing: 0
   Stuck: 0
   feet: {fileID: 0}
@@ -500,7 +500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 0.1
   damageInterval: 10
-  damageAmount: 1
+  damageAmount: 0
   nextDamageTime: 1
   player: {fileID: 38306616}
   canBolt: 0

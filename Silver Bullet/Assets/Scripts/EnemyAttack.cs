@@ -25,8 +25,6 @@ void Update()
             if (dist <= attackRange)
             {
 
-
-
                 if (Time.time >= nextDamageTime)
                 {
                     var playerHealthComponent = player.GetComponent<PlayerHealth>();
@@ -34,7 +32,7 @@ void Update()
                     if (playerHealthComponent != null)
                     {
                         Debug.Log("Player health component found");
-                        playerHealthComponent.PlayerTakeDamage(1);
+                        playerHealthComponent.PlayerTakeDamage(damageAmount);
 
                         nextDamageTime = Time.time + damageInterval;
                     }

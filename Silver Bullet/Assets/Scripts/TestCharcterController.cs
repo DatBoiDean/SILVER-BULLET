@@ -12,6 +12,8 @@ public class TestCharcterController : MonoBehaviour
     public bool isGrounded = true;
     bool isFacingRight = true;
     [SerializeField] Animator _animator; 
+    int crouching = 1;
+    //ERA: Rudimentary "no move while preparing crouch jump" thing please god i want this to work
 
     void Start()
     {
@@ -25,7 +27,10 @@ public class TestCharcterController : MonoBehaviour
         {
             if (isGrounded == true)
             {
-                testRigidBody.velocity = Vector2.up * jumpForce;
+                if(Input.GetKey(KeyCode.S))
+                //ERA: Implementing a rudimentary crouch jump to get higher jumps
+                {
+                testRigidBody.velocity = Vector2.up * jumpForce * 1.5f;
                 Debug.Log("Jump Key pressed");
 
                 // REMOVED: Invoke to delayed jump bool setter (caused flapping/lag and stuck states)
@@ -33,6 +38,17 @@ public class TestCharcterController : MonoBehaviour
 
                 // NEW (minimal): fire a one-shot trigger to enter Jump state without needing isJumping bool
                 _animator.SetTrigger("JumpTrigger");
+                }
+
+                else
+                {
+                testRigidBody.velocity = Vector2.up * jumpForce;
+                //ERA: Normal Jump, without pressing S
+                Debug.Log("Jump Key pressed");
+
+                
+                _animator.SetTrigger("JumpTrigger");
+                }
             }
         }
     }
@@ -40,8 +56,16 @@ public class TestCharcterController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate() // handles character movement
     {
+        if (Input.GetKey(KeyCode.S))
+        {
+            crouching = 0;
+        }
+        else
+        {
+            crouching = 1;
+        }
         move = Input.GetAxisRaw("Horizontal");
-        testRigidBody.velocity = new Vector2(move * speed, testRigidBody.velocity.y);
+        testRigidBody.velocity = new Vector2(move * speed * crouching, testRigidBody.velocity.y);
 
         if (move > 0 && !isFacingRight) // flip if moving chacracter left 
         {

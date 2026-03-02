@@ -198,6 +198,18 @@ PrefabInstance:
       propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7333189702992393671, guid: d7b281f8792cdeb419197f511f082f91, type: 3}
+      propertyPath: m_Color.b
+      value: 0.07453719
+      objectReference: {fileID: 0}
+    - target: {fileID: 7333189702992393671, guid: d7b281f8792cdeb419197f511f082f91, type: 3}
+      propertyPath: m_Color.g
+      value: 0.07453719
+      objectReference: {fileID: 0}
+    - target: {fileID: 7333189702992393671, guid: d7b281f8792cdeb419197f511f082f91, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6320754
+      objectReference: {fileID: 0}
     - target: {fileID: 7438012222366037592, guid: d7b281f8792cdeb419197f511f082f91, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

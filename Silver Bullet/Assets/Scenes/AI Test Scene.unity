@@ -172,7 +172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2106024172429248124, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: maxHealth
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4114649912291347994, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_Name
@@ -190,6 +190,11 @@ PrefabInstance:
 --- !u!1 &38306616 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4114649912291347994, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+  m_PrefabInstance: {fileID: 38306615}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &38306627 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
   m_PrefabInstance: {fileID: 38306615}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &82153876
@@ -6049,9 +6054,10 @@ GameObject:
   - component: {fileID: 2057675644}
   - component: {fileID: 2057675648}
   - component: {fileID: 2057675647}
-  m_Layer: 0
+  - component: {fileID: 2057675649}
+  m_Layer: 6
   m_Name: TestTankBot
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6210,6 +6216,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2057675649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057675643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06449c7cb2431a140b8dee228b7a7c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0.5
+  player: {fileID: 38306627}
+  tankBotRB: {fileID: 2057675648}
+  chaseDist: 10
 --- !u!1 &2135023357
 GameObject:
   m_ObjectHideFlags: 0

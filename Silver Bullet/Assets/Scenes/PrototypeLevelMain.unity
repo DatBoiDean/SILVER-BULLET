@@ -7243,7 +7243,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 6881b7111fb5edb4fab212fc08784162, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7780,6 +7780,10 @@ PrefabInstance:
     - target: {fileID: 4175784654023991669, guid: c0742f506665789478f42b89dda2d49c, type: 3}
       propertyPath: m_Name
       value: WinZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 4175784654023991669, guid: c0742f506665789478f42b89dda2d49c, type: 3}
+      propertyPath: m_TagString
+      value: Win
       objectReference: {fileID: 0}
     - target: {fileID: 5045940414338130606, guid: c0742f506665789478f42b89dda2d49c, type: 3}
       propertyPath: level

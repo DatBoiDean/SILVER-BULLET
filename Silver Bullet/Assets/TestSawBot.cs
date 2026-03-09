@@ -217,7 +217,13 @@ public class TestSawBot : MonoBehaviour
 
     private void SawAttack()
     {
-        Debug.Log("SawBot attacks");
+        var playerHealthComponent = player.GetComponent<PlayerHealth>();
+
+        if (playerHealthComponent != null)
+        {
+            playerHealthComponent.PlayerTakeDamage(1);
+            Debug.Log("SawBot Attacks");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

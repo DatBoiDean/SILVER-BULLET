@@ -132,11 +132,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 53.03
+      value: 54.97
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.34
+      value: 0.46
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -484,7 +484,7 @@ MonoBehaviour:
   isChasing: 0
   Stuck: 0
   feet: {fileID: 0}
-  sawDelay: 0.5
+  sawDelay: 3
   patrol: 
   waiting: 0
   direction: {x: 0, y: 0}
@@ -6055,6 +6055,7 @@ GameObject:
   - component: {fileID: 2057675648}
   - component: {fileID: 2057675647}
   - component: {fileID: 2057675649}
+  - component: {fileID: 2057675650}
   m_Layer: 6
   m_Name: TestTankBot
   m_TagString: Enemy
@@ -6231,7 +6232,27 @@ MonoBehaviour:
   moveSpeed: 0.5
   player: {fileID: 38306627}
   tankBotRB: {fileID: 2057675648}
-  chaseDist: 10
+  flip: 0
+--- !u!114 &2057675650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057675643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d2e32ef5a3f2144fa29db4caf97ad40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 3
+  damageInterval: 2
+  damageAmount: 2
+  nextDamageTime: 0
+  player: {fileID: 38306616}
+  canBolt: 0
+  Stuck: 0
+  Grounded: 0
 --- !u!1 &2135023357
 GameObject:
   m_ObjectHideFlags: 0
@@ -6318,7 +6339,7 @@ Transform:
   m_GameObject: {fileID: 2135023357}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 59.62, y: 2.56, z: -10}
+  m_LocalPosition: {x: 59.69, y: 2.56, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

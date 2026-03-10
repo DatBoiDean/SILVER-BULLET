@@ -24,6 +24,9 @@ public class TestSawBot : MonoBehaviour
     public string patrol;
     public bool waiting = false;
     public Vector2 direction;
+    public GameObject sawBotAttackPoint;
+    public float radius;
+    public LayerMask playerCharacter;
 
     // NEW: Animator reference to control Screwbot's animations (Idle / Walk lean / Sink)
     [SerializeField] Animator anim;  // NEW: auto finds animator in start
@@ -217,13 +220,27 @@ public class TestSawBot : MonoBehaviour
 
     private void SawAttack()
     {
-        var playerHealthComponent = player.GetComponent<PlayerHealth>();
-
-        if (playerHealthComponent != null)
+        Collider2D[] player = Physics2D.OverlapCircleAll(sawBotAttackPoint.transform.position, radius, playerCharacter);
+        
+        foreach (Collider2D playerGameObject in player)
         {
-            playerHealthComponent.PlayerTakeDamage(1);
             Debug.Log("SawBot Attacks");
+            if (playerGameObject.CompareTag("Player"))
+            {
+                var playerHealthComponent = playerGameObject.GetComponent<PlayerHealth>();
+
+                if (playerHealthComponent != null)
+                {
+                    playerHealthComponent.PlayerTakeDamage(1);
+                }
+            }
         }
+        
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(sawBotAttackPoint.transform.position, radius);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

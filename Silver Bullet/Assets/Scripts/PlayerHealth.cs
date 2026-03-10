@@ -93,6 +93,11 @@ public class PlayerHealth : MonoBehaviour
             fear = fear + 0.1f;
             Debug.Log("Fear at " + fear);
         }
+
+        if (collision.gameObject.CompareTag("Win"))
+        {
+           PlayerTakeDamage(-1);
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision)

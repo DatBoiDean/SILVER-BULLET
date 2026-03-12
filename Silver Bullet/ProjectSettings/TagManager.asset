@@ -53,6 +53,12 @@ TagManager:
   - name: Background
     uniqueID: 452915455
     locked: 0
+  - name: SecondarySaw
+    uniqueID: 529898507
+    locked: 0
+  - name: Sawenemy
+    uniqueID: 1021548615
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

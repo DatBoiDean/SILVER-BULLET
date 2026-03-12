@@ -25,7 +25,10 @@ public class FanHeadMovement : MonoBehaviour
     float leftLimitX = float.NegativeInfinity;   // NEW: X of PatrolLeft / LeftMax for THIS enemy
     float rightLimitX = float.PositiveInfinity;  // NEW: X of PatrolRight / RightMax for THIS enemy
 
+    float moveDirection;
+
     bool isFacingRight = true;
+    bool flip;
 
     // Start is called before the first frame update
     void Start()
@@ -158,6 +161,56 @@ public class FanHeadMovement : MonoBehaviour
             }
         }                           // NEW
                                     //Do we really need to list every addition as "new"?
+
+        if (!playerWithinPatrol || dist >= detectionDist || dist <= waitDist)
+        //If Dist is greater than detection dist OR player is outside this enemy's patrol zone...
+        {
+            isChasing = false;
+            //Stop chasing
+        }
+
+        if (playerWithinPatrol && dist <= detectionDist && dist >= waitDist)
+        //If dist is less than detection distance AND player is inside this enemy's patrol zone..
+        {
+            isChasing = true;
+            playerTransform = player.transform;
+            Vector3 scale = transform.localScale;
+
+            if (player.transform.position.x > transform.position.x) //check if player's position is greater than enemy's position
+            {
+                scale.x = Mathf.Abs(scale.x) * -1 * (flip ? -1 : 1);
+                transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
+            }
+            else
+            {
+                scale.x = Mathf.Abs(scale.x) * (flip ? -1 : 1);
+                transform.Translate(moveSpeed * Time.deltaTime * -1, 0, 0);
+            }
+
+            transform.localScale = scale;
+            //Start chasing.
+        }
+
+        if (dist >= waitDist)
+        {
+            if (isChasing == true)
+            {
+                waiting = false;
+            }
+            if (isChasing == false)
+            {
+                if (patrol == "GoLeft")
+                {
+
+                }
+            }
+        }
+
+        if (dist <= waitDist)
+        {
+            patrol = "Wait";
+            waiting = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -192,6 +245,7 @@ public class FanHeadMovement : MonoBehaviour
                 patrol = "GoLeft";
             }
         }
+
     }
 
     void SwitchToLeft()

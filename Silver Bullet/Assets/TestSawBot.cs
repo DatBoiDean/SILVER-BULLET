@@ -43,6 +43,8 @@ public class TestSawBot : MonoBehaviour
     float leftLimitX = float.NegativeInfinity;   // NEW: X of PatrolLeft / LeftMax for THIS enemy
     float rightLimitX = float.PositiveInfinity;  // NEW: X of PatrolRight / RightMax for THIS enemy
 
+    bool isFacingRight = true;
+
 
     // Start is called before the first frame update
     void Start()
@@ -283,12 +285,23 @@ public class TestSawBot : MonoBehaviour
     {
         patrol = "GoLeft";
         waiting = false;
+        FlipCharacter();
     }
 
     void SwitchToRight()
     {
         patrol = "GoRight";
         waiting = false;
+        FlipCharacter();
+    }
+
+    void FlipCharacter() // have character face left or right depending on input
+    {
+        isFacingRight = !isFacingRight;
+
+        Vector2 currentScale = transform.localScale; // get current scale of character
+        currentScale.x = -currentScale.x; // flip scale of character
+        transform.localScale = currentScale; // set new scale
     }
 }
 

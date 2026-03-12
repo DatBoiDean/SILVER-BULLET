@@ -24,6 +24,8 @@ public class TestSawBot : MonoBehaviour
     public string patrol;
     public bool waiting = false;
     public Vector2 direction;
+
+    //For SawBot's hitbox
     public GameObject sawBotAttackPoint;
     public float radius;
     public LayerMask playerCharacter;

@@ -24,6 +24,8 @@ public class TestSawBot : MonoBehaviour
     public string patrol;
     public bool waiting = false;
     public Vector2 direction;
+
+    //For SawBot's hitbox
     public GameObject sawBotAttackPoint;
     public float radius;
     public LayerMask playerCharacter;
@@ -40,6 +42,8 @@ public class TestSawBot : MonoBehaviour
     // NEW: Per-enemy patrol zone limits (set when this enemy hits its PatrolLeft/PatrolRight)
     float leftLimitX = float.NegativeInfinity;   // NEW: X of PatrolLeft / LeftMax for THIS enemy
     float rightLimitX = float.PositiveInfinity;  // NEW: X of PatrolRight / RightMax for THIS enemy
+
+    bool isFacingRight = true;
 
 
     // Start is called before the first frame update
@@ -281,12 +285,23 @@ public class TestSawBot : MonoBehaviour
     {
         patrol = "GoLeft";
         waiting = false;
+        FlipCharacter();
     }
 
     void SwitchToRight()
     {
         patrol = "GoRight";
         waiting = false;
+        FlipCharacter();
+    }
+
+    void FlipCharacter() // have character face left or right depending on input
+    {
+        isFacingRight = !isFacingRight;
+
+        Vector2 currentScale = transform.localScale; // get current scale of character
+        currentScale.x = -currentScale.x; // flip scale of character
+        transform.localScale = currentScale; // set new scale
     }
 }
 

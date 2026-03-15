@@ -178,12 +178,12 @@ public class FanHeadMovement : MonoBehaviour
 
             if (player.transform.position.x > transform.position.x) //check if player's position is greater than enemy's position
             {
-                scale.x = Mathf.Abs(scale.x) * -1 * (flip ? -1 : 1);
+                scale.x = Mathf.Abs(scale.x)  * (flip ? -1 : 1);
                 transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
             }
             else
             {
-                scale.x = Mathf.Abs(scale.x) * (flip ? -1 : 1);
+                scale.x = Mathf.Abs(scale.x) * -1 * (flip ? -1 : 1);
                 transform.Translate(moveSpeed * Time.deltaTime * -1, 0, 0);
             }
 

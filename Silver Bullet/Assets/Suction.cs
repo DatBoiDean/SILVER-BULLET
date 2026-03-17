@@ -16,7 +16,7 @@ public class Suction : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("SuctionZone"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             float speed = suctionStrength * Time.deltaTime;
             rb.velocity = Vector2.MoveTowards(transform.position, fanHead.transform.position, speed);
@@ -25,7 +25,7 @@ public class Suction : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("SuctionZone"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             float speed = suctionStrength * Time.deltaTime;
             rb.velocity = Vector2.MoveTowards(transform.position, fanHead.transform.position, speed);

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Suction : MonoBehaviour
 {
     public GameObject fanHead;
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
     [SerializeField] float suctionStrength;
 
     // Start is called before the first frame update

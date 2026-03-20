@@ -16,6 +16,7 @@ TagManager:
   - Wall
   - Win
   - Ceiling
+  - SuctionZone
   layers:
   - Default
   - TransparentFX

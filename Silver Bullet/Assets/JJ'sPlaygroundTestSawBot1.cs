@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class JJsPlaygroundTestSawBot1 : MonoBehaviour
 {
+    [Header("Detection / Chase")]
     [SerializeField] float detectionDist;
     [SerializeField] float waitDist;
     [SerializeField] bool startLeft;
@@ -11,6 +12,7 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
     public float moveSpeed = 3f;
     [SerializeField] float patrolSpeed;
     [SerializeField] float waitTime;
+
     Rigidbody2D rb;
     private Transform playerTransform;
     [SerializeField] bool isChasing = false;
@@ -21,7 +23,30 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
     //To track if this dude is currently stuck or not
     [SerializeField] CapsuleCollider2D feet;
 
-    //Controls the delay before SawBot attacks
+    [Header("Ground / Patrol Detection")]
+    // This is the main collider used to position the patrol raycasts.
+    // Assign the SawBot's main body collider in the Inspector.
+    [SerializeField] Collider2D bodyCollider;
+
+    // This layer mask should include your solid terrain:
+    // ground, walls, tilemap colliders, ledges, etc.
+    [SerializeField] LayerMask groundLayer;
+
+    // How far forward the bot checks for a wall directly ahead
+    [SerializeField] float wallCheckDistance = 0.15f;
+
+    // How far downward the bot checks for ground ahead
+    [SerializeField] float ledgeCheckDistance = 0.35f;
+
+    // How far ahead of the bot the ledge ray begins
+    [SerializeField] float ledgeForwardOffset = 0.35f;
+
+    // Small cooldown so the bot does not jitter and rapidly turn every frame
+    [SerializeField] float turnCooldown = 0.2f;
+    float lastTurnTime = -999f;
+
+    [Header("Attack")]
+    // Controls the delay before SawBot attacks
     [SerializeField] float sawDelay;
 
     public string patrol;
@@ -31,6 +56,7 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
     public float radius;
     public LayerMask playerCharacter;
 
+    [Header("Animation")]
     // Animator reference for Sawbot's animation controller
     [SerializeField] Animator anim;
 
@@ -48,8 +74,12 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
     [SerializeField] string inRangeParam = "InRange";
     [SerializeField] string attackTriggerParam = "Attack";
 
-    // Name of the attack state in the Animator
+    // These are the exact state names from your Animator
+    [SerializeField] string idleStateName = "IdleanimationMarch12";
+    [SerializeField] string walkStateName = "SawBotWalkingAnim";
+    [SerializeField] string revUpStateName = "RevUpAnimationClip";
     [SerializeField] string attackStateName = "AttackAnimationSaw";
+    [SerializeField] string revDownStateName = "RevDownAnimation";
 
     // Per-enemy patrol zone limits (set when this enemy hits its PatrolLeft/PatrolRight)
     float leftLimitX = float.NegativeInfinity;
@@ -138,9 +168,16 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         {
             spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         }
+
+        // If no body collider was assigned in the Inspector,
+        // try grabbing one from this GameObject automatically.
+        if (bodyCollider == null)
+        {
+            bodyCollider = GetComponent<Collider2D>();
+        }
     }
 
-    // Update is called once per frame
+    // FixedUpdate is used here because this script is moving a Rigidbody2D
     void FixedUpdate()
     {
         if (player == null)
@@ -168,6 +205,29 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
                 float maxX = Mathf.Max(leftLimitX, rightLimitX);
                 playerWithinPatrol = (px >= minX && px <= maxX);
             }
+        }
+
+        // === CHASE TOGGLE, NOW ZONE-AWARE ===
+        // Order matters here:
+        // 1. If player is too close, SawBot stops to rev / attack
+        // 2. If player is in chase band, SawBot chases
+        // 3. Otherwise, SawBot patrols
+
+        if (dist <= waitDist)
+        // Player is close enough for rev / attack behavior
+        {
+            isChasing = false;
+        }
+        else if (playerWithinPatrol && dist <= detectionDist)
+        // Player is inside the chase zone, but not close enough to attack yet
+        {
+            isChasing = true;
+            playerTransform = player.transform;
+        }
+        else
+        // Player is outside detection zone or outside patrol zone
+        {
+            isChasing = false;
         }
 
         if (Stuck == false)
@@ -199,11 +259,7 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
             }
             else
             {
-                //StopChase();
-                //gonna need some more time to think about how to do patrols
-                rb.velocity = new Vector2(0f, rb.velocity.y);
-                // Stop moving if not chasing
-
+                // Default patrol movement
                 if (patrol == "GoLeft")
                 {
                     rb.velocity = new Vector2(-patrolSpeed, rb.velocity.y);
@@ -214,15 +270,20 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
                     rb.velocity = new Vector2(patrolSpeed, rb.velocity.y);
                 }
 
-                if (patrol == "Wait" && waiting == false)
+                if (patrol == "Wait")
                 {
-                    if (startLeft == true)
+                    rb.velocity = new Vector2(0f, rb.velocity.y);
+                }
+
+                // This is the main patrol fix:
+                // if the SawBot is patrolling and NOT waiting,
+                // it checks for a wall ahead or a ledge ahead.
+                // If either one is found, it turns around and keeps patrolling.
+                if (!waiting && patrol != "Wait" && Time.time >= lastTurnTime + turnCooldown)
+                {
+                    if (ShouldTurnAround())
                     {
-                        patrol = "GoRight";
-                    }
-                    if (startLeft == false)
-                    {
-                        patrol = "GoLeft";
+                        ReversePatrolDirection();
                     }
                 }
             }
@@ -233,7 +294,7 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
                 bool inRangeNow = dist <= waitDist;
                 bool isMovingHorizontally = Mathf.Abs(rb.velocity.x) > 0.1f;
 
-                // If the player is close enough to trigger attack/rev behavior,
+                // If the player is close enough to trigger rev / attack behavior,
                 // do not keep forcing the walking state.
                 if (inRangeNow)
                 {
@@ -256,40 +317,32 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
             }
         }
 
-        // === CHASE TOGGLE, NOW ZONE-AWARE ===
-
-        if (!playerWithinPatrol || dist >= detectionDist || dist <= waitDist)
-        //If Dist is greater than detection dist OR player is outside this enemy's patrol zone...
+        // If the player leaves the close-range attack zone,
+        // the SawBot must leave its waiting state and become active again.
+        if (dist > waitDist)
         {
-            isChasing = false;
-            //Stop chasing
-        }
+            // Player is no longer close enough for rev / attack behavior
+            waiting = false;
+            attackScheduled = false;
+            CancelInvoke(nameof(SawAttack));
 
-        if (playerWithinPatrol && dist <= detectionDist && dist >= waitDist)
-        //If dist is less than detection distance AND player is inside this enemy's patrol zone..
-        {
-            isChasing = true;
-            playerTransform = player.transform;
-            //Start chasing.
-        }
-
-        if (dist >= waitDist)
-        {
-            if (isChasing == true)
+            if (playerWithinPatrol && dist <= detectionDist)
             {
-                waiting = false;
+                // Resume chasing if the player is still in detection range
+                isChasing = true;
+                playerTransform = player.transform;
             }
-
-            if (isChasing == false)
+            else
             {
-                if (patrol == "GoLeft")
+                // Otherwise go back to patrol
+                isChasing = false;
+
+                // If the bot got left in Wait state, restore patrol direction
+                if (patrol == "Wait")
                 {
-                    // left as-is from original code
+                    patrol = facingLeft ? "GoLeft" : "GoRight";
                 }
             }
-
-            // Player is no longer in attack range, so reset scheduled attack
-            attackScheduled = false;
         }
 
         if (dist <= waitDist)
@@ -297,13 +350,16 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
             patrol = "Wait";
             waiting = true;
 
-            // Optional: force horizontal stop when in attack range
+            // Force horizontal stop when in rev / attack range
             rb.velocity = new Vector2(0f, rb.velocity.y);
 
             // Only schedule attack once while player remains in range
+            // IMPORTANT:
+            // This only schedules the damage check.
+            // The actual damage will ONLY happen if the animator is truly in AttackAnimationSaw.
             if (!attackScheduled)
             {
-                Invoke("SawAttack", sawDelay);
+                Invoke(nameof(SawAttack), sawDelay);
                 attackScheduled = true;
             }
         }
@@ -330,6 +386,72 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         ApplyFlippedAttackSawPositions();
     }
 
+    // Checks whether the SawBot should turn around while patrolling.
+    // It turns if:
+    // 1. there is a wall directly ahead
+    // 2. there is no ground ahead (ledge / drop)
+    bool ShouldTurnAround()
+    {
+        if (bodyCollider == null)
+        {
+            return false;
+        }
+
+        // Determine which direction the bot is patrolling
+        float moveDir = patrol == "GoLeft" ? -1f : 1f;
+
+        Bounds bounds = bodyCollider.bounds;
+
+        // This ray checks for a wall directly in front of the bot
+        Vector2 wallRayOrigin = new Vector2(
+            moveDir < 0 ? bounds.min.x : bounds.max.x,
+            bounds.center.y
+        );
+
+        RaycastHit2D wallHit = Physics2D.Raycast(
+            wallRayOrigin,
+            Vector2.right * moveDir,
+            wallCheckDistance,
+            groundLayer
+        );
+
+        // This ray checks if there is still ground in front of the bot
+        Vector2 ledgeRayOrigin = new Vector2(
+            bounds.center.x + (ledgeForwardOffset * moveDir),
+            bounds.min.y + 0.05f
+        );
+
+        RaycastHit2D groundHit = Physics2D.Raycast(
+            ledgeRayOrigin,
+            Vector2.down,
+            ledgeCheckDistance,
+            groundLayer
+        );
+
+        bool wallAhead = wallHit.collider != null;
+        bool noGroundAhead = groundHit.collider == null;
+
+        return wallAhead || noGroundAhead;
+    }
+
+    // Reverses patrol direction after hitting a wall or detecting a ledge
+    void ReversePatrolDirection()
+    {
+        lastTurnTime = Time.time;
+
+        if (patrol == "GoLeft")
+        {
+            patrol = "GoRight";
+        }
+        else if (patrol == "GoRight")
+        {
+            patrol = "GoLeft";
+        }
+
+        // Reset horizontal velocity so the turn feels cleaner
+        rb.velocity = new Vector2(0f, rb.velocity.y);
+    }
+
     void ApplyFlippedAttackSawPositions()
     {
         if (anim == null || leftSawTransform == null || rightSawTransform == null)
@@ -340,7 +462,7 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
 
         // Only do the frame override while we are actually in the attack state
-        if (!stateInfo.IsName(attackStateName))
+        if (!stateInfo.IsName(attackStateName) && !stateInfo.IsName("Base Layer." + attackStateName))
         {
             return;
         }
@@ -378,8 +500,27 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
 
     private void SawAttack()
     {
-        // Once the attack actually fires, allow a future attack to be scheduled again
+        // Once the delayed check fires, allow a future attack to be scheduled again
         attackScheduled = false;
+
+        if (anim == null)
+        {
+            return;
+        }
+
+        AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+
+        // IMPORTANT FIX:
+        // The SawBot is ONLY allowed to damage the player while in the real attack state.
+        // This prevents damage during RevUpAnimationClip.
+        bool inAttackState =
+            stateInfo.IsName(attackStateName) ||
+            stateInfo.IsName("Base Layer." + attackStateName);
+
+        if (!inAttackState)
+        {
+            return;
+        }
 
         if (sawBotAttackPoint == null)
         {
@@ -387,7 +528,11 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
             return;
         }
 
-        Collider2D[] playerHits = Physics2D.OverlapCircleAll(sawBotAttackPoint.transform.position, radius, playerCharacter);
+        Collider2D[] playerHits = Physics2D.OverlapCircleAll(
+            sawBotAttackPoint.transform.position,
+            radius,
+            playerCharacter
+        );
 
         foreach (Collider2D playerGameObject in playerHits)
         {
@@ -411,6 +556,35 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         {
             Gizmos.DrawWireSphere(sawBotAttackPoint.transform.position, radius);
         }
+
+        // Draw patrol detection rays in Scene view so you can tune them easier
+        if (bodyCollider != null)
+        {
+            Bounds bounds = bodyCollider.bounds;
+            float moveDir = patrol == "GoLeft" ? -1f : 1f;
+
+            Vector2 wallRayOrigin = new Vector2(
+                moveDir < 0 ? bounds.min.x : bounds.max.x,
+                bounds.center.y
+            );
+
+            Vector2 ledgeRayOrigin = new Vector2(
+                bounds.center.x + (ledgeForwardOffset * moveDir),
+                bounds.min.y + 0.05f
+            );
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(
+                wallRayOrigin,
+                wallRayOrigin + Vector2.right * moveDir * wallCheckDistance
+            );
+
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawLine(
+                ledgeRayOrigin,
+                ledgeRayOrigin + Vector2.down * ledgeCheckDistance
+            );
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -421,7 +595,7 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
             {
                 rb.velocity = Vector2.zero;
                 patrol = "Wait";
-                Invoke("SwitchToRight", waitTime);
+                Invoke(nameof(SwitchToRight), waitTime);
                 waiting = true;
 
                 // Store this patrol edge as this enemy's left patrol limit
@@ -432,7 +606,7 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
             {
                 rb.velocity = Vector2.zero;
                 patrol = "Wait";
-                Invoke("SwitchToLeft", waitTime);
+                Invoke(nameof(SwitchToLeft), waitTime);
                 waiting = true;
 
                 // Store this patrol edge as this enemy's right patrol limit

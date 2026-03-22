@@ -7579,7 +7579,7 @@ Transform:
   m_GameObject: {fileID: 1487151070}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.0799999, y: -0.16449976, z: 0.09249633}
+  m_LocalPosition: {x: 0.07999992, y: -0.16449976, z: 0.09249633}
   m_LocalScale: {x: 0.71716, y: 0.71716, z: 0.71716}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8024,7 +8024,7 @@ Transform:
   m_GameObject: {fileID: 1841830033}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.92, y: 5.1644998, z: 0}
+  m_LocalPosition: {x: 12, y: 5.1644998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8065,13 +8065,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b1609b8f237d24e81eb632f37c58fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionDist: 2.69
-  waitDist: 1.06
+  detectionDist: 1.34
+  waitDist: 2.1
   startLeft: 0
   player: {fileID: 151806485}
-  moveSpeed: 2.29
-  patrolSpeed: 2.89
-  waitTime: 0
+  moveSpeed: 1.8
+  patrolSpeed: 2.18
+  waitTime: 0.09
   isChasing: 0
   Stuck: 0
   feet: {fileID: 1841830040}
@@ -8079,16 +8079,16 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
-  wallCheckDistance: 2.89
-  ledgeCheckDistance: 0.98
-  ledgeForwardOffset: 0.74
-  turnCooldown: 1.61
+  wallCheckDistance: 0.71
+  ledgeCheckDistance: 1.09
+  ledgeForwardOffset: 0.9
+  turnCooldown: 3.8
   sawDelay: 0
   patrol: 
   waiting: 0
-  direction: {x: -0.75, y: 0}
+  direction: {x: 0, y: 0}
   sawBotAttackPoint: {fileID: 1487151070}
-  radius: 1.64
+  radius: 0.91
   playerCharacter:
     serializedVersion: 2
     m_Bits: 128
@@ -8099,7 +8099,11 @@ MonoBehaviour:
   isMovingParam: IsMoving
   inRangeParam: InRange
   attackTriggerParam: Attack
+  idleStateName: IdleanimationMarch12
+  walkStateName: SawBotWalkingAnim
+  revUpStateName: RevUpAnimationClip
   attackStateName: AttackAnimationSaw
+  revDownStateName: RevDownAnimation
 --- !u!50 &1841830039
 Rigidbody2D:
   serializedVersion: 4

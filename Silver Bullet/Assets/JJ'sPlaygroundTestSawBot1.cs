@@ -46,18 +46,21 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
     float lastTurnTime = -999f;
 
     [Header("Attack")]
-    // Controls the delay before SawBot attacks
-    [SerializeField] float sawDelay;
-
     // How much damage the SawBot deals when the attack successfully hits the player
     [SerializeField] int damageAmount = 1;
+
+    // This is the trigger collider that becomes active only during the real hit frames
+    // Put this on a child object near the saw blade / attack point
+    [SerializeField] Collider2D attackHitboxTrigger;
+
+    // This layer mask should include the player's layer
+    public LayerMask playerCharacter;
 
     public string patrol;
     public bool waiting = false;
     public Vector2 direction;
     public GameObject sawBotAttackPoint;
     public float radius;
-    public LayerMask playerCharacter;
 
     [Header("Animation")]
     // Animator reference for Sawbot's animation controller
@@ -76,18 +79,24 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
     [SerializeField] string isMovingParam = "IsMoving";
     [SerializeField] string inRangeParam = "InRange";
 
-    // This is the exact attack state name from your Animator
+    // Exact state name for the real damage-dealing attack animation
     [SerializeField] string attackStateName = "AttackAnimationSaw";
 
     // Per-enemy patrol zone limits (set when this enemy hits its PatrolLeft/PatrolRight)
     float leftLimitX = float.NegativeInfinity;
     float rightLimitX = float.PositiveInfinity;
 
-    // Prevents SawAttack from being invoked every FixedUpdate while player is in waitDist
-    bool attackScheduled = false;
-
     // Tracks which way the Sawbot is facing
     bool facingLeft = false;
+
+    // Prevents one attack animation from damaging the player multiple times
+    bool hasHitPlayerThisSwing = false;
+
+    // Tracks whether the attack hit window is currently active
+    bool attackHitWindowActive = false;
+
+    // Reusable list for overlap checks during the active attack window
+    readonly List<Collider2D> attackOverlapResults = new List<Collider2D>();
 
     // These are the ORIGINAL right-facing attack coordinates you gave me.
     // Right blade = Primary
@@ -148,8 +157,7 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
             patrol = "GoLeft";
             facingLeft = true;
         }
-
-        if (startLeft == false)
+        else
         {
             patrol = "GoRight";
             facingLeft = false;
@@ -173,9 +181,16 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         {
             bodyCollider = GetComponent<Collider2D>();
         }
+
+        // The attack hitbox should start disabled.
+        // It is only turned on during the exact strike frames by animation events.
+        if (attackHitboxTrigger != null)
+        {
+            attackHitboxTrigger.enabled = false;
+        }
     }
 
-    // FixedUpdate is used here because this script is moving a Rigidbody2D
+    // FixedUpdate is used here because this script moves a Rigidbody2D
     void FixedUpdate()
     {
         if (player == null)
@@ -192,17 +207,14 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         bool playerWithinPatrol = true;
         // default true until we know our limits
 
-        if (player != null)
-        {
-            float px = player.transform.position.x;
+        float px = player.transform.position.x;
 
-            // if both limits have been set, enforce the zone
-            if (leftLimitX != float.NegativeInfinity && rightLimitX != float.PositiveInfinity)
-            {
-                float minX = Mathf.Min(leftLimitX, rightLimitX);
-                float maxX = Mathf.Max(leftLimitX, rightLimitX);
-                playerWithinPatrol = (px >= minX && px <= maxX);
-            }
+        // If both limits have been set, enforce the zone
+        if (leftLimitX != float.NegativeInfinity && rightLimitX != float.PositiveInfinity)
+        {
+            float minX = Mathf.Min(leftLimitX, rightLimitX);
+            float maxX = Mathf.Max(leftLimitX, rightLimitX);
+            playerWithinPatrol = (px >= minX && px <= maxX);
         }
 
         // === CHASE TOGGLE, NOW ZONE-AWARE ===
@@ -212,19 +224,19 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         // 3. Otherwise, SawBot patrols
 
         if (dist <= waitDist)
-        // Player is close enough for rev / attack behavior
         {
+            // Player is close enough for rev / attack behavior
             isChasing = false;
         }
         else if (playerWithinPatrol && dist <= detectionDist)
-        // Player is inside the chase zone, but not close enough to attack yet
         {
+            // Player is inside the chase zone, but not close enough to attack yet
             isChasing = true;
             playerTransform = player.transform;
         }
         else
-        // Player is outside detection zone or outside patrol zone
         {
+            // Player is outside detection zone or outside patrol zone
             isChasing = false;
         }
 
@@ -304,14 +316,11 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
             }
 
             // Flip sprite based on movement direction so it faces where it's sliding
-            if (spriteRenderer != null)
+            if (spriteRenderer != null && Mathf.Abs(rb.velocity.x) > 0.01f)
             {
-                if (Mathf.Abs(rb.velocity.x) > 0.01f)
-                {
-                    // Assume default art faces RIGHT; flip when moving LEFT
-                    facingLeft = rb.velocity.x < 0f;
-                    spriteRenderer.flipX = facingLeft;
-                }
+                // Assume default art faces RIGHT; flip when moving LEFT
+                facingLeft = rb.velocity.x < 0f;
+                spriteRenderer.flipX = facingLeft;
             }
         }
 
@@ -319,10 +328,14 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         // the SawBot must leave its waiting state and become active again.
         if (dist > waitDist)
         {
-            // Player is no longer close enough for rev / attack behavior
             waiting = false;
-            attackScheduled = false;
-            CancelInvoke(nameof(SawAttack));
+            hasHitPlayerThisSwing = false;
+            attackHitWindowActive = false;
+
+            if (attackHitboxTrigger != null)
+            {
+                attackHitboxTrigger.enabled = false;
+            }
 
             if (playerWithinPatrol && dist <= detectionDist)
             {
@@ -350,30 +363,16 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
 
             // Force horizontal stop when in rev / attack range
             rb.velocity = new Vector2(0f, rb.velocity.y);
-
-            // Only schedule attack once while player remains in range
-            // IMPORTANT:
-            // This only schedules the damage check.
-            // The actual damage will ONLY happen if the animator is truly in AttackAnimationSaw.
-            if (!attackScheduled)
-            {
-                Invoke(nameof(SawAttack), sawDelay);
-                attackScheduled = true;
-            }
         }
         //Evan's lazy man's way of making the enemy just not move when theyre too close. i sure hope it actually works
 
-        // Update Animator "InRange" after chase/attack logic is decided
-        if (anim != null)
-        {
-            bool inRange = dist <= waitDist;
-            anim.SetBool(inRangeParam, inRange);
-        }
-
-        // This is the main fix:
-        // if we are in the attack animation and facing LEFT,
+        // If we are in the attack animation and facing LEFT,
         // override the two saw transforms using the flipped coordinates frame-by-frame.
         ApplyFlippedAttackSawPositions();
+
+        // Continuously check if the player Hurtbox is overlapping the active attack hitbox
+        // This makes damage independent of whether the player is moving or standing still
+        CheckAttackHitboxOverlap();
     }
 
     // Checks whether the SawBot should turn around while patrolling.
@@ -442,6 +441,111 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         rb.velocity = new Vector2(0f, rb.velocity.y);
     }
 
+    // Called by an Animation Event at the exact frame the blade should become dangerous
+    public void BeginAttackHitWindow()
+    {
+        // Start of a brand-new swing, so allow one fresh hit
+        attackHitWindowActive = true;
+        hasHitPlayerThisSwing = false;
+
+        if (attackHitboxTrigger != null)
+        {
+            attackHitboxTrigger.enabled = true;
+        }
+
+        Debug.Log("Attack hit window started");
+    }
+
+    // Called by an Animation Event when the dangerous strike window ends
+    public void EndAttackHitWindow()
+    {
+        attackHitWindowActive = false;
+
+        if (attackHitboxTrigger != null)
+        {
+            attackHitboxTrigger.enabled = false;
+        }
+
+        Debug.Log("Attack hit window ended");
+    }
+
+    // This checks the attack hitbox every physics step while the hit window is active.
+    // That way, the player can still get hit while standing still inside the attack range.
+    void CheckAttackHitboxOverlap()
+    {
+        if (!attackHitWindowActive)
+        {
+            return;
+        }
+
+        if (hasHitPlayerThisSwing)
+        {
+            return;
+        }
+
+        if (attackHitboxTrigger == null)
+        {
+            return;
+        }
+
+        if (anim == null)
+        {
+            return;
+        }
+
+        AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+
+        bool inAttackState =
+            stateInfo.IsName(attackStateName) ||
+            stateInfo.IsName("Base Layer." + attackStateName);
+
+        if (!inAttackState)
+        {
+            return;
+        }
+
+        attackOverlapResults.Clear();
+
+        // Query every collider currently overlapping the active attack hitbox
+        ContactFilter2D filter = new ContactFilter2D();
+        filter.SetLayerMask(playerCharacter);
+        filter.useLayerMask = true;
+        filter.useTriggers = true;
+
+        attackHitboxTrigger.OverlapCollider(filter, attackOverlapResults);
+
+        for (int i = 0; i < attackOverlapResults.Count; i++)
+        {
+            Collider2D hit = attackOverlapResults[i];
+
+            if (hit == null)
+            {
+                continue;
+            }
+
+            // ONLY allow the dedicated player Hurtbox to count for damage
+            if (hit.gameObject.name != "Hurtbox")
+            {
+                continue;
+            }
+
+            Debug.Log("SawBot overlap check found Hurtbox.");
+
+            PlayerHealthJJsplayground1 playerHealthComponent =
+                hit.GetComponentInParent<PlayerHealthJJsplayground1>();
+
+            if (playerHealthComponent != null)
+            {
+                Debug.Log("SawBot hit Hurtbox for damage: " + damageAmount);
+                playerHealthComponent.PlayerTakeDamage(damageAmount);
+
+                // Only allow one hit per swing
+                hasHitPlayerThisSwing = true;
+                return;
+            }
+        }
+    }
+
     void ApplyFlippedAttackSawPositions()
     {
         if (anim == null || leftSawTransform == null || rightSawTransform == null)
@@ -488,68 +592,6 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         rightSawTransform.localPosition = rightBladeAttackLeftFacing[frameIndex];
     }
 
-    private void SawAttack()
-    {
-        // Once the delayed check fires, allow a future attack to be scheduled again
-        attackScheduled = false;
-
-        Debug.Log("SawAttack fired");
-
-        if (anim == null)
-        {
-            Debug.LogWarning("SawAttack stopped: Animator is missing.");
-            return;
-        }
-
-        AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
-
-        // Only allow damage during the real attack state
-        bool inAttackState =
-            stateInfo.IsName(attackStateName) ||
-            stateInfo.IsName("Base Layer." + attackStateName);
-
-        if (!inAttackState)
-        {
-            Debug.Log("SawAttack stopped: not currently in attack animation.");
-            return;
-        }
-
-        if (sawBotAttackPoint == null)
-        {
-            Debug.LogWarning("SawAttack stopped: attack point is missing on " + gameObject.name);
-            return;
-        }
-
-        // IMPORTANT FIX:
-        // Use OverlapCircle instead of OverlapCircleAll so we only grab one target.
-        // This helps prevent multiple hits if the player has more than one collider.
-        Collider2D hit = Physics2D.OverlapCircle(
-            sawBotAttackPoint.transform.position,
-            radius,
-            playerCharacter
-        );
-
-        if (hit == null)
-        {
-            Debug.Log("SawAttack found no collider in range.");
-            return;
-        }
-
-        Debug.Log("SawAttack hit collider: " + hit.name);
-
-        // Use GetComponentInParent in case the collider belongs to a child object
-        PlayerHealth playerHealthComponent = hit.GetComponentInParent<PlayerHealth>();
-
-        if (playerHealthComponent == null)
-        {
-            Debug.LogWarning("SawAttack found a collider, but no PlayerHealth was found on it or its parent.");
-            return;
-        }
-
-        Debug.Log("SawAttack is dealing damage: " + damageAmount);
-        playerHealthComponent.PlayerTakeDamage(damageAmount);
-    }
-
     private void OnDrawGizmos()
     {
         if (sawBotAttackPoint != null)
@@ -590,9 +632,10 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isChasing == false)
+        // Keep patrol boundary logic first
+        if (collision.gameObject.CompareTag("LeftMax"))
         {
-            if (collision.gameObject.CompareTag("LeftMax"))
+            if (isChasing == false)
             {
                 rb.velocity = Vector2.zero;
                 patrol = "Wait";
@@ -602,8 +645,18 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
                 // Store this patrol edge as this enemy's left patrol limit
                 leftLimitX = collision.transform.position.x;
             }
+            else
+            {
+                patrol = "GoRight";
+                leftLimitX = collision.transform.position.x;
+            }
 
-            if (collision.gameObject.CompareTag("RightMax"))
+            return;
+        }
+
+        if (collision.gameObject.CompareTag("RightMax"))
+        {
+            if (isChasing == false)
             {
                 rb.velocity = Vector2.zero;
                 patrol = "Wait";
@@ -613,21 +666,13 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
                 // Store this patrol edge as this enemy's right patrol limit
                 rightLimitX = collision.transform.position.x;
             }
-        }
-
-        if (isChasing == true)
-        {
-            if (collision.gameObject.CompareTag("LeftMax"))
-            {
-                patrol = "GoRight";
-                leftLimitX = collision.transform.position.x;
-            }
-
-            if (collision.gameObject.CompareTag("RightMax"))
+            else
             {
                 patrol = "GoLeft";
                 rightLimitX = collision.transform.position.x;
             }
+
+            return;
         }
     }
 

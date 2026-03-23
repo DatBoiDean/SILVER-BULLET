@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestCharcterControllerJJsPlayground : MonoBehaviour
+public class TestCharcterControllerJJSPLAYGROUND : MonoBehaviour
 {
     public float speed = 1;
     public float jumpForce = 1;
@@ -11,13 +11,39 @@ public class TestCharcterControllerJJsPlayground : MonoBehaviour
 
     public bool isGrounded = true;
     bool isFacingRight = true;
-    [SerializeField] Animator _animator; 
+    [SerializeField] Animator _animator;
     int crouching = 1;
     //ERA: Rudimentary "no move while preparing crouch jump" thing please god i want this to work
+
+    [Header("Player Hurtbox")]
+    // This is the dedicated collider child used for enemy damage detection.
+    // Make a child object named "Hurtbox" under the player and put a Collider2D on it.
+    [SerializeField] Collider2D hurtbox;
+
+    // Optional public getter in case another script wants direct access to the hurtbox
+    public Collider2D Hurtbox => hurtbox;
 
     void Start()
     {
         testRigidBody = GetComponent<Rigidbody2D>();
+
+        // If you forgot to assign the Hurtbox in the Inspector,
+        // try to find a child named "Hurtbox" automatically.
+        if (hurtbox == null)
+        {
+            Transform hurtboxTransform = transform.Find("Hurtbox");
+
+            if (hurtboxTransform != null)
+            {
+                hurtbox = hurtboxTransform.GetComponent<Collider2D>();
+            }
+        }
+
+        // Debug warning in case the hurtbox still was not found
+        if (hurtbox == null)
+        {
+            Debug.LogWarning("No Hurtbox collider assigned or found on child object named 'Hurtbox' for " + gameObject.name);
+        }
     }
 
     void Update()
@@ -27,27 +53,25 @@ public class TestCharcterControllerJJsPlayground : MonoBehaviour
         {
             if (isGrounded == true)
             {
-                if(Input.GetKey(KeyCode.S))
+                if (Input.GetKey(KeyCode.S))
                 //ERA: Implementing a rudimentary crouch jump to get higher jumps
                 {
-                testRigidBody.velocity = Vector2.up * jumpForce * 1.5f;
-                Debug.Log("Jump Key pressed");
+                    testRigidBody.velocity = Vector2.up * jumpForce * 1.5f;
+                    Debug.Log("Jump Key pressed");
 
-                // REMOVED: Invoke to delayed jump bool setter (caused flapping/lag and stuck states)
-                // Invoke("jumpAnim", 0.5f); //add variable for time (0.5f for now)
+                    // REMOVED: Invoke to delayed jump bool setter (caused flapping/lag and stuck states)
+                    // Invoke("jumpAnim", 0.5f); //add variable for time (0.5f for now)
 
-                // NEW (minimal): fire a one-shot trigger to enter Jump state without needing isJumping bool
-                _animator.SetTrigger("JumpTrigger");
+                    // NEW (minimal): fire a one-shot trigger to enter Jump state without needing isJumping bool
+                    _animator.SetTrigger("JumpTrigger");
                 }
-
                 else
                 {
-                testRigidBody.velocity = Vector2.up * jumpForce;
-                //ERA: Normal Jump, without pressing S
-                Debug.Log("Jump Key pressed");
+                    testRigidBody.velocity = Vector2.up * jumpForce;
+                    //ERA: Normal Jump, without pressing S
+                    Debug.Log("Jump Key pressed");
 
-                
-                _animator.SetTrigger("JumpTrigger");
+                    _animator.SetTrigger("JumpTrigger");
                 }
             }
         }
@@ -64,10 +88,11 @@ public class TestCharcterControllerJJsPlayground : MonoBehaviour
         {
             crouching = 1;
         }
+
         move = Input.GetAxisRaw("Horizontal");
         testRigidBody.velocity = new Vector2(move * speed * crouching, testRigidBody.velocity.y);
 
-        if (move > 0 && !isFacingRight) // flip if moving chacracter left 
+        if (move > 0 && !isFacingRight) // flip if moving character left
         {
             FlipCharacter();
         }
@@ -105,15 +130,18 @@ public class TestCharcterControllerJJsPlayground : MonoBehaviour
             // NOTE: With trigger-based jump, no need to set isJumping=false here.
             // Animator leaves Jump via Exit Time to Idle/Run based on isRunning.
         }
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
             isGrounded = true;
         }
+
         if (collision.gameObject.CompareTag("Spikes"))
         {
             testRigidBody.velocity = Vector2.up * jumpForce * 1.5f;
         }
     }
+
     void OnCollisionStay2D(Collision2D collision)
     {
         //theres some real fucky stuff happening w the collision stuff
@@ -125,6 +153,7 @@ public class TestCharcterControllerJJsPlayground : MonoBehaviour
             // NOTE: With trigger-based jump, no need to set isJumping=false here.
             // Animator leaves Jump via Exit Time to Idle/Run based on isRunning.
         }
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
             isGrounded = true;
@@ -137,12 +166,12 @@ public class TestCharcterControllerJJsPlayground : MonoBehaviour
         {
             isGrounded = false;
         }
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
             isGrounded = false;
         }
     }
-
 
     // REMOVED: jumpAnim() method (was toggling isJumping via delayed velocity check and caused state ping-pong)
     /*

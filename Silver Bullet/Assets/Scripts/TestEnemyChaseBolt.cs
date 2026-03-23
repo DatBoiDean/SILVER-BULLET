@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class TestEnemyChaseBolt : MonoBehaviour
 {
+    [Header("Basic Behavior")]
     [SerializeField] bool canBolt;
     [SerializeField] float gravity;
-    Vector2 gravitypull;
     [SerializeField] float detectionDist;
     [SerializeField] float waitDist;
     [SerializeField] bool startLeft;
@@ -14,62 +14,85 @@ public class TestEnemyChaseBolt : MonoBehaviour
     public float moveSpeed = 3f;
     [SerializeField] float patrolSpeed;
     [SerializeField] float waitTime;
+
     Rigidbody2D rb;
     private Transform playerTransform;
+
     [SerializeField] bool isChasing = false;
     [SerializeField] bool Grounded;
-    //To track if this dude is on the ground or not
+    // To track if this dude is on the ground or not
+
     [SerializeField] bool Stuck;
-    //To track if this dude is currently stuck or not
+    // To track if this dude is currently stuck or not
+
     [SerializeField] CapsuleCollider2D feet;
+    Vector2 gravitypull;
 
     public string patrol;
     public bool waiting = false;
     public Vector2 direction;
-    
-    // NEW: Animator reference to control Screwbot's animations (Idle / Walk lean / Sink)
-    [SerializeField] Animator anim;  // NEW: auto finds animator in start
 
-    // NEW: SpriteRenderer reference so we can flip along the X axis to face the player
-    [SerializeField] SpriteRenderer spriteRenderer; // NEW: optional – auto-found in Start if left empty
+    [Header("Animation")]
+    // Animator reference for Screwbot's animations
+    [SerializeField] Animator anim;
 
-    // NEW: Name of the Trigger parameter in the Animator that plays the sink animation
-    [SerializeField] string sinkTriggerName = "Sink"; // NEW: matches my "Sink" trigger in the Screwbot controller
+    // SpriteRenderer reference so we can flip along the X axis
+    [SerializeField] SpriteRenderer spriteRenderer;
 
-    // NEW: Per-enemy patrol zone limits (set when this enemy hits its PatrolLeft/PatrolRight)
-    float leftLimitX = float.NegativeInfinity;   // NEW: X of PatrolLeft / LeftMax for THIS enemy
-    float rightLimitX = float.PositiveInfinity;  // NEW: X of PatrolRight / RightMax for THIS enemy
+    // Name of the drop animation state in the Animator
+    // This state is assumed to be on Base Layer
+    [SerializeField] string dropStateName = "DropAnimation";
+
+    [Header("Sink Settings")]
+    // How far down the Screwbot should sink after being stomped
+    [SerializeField] float sinkDistance = 0.4f;
+
+    // Roughly how long it takes to ease into the sunk position
+    [SerializeField] float sinkSmoothTime = 0.15f;
+
+    // Internal values used by SmoothDamp
+    float sinkTargetY;
+    float sinkVelocityY = 0f;
+    bool sinkStarted = false;
+
+    [Header("Per-Enemy Patrol Limits")]
+    // These store the patrol limits for THIS specific Screwbot
+    float leftLimitX = float.NegativeInfinity;
+    float rightLimitX = float.PositiveInfinity;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
-        if (startLeft == true)
+
+        if (startLeft)
         {
             patrol = "GoLeft";
         }
-        if (startLeft == false)
+        else
         {
             patrol = "GoRight";
         }
+
         gravitypull = Vector2.down * gravity;
 
-        // NEW: If no Animator was assigned in the Inspector, try to grab the one on this GameObject
-        if (anim == null)              
-        {                                
-            anim = GetComponent<Animator>(); // NEW: lets this script work as long as an Animator is on the same object
-        }                                
+        // Auto-find Animator if one was not assigned
+        if (anim == null)
+        {
+            anim = GetComponent<Animator>();
+        }
 
-        // NEW: Auto-grab SpriteRenderer if not assigned
-        if (spriteRenderer == null) 
-        {                           
+        // Auto-find SpriteRenderer if one was not assigned
+        if (spriteRenderer == null)
+        {
             spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        }                           
+        }
     }
 
     void Update()
     {
-        if (Grounded == false)
+        // Only apply custom gravity pull if not grounded and not stuck
+        if (Grounded == false && Stuck == false)
         {
             rb.AddForce(gravitypull);
         }
@@ -77,155 +100,149 @@ public class TestEnemyChaseBolt : MonoBehaviour
 
     void FixedUpdate()
     {
-        float dist = Vector3.Distance(player.transform.position, transform.position);
-        //Measures distance between this object and the player.
-        //print("Dist:" + dist);
-        //use this for debugging
-
-        // NEW: Checks if player is inside enemypatrol zone (between its left/right limits)
-        bool playerWithinPatrol = true; // NEW: default true until we know our limits
-                                                    //what does "until we know our limits" mean???
-        if (player != null)           
-        {                              
-            float px = player.transform.position.x; // NEW
-
-            // NEW: if both limits have been set, enforce the zone
-            if (leftLimitX != float.NegativeInfinity && rightLimitX != float.PositiveInfinity) // NEW
-            {
-                float minX = Mathf.Min(leftLimitX, rightLimitX); // NEW: just in case they get swapped
-                float maxX = Mathf.Max(leftLimitX, rightLimitX); 
-                playerWithinPatrol = (px >= minX && px <= maxX); // NEW: true if player X is within our patrol limits
-            }
+        if (player == null)
+        {
+            return;
         }
 
-        if (Stuck == false)
+        // If the Screwbot has been stomped, completely stop movement
+        // and smoothly sink into the ground.
+        // IMPORTANT: Do NOT keep replaying DropAnimation here,
+        // or it will restart every frame and never visibly play through.
+        if (Stuck == true)
         {
-            if (isChasing && playerTransform != null)
+            rb.velocity = Vector2.zero;
+
+            // Smoothly ease the Screwbot downward into the ground
+            if (sinkStarted)
             {
-                waiting = false;
-                // Calculate the direction vector from the enemy to the player
-                // Vector2 direction = (playerTransform.position - transform.position).normalized;
+                float newY = Mathf.SmoothDamp(
+                    transform.position.y,
+                    sinkTargetY,
+                    ref sinkVelocityY,
+                    sinkSmoothTime
+                );
 
+                transform.position = new Vector3(
+                    transform.position.x,
+                    newY,
+                    transform.position.z
+                );
+            }
 
+            if (anim != null)
+            {
+                anim.SetBool("isWalking", false);
+            }
 
-                //New approach, made it so it detects where the player's x position is and acts accordingly.
-                //This also has a bonus of letting the thing patrol in the same direction as the player, if the player
-                //shakes them off.
+            return;
+        }
 
-                // CHANGED: always choose left/right based on player position (no dead zone)
-                float dx = playerTransform.position.x - transform.position.x; // player - enemy X offset
+        float dist = Vector3.Distance(player.transform.position, transform.position);
+        // Measures distance between this object and the player
 
-                if (dx < 0f) // player is to the left
-                {
-                    direction = Vector2.left;
-                    patrol = "GoLeft";
-                }
-                else // player is to the right (or exactly aligned)
-                {
-                    direction = Vector2.right;
-                    patrol = "GoRight";
-                }
+        // Checks if player is inside this enemy's patrol zone
+        bool playerWithinPatrol = true;
 
-                // Apply a force or set a velocity to move the enemy
-                // For simple movement, setting the velocity is most direct
-                //Moved this to after the if statements
+        float px = player.transform.position.x;
 
-                // Keep smooth horizontal slide while preserving vertical velocity
-                rb.velocity = new Vector2(direction.x * moveSpeed, rb.velocity.y);
+        // If both patrol limits have been discovered, enforce them
+        if (leftLimitX != float.NegativeInfinity && rightLimitX != float.PositiveInfinity)
+        {
+            float minX = Mathf.Min(leftLimitX, rightLimitX);
+            float maxX = Mathf.Max(leftLimitX, rightLimitX);
+            playerWithinPatrol = (px >= minX && px <= maxX);
+        }
+
+        // === CHASE TOGGLE, NOW ZONE-AWARE ===
+        if (!playerWithinPatrol || dist >= detectionDist || dist <= waitDist)
+        {
+            isChasing = false;
+        }
+
+        if (playerWithinPatrol && dist <= detectionDist && dist >= waitDist)
+        {
+            isChasing = true;
+            playerTransform = player.transform;
+        }
+
+        if (isChasing && playerTransform != null)
+        {
+            waiting = false;
+
+            // Always choose left/right based on player position
+            float dx = playerTransform.position.x - transform.position.x;
+
+            if (dx < 0f)
+            {
+                direction = Vector2.left;
+                patrol = "GoLeft";
             }
             else
             {
-                //StopChase();
-                //gonna need some more time to think about how to do patrols
-                rb.velocity = Vector2.zero;
-                // Stop moving if not chasing
-                if (patrol == "GoLeft")
-                {
-                    rb.velocity = Vector2.left * patrolSpeed;
-                }
+                direction = Vector2.right;
+                patrol = "GoRight";
+            }
 
-                if (patrol == "GoRight")
-                {
-                    rb.velocity = Vector2.right * patrolSpeed;
-                }
+            // Move horizontally while preserving current vertical velocity
+            rb.velocity = new Vector2(direction.x * moveSpeed, rb.velocity.y);
+        }
+        else
+        {
+            // Patrol mode
+            if (patrol == "GoLeft")
+            {
+                rb.velocity = new Vector2(-patrolSpeed, rb.velocity.y);
+            }
 
-                if (patrol == "Wait" && waiting == false)
+            if (patrol == "GoRight")
+            {
+                rb.velocity = new Vector2(patrolSpeed, rb.velocity.y);
+            }
+
+            if (patrol == "Wait")
+            {
+                rb.velocity = new Vector2(0f, rb.velocity.y);
+
+                if (waiting == false)
                 {
-                    if (startLeft == true)
+                    if (startLeft)
                     {
                         patrol = "GoRight";
                     }
-                    if (startLeft == false)
+                    else
                     {
                         patrol = "GoLeft";
                     }
                 }
             }
-
-            // NEW: Update the isWalking bool in the Animator based on horizontal velocity
-            // NEW: When Screwbot is moving left/right, play the lean/glide (Walk) animation; when stopped, go back to Idle
-            if (anim != null) // NEW
-            {                 // NEW
-                bool isMovingHorizontally = Mathf.Abs(rb.velocity.x) > 0.01f; // NEW: small threshold to avoid jitter
-                anim.SetBool("isWalking", isMovingHorizontally);              // NEW: uses your "isWalking" bool in Screwbot
-            }                 // NEW
-
-            // NEW: Flip sprite based on movement direction so it faces where it's sliding
-            if (spriteRenderer != null) // NEW
-            {                           // NEW
-                if (Mathf.Abs(rb.velocity.x) > 0.01f) // NEW: only flip when actually moving
-                {
-                    // NEW: Assume default art faces RIGHT; flip when moving LEFT
-                    spriteRenderer.flipX = rb.velocity.x < 0f; // NEW
-                }
-            }                           // NEW
-                                            //Do we really need to list every addition as "new"?
         }
 
-        // === CHASE TOGGLE, NOW ZONE-AWARE ===
-
-        if (!playerWithinPatrol || dist >= detectionDist || dist <= waitDist)
-        //If Dist is greater than detection dist OR player is outside this enemy's patrol zone...
-        {
-            isChasing = false;
-            //Stop chasing
-        }
-
-        if (playerWithinPatrol && dist <= detectionDist && dist >= waitDist)
-        //If dist is less than detection distance AND player is inside this enemy's patrol zone..
-        {
-            isChasing = true;
-            playerTransform = player.transform;
-            //Start chasing.
-        }
-
-        if (dist >= waitDist)
-        {
-            if (isChasing == true)
-            {
-                waiting = false;
-            }
-            if (isChasing == false)
-            {
-                if (patrol == "GoLeft")
-                {
-                    
-                }
-            }
-        }
-
+        // If player is too close, stop the Screwbot
         if (dist <= waitDist)
         {
             patrol = "Wait";
             waiting = true;
+            rb.velocity = new Vector2(0f, rb.velocity.y);
         }
-        //Evan's lazy man's way of making the enemy just not move when theyre too close. i sure hope it actually works
+
+        // Update walking animation
+        if (anim != null)
+        {
+            bool isMovingHorizontally = Mathf.Abs(rb.velocity.x) > 0.01f;
+            anim.SetBool("isWalking", isMovingHorizontally);
+        }
+
+        // Flip sprite based on movement direction
+        if (spriteRenderer != null)
+        {
+            if (Mathf.Abs(rb.velocity.x) > 0.01f)
+            {
+                // Assume default art faces right
+                spriteRenderer.flipX = rb.velocity.x < 0f;
+            }
+        }
     }
-    
-    // void StopChase()
-    // {
-    //     rb.velocity = Vector2.zero;
-    // }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -252,109 +269,76 @@ public class TestEnemyChaseBolt : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collision)
-    //changed to a trigger effect since it could mess with things
-    //  when I was making it all trigger based.
-      // holy SHIT i have a lot more screen space when coding on the projector. i feel so powerful. unlimited. 
     {
-        // patrol boundary logic + bolt logic stays the same as previous version...
-
-        // bool isLeftBoundary = collision.gameObject.CompareTag("LeftMax") ||
-        //                       collision.gameObject.name.StartsWith("PatrolLeft");
-        // bool isRightBoundary = collision.gameObject.CompareTag("RightMax") ||
-        //                        collision.gameObject.name.StartsWith("PatrolRight");
-
-        // // NEW: when we hit OUR patrol boundaries, remember their X positions for this enemy
-        // if (isLeftBoundary)                                      
-        // {                                                        
-        //     leftLimitX = collision.bounds.center.x;              
-        // }                                                        
-        // if (isRightBoundary)                                     
-        // {                                                        
-        //     rightLimitX = collision.bounds.center.x;             
-        // }                                                       
-
+        // If the player feet jump on the Screwbot's head, make it drop
         if (collision.gameObject.CompareTag("PlayerFeet"))
         {
-            if (canBolt == true)
+            if (canBolt == true && Grounded == true && Stuck == false)
             {
-                if (Grounded == true) //If the thing is grounded...
+                if (feet != null)
                 {
-                    if (Stuck == false) //... AND isn't already stuck...
-                                        //This is to basically maximize the odds of Unity not continuously firing off these scripts
-                                        //  if it's already done the thing this script needs to do
-                    {
-                        feet.enabled = false;
-                        Stuck = true;
-                        //Find and disable the Circle Collider
-                        //Find and disable the movement script (external?)
+                    feet.enabled = false;
+                }
 
-                        // NEW: When Screwbot sinks / gets stuck, fire the Sink trigger to play the sink animation
-                        if (anim != null && !string.IsNullOrEmpty(sinkTriggerName))
-                        {                                                          
-                            anim.SetTrigger(sinkTriggerName); // NEW: plays the "Sink" animation in the Screwbot controller
-                        }                                                           
-                    }
+                Stuck = true;
+
+                // Start the smooth sink from current position down to a target Y
+                sinkTargetY = transform.position.y - sinkDistance;
+                sinkStarted = true;
+                sinkVelocityY = 0f;
+
+                // Stop all leftover movement immediately
+                rb.velocity = Vector2.zero;
+
+                // Force walking off and directly play the drop animation ONCE
+                if (anim != null)
+                {
+                    anim.SetBool("isWalking", false);
+                    anim.Play("Base Layer." + dropStateName, 0, 0f);
+                    Debug.Log("Screwbot directly played DropAnimation on Base Layer");
                 }
             }
         }
-        // if (isChasing == false)
-        // {
-        //     if (isLeftBoundary)
-        //     {
-        //         rb.velocity = Vector2.zero;
-        //         patrol = "Wait";
-        //         Invoke("SwitchToRight", waitTime);
-        //         waiting = true;
-        //     }
-        //     if (isRightBoundary)
-        //     {
-        //         rb.velocity = Vector2.zero;
-        //         patrol = "Wait";
-        //         Invoke("SwitchToLeft", waitTime);
-        //         waiting = true;
-        //     }
-        // }
 
-        // if (isChasing == true)
-        // {
-        //     if (isLeftBoundary)
-        //     {
-        //         patrol = "GoRight";
-        //     } 
-
-        //     if (isRightBoundary)
-        //     {
-        //         patrol = "GoLeft";
-        //     }
-        // }
-    if (isChasing == false)
+        // Patrol boundary handling while NOT chasing
+        if (isChasing == false)
         {
             if (collision.gameObject.CompareTag("LeftMax"))
             {
                 rb.velocity = Vector2.zero;
                 patrol = "Wait";
-                Invoke("SwitchToRight", waitTime);
+                Invoke(nameof(SwitchToRight), waitTime);
                 waiting = true;
+
+                // Store this as this enemy's left patrol limit
+                leftLimitX = collision.transform.position.x;
             }
+
             if (collision.gameObject.CompareTag("RightMax"))
             {
                 rb.velocity = Vector2.zero;
                 patrol = "Wait";
-                Invoke("SwitchToLeft", waitTime);
+                Invoke(nameof(SwitchToLeft), waitTime);
                 waiting = true;
+
+                // Store this as this enemy's right patrol limit
+                rightLimitX = collision.transform.position.x;
             }
         }
 
+        // Patrol boundary handling while chasing
         if (isChasing == true)
         {
             if (collision.gameObject.CompareTag("LeftMax"))
             {
                 patrol = "GoRight";
-            } 
+                leftLimitX = collision.transform.position.x;
+            }
 
             if (collision.gameObject.CompareTag("RightMax"))
             {
                 patrol = "GoLeft";
+                rightLimitX = collision.transform.position.x;
             }
         }
     }
@@ -370,5 +354,4 @@ public class TestEnemyChaseBolt : MonoBehaviour
         patrol = "GoRight";
         waiting = false;
     }
-        
 }

@@ -49,6 +49,9 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
     // Controls the delay before SawBot attacks
     [SerializeField] float sawDelay;
 
+    // How much damage the SawBot deals when the attack successfully hits the player
+    [SerializeField] int damageAmount = 1;
+
     public string patrol;
     public bool waiting = false;
     public Vector2 direction;
@@ -72,14 +75,9 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
     // Animator parameter names for the Sawbot controller
     [SerializeField] string isMovingParam = "IsMoving";
     [SerializeField] string inRangeParam = "InRange";
-    [SerializeField] string attackTriggerParam = "Attack";
 
-    // These are the exact state names from your Animator
-    [SerializeField] string idleStateName = "IdleanimationMarch12";
-    [SerializeField] string walkStateName = "SawBotWalkingAnim";
-    [SerializeField] string revUpStateName = "RevUpAnimationClip";
+    // This is the exact attack state name from your Animator
     [SerializeField] string attackStateName = "AttackAnimationSaw";
-    [SerializeField] string revDownStateName = "RevDownAnimation";
 
     // Per-enemy patrol zone limits (set when this enemy hits its PatrolLeft/PatrolRight)
     float leftLimitX = float.NegativeInfinity;
@@ -370,14 +368,6 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         {
             bool inRange = dist <= waitDist;
             anim.SetBool(inRangeParam, inRange);
-
-            // Optional: if you want the Attack trigger to fire when player first gets into attack range
-            if (inRange && attackScheduled)
-            {
-                // This can be used if your Animator has an Attack trigger transition
-                // Comment this out if you are using only InRange + Exit Time transitions
-                // anim.SetTrigger(attackTriggerParam);
-            }
         }
 
         // This is the main fix:
@@ -503,57 +493,68 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         // Once the delayed check fires, allow a future attack to be scheduled again
         attackScheduled = false;
 
+        Debug.Log("SawAttack fired");
+
         if (anim == null)
         {
+            Debug.LogWarning("SawAttack stopped: Animator is missing.");
             return;
         }
 
         AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
 
-        // IMPORTANT FIX:
-        // The SawBot is ONLY allowed to damage the player while in the real attack state.
-        // This prevents damage during RevUpAnimationClip.
+        // Only allow damage during the real attack state
         bool inAttackState =
             stateInfo.IsName(attackStateName) ||
             stateInfo.IsName("Base Layer." + attackStateName);
 
         if (!inAttackState)
         {
+            Debug.Log("SawAttack stopped: not currently in attack animation.");
             return;
         }
 
         if (sawBotAttackPoint == null)
         {
-            Debug.LogWarning("SawBot attack point is missing on " + gameObject.name);
+            Debug.LogWarning("SawAttack stopped: attack point is missing on " + gameObject.name);
             return;
         }
 
-        Collider2D[] playerHits = Physics2D.OverlapCircleAll(
+        // IMPORTANT FIX:
+        // Use OverlapCircle instead of OverlapCircleAll so we only grab one target.
+        // This helps prevent multiple hits if the player has more than one collider.
+        Collider2D hit = Physics2D.OverlapCircle(
             sawBotAttackPoint.transform.position,
             radius,
             playerCharacter
         );
 
-        foreach (Collider2D playerGameObject in playerHits)
+        if (hit == null)
         {
-            Debug.Log("SawBot Attacks");
-
-            if (playerGameObject.CompareTag("Player"))
-            {
-                var playerHealthComponent = playerGameObject.GetComponent<PlayerHealth>();
-
-                if (playerHealthComponent != null)
-                {
-                    playerHealthComponent.PlayerTakeDamage(1);
-                }
-            }
+            Debug.Log("SawAttack found no collider in range.");
+            return;
         }
+
+        Debug.Log("SawAttack hit collider: " + hit.name);
+
+        // Use GetComponentInParent in case the collider belongs to a child object
+        PlayerHealth playerHealthComponent = hit.GetComponentInParent<PlayerHealth>();
+
+        if (playerHealthComponent == null)
+        {
+            Debug.LogWarning("SawAttack found a collider, but no PlayerHealth was found on it or its parent.");
+            return;
+        }
+
+        Debug.Log("SawAttack is dealing damage: " + damageAmount);
+        playerHealthComponent.PlayerTakeDamage(damageAmount);
     }
 
     private void OnDrawGizmos()
     {
         if (sawBotAttackPoint != null)
         {
+            Gizmos.color = Color.magenta;
             Gizmos.DrawWireSphere(sawBotAttackPoint.transform.position, radius);
         }
 

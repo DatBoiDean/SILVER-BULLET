@@ -6507,6 +6507,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2106024172429248124, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: maxHealth
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2106024172429248124, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: currentHealth
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4114649912291347994, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_Name
       value: Player
@@ -6514,6 +6522,22 @@ PrefabInstance:
     - target: {fileID: 4566217908210092935, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6069951202461910007, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: m_Size.x
+      value: 0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 6069951202461910007, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: m_Size.y
+      value: 3.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6069951202461910007, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6160076110977145742, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: damage
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8805001103175705496, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_SortingOrder
@@ -6523,7 +6547,8 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2106024172429248124, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -6533,6 +6558,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4114649912291347994, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       insertIndex: 2
       addedObject: {fileID: 151806486}
+    - targetCorrespondingSourceObject: {fileID: 4114649912291347994, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 151806488}
   m_SourcePrefab: {fileID: 100100000, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
 --- !u!1 &151806485 stripped
 GameObject:
@@ -6566,6 +6594,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gettingCrushed: 0
   grounded: 0
+--- !u!114 &151806488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151806485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a60ecfbfc0de5346ba2b5d5dabc5fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 2
+  healthBar: {fileID: 0}
+  invulnTime: 0
+  invulnWait: 0
+  invuln: 0
+  fear: 0
 --- !u!1001 &461435203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8084,6 +8131,7 @@ MonoBehaviour:
   ledgeForwardOffset: 0.9
   turnCooldown: 3.8
   sawDelay: 0
+  damageAmount: 2
   patrol: 
   waiting: 0
   direction: {x: 0, y: 0}
@@ -8098,12 +8146,7 @@ MonoBehaviour:
   rightSawTransform: {fileID: 0}
   isMovingParam: IsMoving
   inRangeParam: InRange
-  attackTriggerParam: Attack
-  idleStateName: IdleanimationMarch12
-  walkStateName: SawBotWalkingAnim
-  revUpStateName: RevUpAnimationClip
   attackStateName: AttackAnimationSaw
-  revDownStateName: RevDownAnimation
 --- !u!50 &1841830039
 Rigidbody2D:
   serializedVersion: 4

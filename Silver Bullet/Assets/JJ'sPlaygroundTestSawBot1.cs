@@ -75,6 +75,15 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
     [SerializeField] Transform leftSawTransform;   // Secondary Blade
     [SerializeField] Transform rightSawTransform;  // Primary
 
+    [Header("Fan Suction")]
+    // This is the child object named "Suction Zone".
+    // Since flipX only flips the sprite art, this child has to be repositioned by code.
+    [SerializeField] Transform suctionZone;
+
+    // The distance from the FanHead's center to the suction zone on the X axis.
+    // This is read from the prefab's starting position so it can be mirrored cleanly.
+    [SerializeField] float suctionOffsetX = 0f;
+
     // Animator parameter names for the Sawbot controller
     [SerializeField] string isMovingParam = "IsMoving";
     [SerializeField] string inRangeParam = "InRange";
@@ -182,6 +191,32 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
             bodyCollider = GetComponent<Collider2D>();
         }
 
+        // If the suction zone was not assigned manually,
+        // look for the child object with the exact prefab name.
+        if (suctionZone == null)
+        {
+            Transform foundZone = transform.Find("Suction Zone");
+            if (foundZone != null)
+            {
+                suctionZone = foundZone;
+            }
+        }
+
+        // Store the zone's starting horizontal offset so we can swap sides later.
+        if (suctionZone != null)
+        {
+            suctionOffsetX = Mathf.Abs(suctionZone.localPosition.x);
+        }
+
+        // Match the starting visual direction.
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.flipX = facingLeft;
+        }
+
+        // Place the suction zone on the correct side immediately.
+        UpdateSuctionZoneSide();
+
         // The attack hitbox should start disabled.
         // It is only turned on during the exact strike frames by animation events.
         if (attackHitboxTrigger != null)
@@ -257,12 +292,22 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
                 {
                     direction = Vector2.left;
                     patrol = "GoLeft";
+                    facingLeft = true;
                 }
                 else // player is to the right (or exactly aligned)
                 {
                     direction = Vector2.right;
                     patrol = "GoRight";
+                    facingLeft = false;
                 }
+
+                // Keep the sprite and suction zone synced with the chase direction.
+                if (spriteRenderer != null)
+                {
+                    spriteRenderer.flipX = facingLeft;
+                }
+
+                UpdateSuctionZoneSide();
 
                 // Keep smooth horizontal slide while preserving vertical velocity
                 rb.velocity = new Vector2(direction.x * moveSpeed, rb.velocity.y);
@@ -321,6 +366,9 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
                 // Assume default art faces RIGHT; flip when moving LEFT
                 facingLeft = rb.velocity.x < 0f;
                 spriteRenderer.flipX = facingLeft;
+
+                // Since only the sprite is being flipped, the suction child must be updated too.
+                UpdateSuctionZoneSide();
             }
         }
 
@@ -360,6 +408,11 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         {
             patrol = "Wait";
             waiting = true;
+
+            // Once the FanHead is close enough to stop moving,
+            // do not leave it stuck facing its last patrol direction.
+            // Explicitly turn it toward the player's current X position.
+            FacePlayer();
 
             // Force horizontal stop when in rev / attack range
             rb.velocity = new Vector2(0f, rb.velocity.y);
@@ -431,14 +484,71 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         if (patrol == "GoLeft")
         {
             patrol = "GoRight";
+            facingLeft = false;
         }
         else if (patrol == "GoRight")
         {
             patrol = "GoLeft";
+            facingLeft = true;
         }
+
+        // Keep the sprite art and suction zone lined up after an automatic patrol turn.
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.flipX = facingLeft;
+        }
+
+        UpdateSuctionZoneSide();
 
         // Reset horizontal velocity so the turn feels cleaner
         rb.velocity = new Vector2(0f, rb.velocity.y);
+    }
+
+    // When the FanHead is close enough to stop moving,
+    // this keeps it visually locked onto the player instead of the old patrol direction.
+    void FacePlayer()
+    {
+        if (player == null)
+        {
+            return;
+        }
+
+        float dx = player.transform.position.x - transform.position.x;
+
+        // If the player is almost perfectly centered, keep the current facing
+        // so the sprite does not jitter left and right.
+        if (Mathf.Abs(dx) < 0.01f)
+        {
+            return;
+        }
+
+        facingLeft = dx < 0f;
+
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.flipX = facingLeft;
+        }
+
+        // The suction zone is a child object, so it needs to be moved manually
+        // whenever the close-range facing direction changes.
+        UpdateSuctionZoneSide();
+    }
+
+    // Moves the child suction trigger to the side the FanHead is actually facing.
+    // This version uses the reversed sign because your prefab's setup was facing the wrong side before.
+    void UpdateSuctionZoneSide()
+    {
+        if (suctionZone == null)
+        {
+            return;
+        }
+
+        Vector3 localPos = suctionZone.localPosition;
+
+        // Reverse the local X side for this prefab so the suction zone matches the real facing direction.
+        localPos.x = facingLeft ? Mathf.Abs(suctionOffsetX) : -Mathf.Abs(suctionOffsetX);
+
+        suctionZone.localPosition = localPos;
     }
 
     // Called by an Animation Event at the exact frame the blade should become dangerous
@@ -648,6 +758,16 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
             else
             {
                 patrol = "GoRight";
+                facingLeft = false;
+
+                // Keep the sprite art and suction zone correct after hitting the left boundary.
+                if (spriteRenderer != null)
+                {
+                    spriteRenderer.flipX = facingLeft;
+                }
+
+                UpdateSuctionZoneSide();
+
                 leftLimitX = collision.transform.position.x;
             }
 
@@ -669,6 +789,16 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
             else
             {
                 patrol = "GoLeft";
+                facingLeft = true;
+
+                // Keep the sprite art and suction zone correct after hitting the right boundary.
+                if (spriteRenderer != null)
+                {
+                    spriteRenderer.flipX = facingLeft;
+                }
+
+                UpdateSuctionZoneSide();
+
                 rightLimitX = collision.transform.position.x;
             }
 
@@ -680,11 +810,29 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
     {
         patrol = "GoLeft";
         waiting = false;
+        facingLeft = true;
+
+        // This delayed patrol turn also needs to keep the suction zone on the same side.
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.flipX = facingLeft;
+        }
+
+        UpdateSuctionZoneSide();
     }
 
     void SwitchToRight()
     {
         patrol = "GoRight";
         waiting = false;
+        facingLeft = false;
+
+        // This delayed patrol turn also needs to keep the suction zone on the same side.
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.flipX = facingLeft;
+        }
+
+        UpdateSuctionZoneSide();
     }
 }

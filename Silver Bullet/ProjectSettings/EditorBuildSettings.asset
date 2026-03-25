@@ -14,13 +14,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lose Menu.unity
     guid: bf686aec18215ab4d908f80a43e4932c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PrototypeLevelMain.unity
     guid: 95cd9248095ccd74ca2e01c6a656b5ec
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DevScene/BossPrototype.unity
     guid: 0932a8995338e024595df12c6c45abfb
   - enabled: 0
     path: Assets/Scenes/Sem2Playtest.unity
-    guid: 5585c7ef9672d074e8ce57cfefdd1b10
+    guid: 412bb9a2773fe644694c29651ceb13d3
+  - enabled: 1
+    path: Assets/Scenes/GameScenes/Plat 4.unity
+    guid: b4598b6a0f434d04a861ddcca996cfba
   m_configObjects: {}

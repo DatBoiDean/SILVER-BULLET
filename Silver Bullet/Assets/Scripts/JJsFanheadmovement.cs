@@ -149,7 +149,7 @@ public class FanHeadMovementJJedition : MonoBehaviour
         if (anim != null) // NEW
         {                 // NEW
             bool isMovingHorizontally = Mathf.Abs(rb.velocity.x) > 0.01f; // NEW: small threshold to avoid jitter
-            anim.SetBool("isWalking", isMovingHorizontally);              // NEW: uses your "isWalking" bool in Screwbot
+            anim.SetBool("IsMoving", isMovingHorizontally);              // NEW: uses your "isWalking" bool in Screwbot
         }                 // NEW
 
         // NEW: Flip sprite based on movement direction so it faces where it's sliding

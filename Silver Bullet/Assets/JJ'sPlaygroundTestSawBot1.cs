@@ -23,27 +23,19 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
     //To track if this dude is currently stuck or not
     [SerializeField] CapsuleCollider2D feet;
 
-    [Header("Ground / Patrol Detection")]
-    // This is the main collider used to position the patrol raycasts.
-    // Assign the SawBot's main body collider in the Inspector.
-    [SerializeField] Collider2D bodyCollider;
+    [Header("Stuck Turn Detection")]
+    // If the SawBot's X position does not change enough for this many seconds
+    // while it is trying to patrol, it will force a turn around.
+    [SerializeField] float stuckTurnTime = 3f;
 
-    // This layer mask should include your solid terrain:
-    // ground, walls, tilemap colliders, ledges, etc.
-    [SerializeField] LayerMask groundLayer;
+    // Tiny X movement threshold so tiny physics wiggles do not count as real movement.
+    [SerializeField] float stuckMinXChange = 0.02f;
 
-    // How far forward the bot checks for a wall directly ahead
-    [SerializeField] float wallCheckDistance = 0.15f;
+    // Tracks how long the bot has been trying to move without actually changing X enough.
+    float stuckTurnTimer = 0f;
 
-    // How far downward the bot checks for ground ahead
-    [SerializeField] float ledgeCheckDistance = 0.35f;
-
-    // How far ahead of the bot the ledge ray begins
-    [SerializeField] float ledgeForwardOffset = 0.35f;
-
-    // Small cooldown so the bot does not jitter and rapidly turn every frame
-    [SerializeField] float turnCooldown = 0.2f;
-    float lastTurnTime = -999f;
+    // Last recorded X position used by the stuck-turn check.
+    float lastRecordedX;
 
     [Header("Attack")]
     // How much damage the SawBot deals when the attack successfully hits the player
@@ -74,15 +66,6 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
     // Primary = right blade
     [SerializeField] Transform leftSawTransform;   // Secondary Blade
     [SerializeField] Transform rightSawTransform;  // Primary
-
-    [Header("Fan Suction")]
-    // This is the child object named "Suction Zone".
-    // Since flipX only flips the sprite art, this child has to be repositioned by code.
-    [SerializeField] Transform suctionZone;
-
-    // The distance from the FanHead's center to the suction zone on the X axis.
-    // This is read from the prefab's starting position so it can be mirrored cleanly.
-    [SerializeField] float suctionOffsetX = 0f;
 
     // Animator parameter names for the Sawbot controller
     [SerializeField] string isMovingParam = "IsMoving";
@@ -184,38 +167,14 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
             spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         }
 
-        // If no body collider was assigned in the Inspector,
-        // try grabbing one from this GameObject automatically.
-        if (bodyCollider == null)
-        {
-            bodyCollider = GetComponent<Collider2D>();
-        }
-
-        // If the suction zone was not assigned manually,
-        // look for the child object with the exact prefab name.
-        if (suctionZone == null)
-        {
-            Transform foundZone = transform.Find("Suction Zone");
-            if (foundZone != null)
-            {
-                suctionZone = foundZone;
-            }
-        }
-
-        // Store the zone's starting horizontal offset so we can swap sides later.
-        if (suctionZone != null)
-        {
-            suctionOffsetX = Mathf.Abs(suctionZone.localPosition.x);
-        }
-
         // Match the starting visual direction.
         if (spriteRenderer != null)
         {
             spriteRenderer.flipX = facingLeft;
         }
 
-        // Place the suction zone on the correct side immediately.
-        UpdateSuctionZoneSide();
+        // Store the starting X position for the stuck-turn backup check.
+        lastRecordedX = transform.position.x;
 
         // The attack hitbox should start disabled.
         // It is only turned on during the exact strike frames by animation events.
@@ -301,16 +260,18 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
                     facingLeft = false;
                 }
 
-                // Keep the sprite and suction zone synced with the chase direction.
+                // Keep the sprite synced with the chase direction.
                 if (spriteRenderer != null)
                 {
                     spriteRenderer.flipX = facingLeft;
                 }
 
-                UpdateSuctionZoneSide();
-
                 // Keep smooth horizontal slide while preserving vertical velocity
                 rb.velocity = new Vector2(direction.x * moveSpeed, rb.velocity.y);
+
+                // Reset the backup stuck timer while chasing so patrol logic does not
+                // accidentally force a turn during chase behavior.
+                ResetStuckTurnCheck();
             }
             else
             {
@@ -330,17 +291,10 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
                     rb.velocity = new Vector2(0f, rb.velocity.y);
                 }
 
-                // This is the main patrol fix:
-                // if the SawBot is patrolling and NOT waiting,
-                // it checks for a wall ahead or a ledge ahead.
-                // If either one is found, it turns around and keeps patrolling.
-                if (!waiting && patrol != "Wait" && Time.time >= lastTurnTime + turnCooldown)
-                {
-                    if (ShouldTurnAround())
-                    {
-                        ReversePatrolDirection();
-                    }
-                }
+                // Normal patrol turning now comes from the LeftMax and RightMax boundary triggers.
+                // This backup check only exists so the bot can recover if it gets jammed on something
+                // and never reaches one of those patrol boundary objects.
+                HandleStuckTurnCheck();
             }
 
             // Update Sawbot movement bool in the Animator
@@ -366,9 +320,6 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
                 // Assume default art faces RIGHT; flip when moving LEFT
                 facingLeft = rb.velocity.x < 0f;
                 spriteRenderer.flipX = facingLeft;
-
-                // Since only the sprite is being flipped, the suction child must be updated too.
-                UpdateSuctionZoneSide();
             }
         }
 
@@ -409,13 +360,16 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
             patrol = "Wait";
             waiting = true;
 
-            // Once the FanHead is close enough to stop moving,
+            // Once the SawBot is close enough to stop moving,
             // do not leave it stuck facing its last patrol direction.
             // Explicitly turn it toward the player's current X position.
             FacePlayer();
 
             // Force horizontal stop when in rev / attack range
             rb.velocity = new Vector2(0f, rb.velocity.y);
+
+            // While sitting in close-range attack mode, clear the patrol stuck timer.
+            ResetStuckTurnCheck();
         }
         //Evan's lazy man's way of making the enemy just not move when theyre too close. i sure hope it actually works
 
@@ -428,59 +382,61 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         CheckAttackHitboxOverlap();
     }
 
-    // Checks whether the SawBot should turn around while patrolling.
-    // It turns if:
-    // 1. there is a wall directly ahead
-    // 2. there is no ground ahead (ledge / drop)
-    bool ShouldTurnAround()
+    // This backup check watches whether the bot is actually changing X while patrolling.
+    // If it is trying to move but stays in nearly the same spot for too long,
+    // force a turn so it can recover from getting hung up on something.
+    void HandleStuckTurnCheck()
     {
-        if (bodyCollider == null)
+        // Only use this during active patrol movement, not while waiting or not moving.
+        if (waiting || patrol == "Wait")
         {
-            return false;
+            ResetStuckTurnCheck();
+            return;
         }
 
-        // Determine which direction the bot is patrolling
-        float moveDir = patrol == "GoLeft" ? -1f : 1f;
+        float currentX = transform.position.x;
+        float xDifference = Mathf.Abs(currentX - lastRecordedX);
+        bool tryingToPatrolMove = Mathf.Abs(rb.velocity.x) > 0.01f;
 
-        Bounds bounds = bodyCollider.bounds;
+        if (!tryingToPatrolMove)
+        {
+            ResetStuckTurnCheck();
+            return;
+        }
 
-        // This ray checks for a wall directly in front of the bot
-        Vector2 wallRayOrigin = new Vector2(
-            moveDir < 0 ? bounds.min.x : bounds.max.x,
-            bounds.center.y
-        );
+        if (xDifference < stuckMinXChange)
+        {
+            stuckTurnTimer += Time.fixedDeltaTime;
 
-        RaycastHit2D wallHit = Physics2D.Raycast(
-            wallRayOrigin,
-            Vector2.right * moveDir,
-            wallCheckDistance,
-            groundLayer
-        );
+            if (stuckTurnTimer >= stuckTurnTime)
+            {
+                // This forced turn is only a fallback for a stuck bot.
+                // Normal patrol turns should still come from LeftMax / RightMax.
+                ReversePatrolDirection();
 
-        // This ray checks if there is still ground in front of the bot
-        Vector2 ledgeRayOrigin = new Vector2(
-            bounds.center.x + (ledgeForwardOffset * moveDir),
-            bounds.min.y + 0.05f
-        );
-
-        RaycastHit2D groundHit = Physics2D.Raycast(
-            ledgeRayOrigin,
-            Vector2.down,
-            ledgeCheckDistance,
-            groundLayer
-        );
-
-        bool wallAhead = wallHit.collider != null;
-        bool noGroundAhead = groundHit.collider == null;
-
-        return wallAhead || noGroundAhead;
+                // Reset again after forcing the turn so it does not instantly flip back.
+                ResetStuckTurnCheck();
+                lastRecordedX = transform.position.x;
+            }
+        }
+        else
+        {
+            // The bot moved enough on X, so clear the timer and store this new position.
+            stuckTurnTimer = 0f;
+            lastRecordedX = currentX;
+        }
     }
 
-    // Reverses patrol direction after hitting a wall or detecting a ledge
+    // Central reset helper for the backup stuck-turn timer.
+    void ResetStuckTurnCheck()
+    {
+        stuckTurnTimer = 0f;
+        lastRecordedX = transform.position.x;
+    }
+
+    // Reverses patrol direction as a backup recovery when the bot gets stuck.
     void ReversePatrolDirection()
     {
-        lastTurnTime = Time.time;
-
         if (patrol == "GoLeft")
         {
             patrol = "GoRight";
@@ -492,19 +448,17 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
             facingLeft = true;
         }
 
-        // Keep the sprite art and suction zone lined up after an automatic patrol turn.
+        // Keep the sprite art lined up after an automatic patrol turn.
         if (spriteRenderer != null)
         {
             spriteRenderer.flipX = facingLeft;
         }
 
-        UpdateSuctionZoneSide();
-
         // Reset horizontal velocity so the turn feels cleaner
         rb.velocity = new Vector2(0f, rb.velocity.y);
     }
 
-    // When the FanHead is close enough to stop moving,
+    // When the SawBot is close enough to stop moving,
     // this keeps it visually locked onto the player instead of the old patrol direction.
     void FacePlayer()
     {
@@ -528,27 +482,6 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         {
             spriteRenderer.flipX = facingLeft;
         }
-
-        // The suction zone is a child object, so it needs to be moved manually
-        // whenever the close-range facing direction changes.
-        UpdateSuctionZoneSide();
-    }
-
-    // Moves the child suction trigger to the side the FanHead is actually facing.
-    // This version uses the reversed sign because your prefab's setup was facing the wrong side before.
-    void UpdateSuctionZoneSide()
-    {
-        if (suctionZone == null)
-        {
-            return;
-        }
-
-        Vector3 localPos = suctionZone.localPosition;
-
-        // Reverse the local X side for this prefab so the suction zone matches the real facing direction.
-        localPos.x = facingLeft ? Mathf.Abs(suctionOffsetX) : -Mathf.Abs(suctionOffsetX);
-
-        suctionZone.localPosition = localPos;
     }
 
     // Called by an Animation Event at the exact frame the blade should become dangerous
@@ -709,35 +642,6 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
             Gizmos.color = Color.magenta;
             Gizmos.DrawWireSphere(sawBotAttackPoint.transform.position, radius);
         }
-
-        // Draw patrol detection rays in Scene view so you can tune them easier
-        if (bodyCollider != null)
-        {
-            Bounds bounds = bodyCollider.bounds;
-            float moveDir = patrol == "GoLeft" ? -1f : 1f;
-
-            Vector2 wallRayOrigin = new Vector2(
-                moveDir < 0 ? bounds.min.x : bounds.max.x,
-                bounds.center.y
-            );
-
-            Vector2 ledgeRayOrigin = new Vector2(
-                bounds.center.x + (ledgeForwardOffset * moveDir),
-                bounds.min.y + 0.05f
-            );
-
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(
-                wallRayOrigin,
-                wallRayOrigin + Vector2.right * moveDir * wallCheckDistance
-            );
-
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawLine(
-                ledgeRayOrigin,
-                ledgeRayOrigin + Vector2.down * ledgeCheckDistance
-            );
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -760,17 +664,17 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
                 patrol = "GoRight";
                 facingLeft = false;
 
-                // Keep the sprite art and suction zone correct after hitting the left boundary.
+                // Keep the sprite art correct after hitting the left boundary.
                 if (spriteRenderer != null)
                 {
                     spriteRenderer.flipX = facingLeft;
                 }
 
-                UpdateSuctionZoneSide();
-
                 leftLimitX = collision.transform.position.x;
             }
 
+            // The enemy definitely reached a new patrol point, so clear the stuck backup timer.
+            ResetStuckTurnCheck();
             return;
         }
 
@@ -791,17 +695,17 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
                 patrol = "GoLeft";
                 facingLeft = true;
 
-                // Keep the sprite art and suction zone correct after hitting the right boundary.
+                // Keep the sprite art correct after hitting the right boundary.
                 if (spriteRenderer != null)
                 {
                     spriteRenderer.flipX = facingLeft;
                 }
 
-                UpdateSuctionZoneSide();
-
                 rightLimitX = collision.transform.position.x;
             }
 
+            // The enemy definitely reached a new patrol point, so clear the stuck backup timer.
+            ResetStuckTurnCheck();
             return;
         }
     }
@@ -812,13 +716,13 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         waiting = false;
         facingLeft = true;
 
-        // This delayed patrol turn also needs to keep the suction zone on the same side.
         if (spriteRenderer != null)
         {
             spriteRenderer.flipX = facingLeft;
         }
 
-        UpdateSuctionZoneSide();
+        // A delayed patrol switch counts as a fresh movement state, so reset the backup timer.
+        ResetStuckTurnCheck();
     }
 
     void SwitchToRight()
@@ -827,12 +731,12 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         waiting = false;
         facingLeft = false;
 
-        // This delayed patrol turn also needs to keep the suction zone on the same side.
         if (spriteRenderer != null)
         {
             spriteRenderer.flipX = facingLeft;
         }
 
-        UpdateSuctionZoneSide();
+        // A delayed patrol switch counts as a fresh movement state, so reset the backup timer.
+        ResetStuckTurnCheck();
     }
 }

@@ -23,6 +23,11 @@ public class FanHeadMovementJJedition : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] SpriteRenderer spriteRenderer;
 
+    [Header("Suction State")]
+    // This turns true while the player is actively inside the suction zone.
+    // While this is true, the FanHead should stop patrolling and stop chase movement.
+    [SerializeField] bool suctionActive = false;
+
     float leftLimitX = float.NegativeInfinity;   // NEW: X of PatrolLeft / LeftMax for THIS enemy
     float rightLimitX = float.PositiveInfinity;  // NEW: X of PatrolRight / RightMax for THIS enemy
 
@@ -36,10 +41,12 @@ public class FanHeadMovementJJedition : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
+
         if (startLeft == true)
         {
             patrol = "GoLeft";
         }
+
         if (startLeft == false)
         {
             patrol = "GoRight";
@@ -56,17 +63,45 @@ public class FanHeadMovementJJedition : MonoBehaviour
         {
             spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         }
+
+        // Match starting visuals with the starting patrol direction
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.flipX = (patrol == "GoLeft");
+        }
+
+        // Match the suction zone position to the starting patrol direction
+        if (suctionZone != null)
+        {
+            Vector3 localPos = suctionZone.localPosition;
+
+            if (patrol == "GoLeft")
+            {
+                localPos.x = Mathf.Abs(suctionOffsetX);
+            }
+            else
+            {
+                localPos.x = -Mathf.Abs(suctionOffsetX);
+            }
+
+            suctionZone.localPosition = localPos;
+        }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (player == null)
+        {
+            return;
+        }
+
         float dist = Vector3.Distance(player.transform.position, transform.position);
         //Measures distance between this object and the player.
         //print("Dist:" + dist);
         //use this for debugging
 
-        // NEW: Checks if player is inside enemypatrol zone (between its left/right limits)
+        // NEW: Checks if player is inside enemy patrol zone (between its left/right limits)
         bool playerWithinPatrol = true; // NEW: default true until we know our limits
                                         //what does "until we know our limits" mean???
         if (player != null)
@@ -82,13 +117,29 @@ public class FanHeadMovementJJedition : MonoBehaviour
             }
         }
 
+        // If suction is currently active, the FanHead should not patrol or chase.
+        // It should stay planted in place while the player is being pulled in.
+        if (suctionActive)
+        {
+            rb.velocity = new Vector2(0f, rb.velocity.y);
+            isChasing = false;
+            waiting = true;
+            patrol = "Wait";
+
+            // Keep animation from staying in the patrol movement state while suction is active
+            if (anim != null)
+            {
+                anim.SetBool("IsMoving", false);
+            }
+
+            return;
+        }
+
         if (isChasing && playerTransform != null)
         {
             waiting = false;
             // Calculate the direction vector from the enemy to the player
             // Vector2 direction = (playerTransform.position - transform.position).normalized;
-
-
 
             //New approach, made it so it detects where the player's x position is and acts accordingly.
             //This also has a bonus of letting the thing patrol in the same direction as the player, if the player
@@ -108,6 +159,15 @@ public class FanHeadMovementJJedition : MonoBehaviour
                 patrol = "GoRight";
             }
 
+            // Keep sprite facing the current chase direction
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.flipX = (patrol == "GoLeft");
+            }
+
+            // Keep the suction zone on the correct side while the fan changes direction
+            UpdateSuctionZoneSide();
+
             // Apply a force or set a velocity to move the enemy
             // For simple movement, setting the velocity is most direct
             //Moved this to after the if statements
@@ -121,14 +181,15 @@ public class FanHeadMovementJJedition : MonoBehaviour
             //gonna need some more time to think about how to do patrols
             rb.velocity = Vector2.zero;
             // Stop moving if not chasing
+
             if (patrol == "GoLeft")
             {
-                rb.velocity = Vector2.left * patrolSpeed;
+                rb.velocity = new Vector2(-patrolSpeed, rb.velocity.y);
             }
 
             if (patrol == "GoRight")
             {
-                rb.velocity = Vector2.right * patrolSpeed;
+                rb.velocity = new Vector2(patrolSpeed, rb.velocity.y);
             }
 
             if (patrol == "Wait" && waiting == false)
@@ -137,6 +198,7 @@ public class FanHeadMovementJJedition : MonoBehaviour
                 {
                     patrol = "GoRight";
                 }
+
                 if (startLeft == false)
                 {
                     patrol = "GoLeft";
@@ -149,7 +211,7 @@ public class FanHeadMovementJJedition : MonoBehaviour
         if (anim != null) // NEW
         {                 // NEW
             bool isMovingHorizontally = Mathf.Abs(rb.velocity.x) > 0.01f; // NEW: small threshold to avoid jitter
-            anim.SetBool("IsMoving", isMovingHorizontally);              // NEW: uses your "isWalking" bool in Screwbot
+            anim.SetBool("IsMoving", isMovingHorizontally);               // NEW: uses your "isWalking" bool in Screwbot
         }                 // NEW
 
         // NEW: Flip sprite based on movement direction so it faces where it's sliding
@@ -162,6 +224,9 @@ public class FanHeadMovementJJedition : MonoBehaviour
             }
         }                           // NEW
                                     //Do we really need to list every addition as "new"?
+
+        // Keep the suction zone lined up with the current facing / patrol side
+        UpdateSuctionZoneSide();
 
         if (!playerWithinPatrol || dist >= detectionDist || dist <= waitDist)
         //If Dist is greater than detection dist OR player is outside this enemy's patrol zone...
@@ -179,7 +244,7 @@ public class FanHeadMovementJJedition : MonoBehaviour
 
             if (player.transform.position.x > transform.position.x) //check if player's position is greater than enemy's position
             {
-                scale.x = Mathf.Abs(scale.x)  * (flip ? -1 : 1);
+                scale.x = Mathf.Abs(scale.x) * (flip ? -1 : 1);
                 transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
             }
             else
@@ -198,6 +263,7 @@ public class FanHeadMovementJJedition : MonoBehaviour
             {
                 waiting = false;
             }
+
             if (isChasing == false)
             {
                 if (patrol == "GoLeft")
@@ -216,21 +282,35 @@ public class FanHeadMovementJJedition : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Ignore patrol boundary turns while suction is active.
+        // The fan should stay locked in place instead of continuing its route.
+        if (suctionActive)
+        {
+            return;
+        }
+
         if (isChasing == false)
         {
             if (collision.gameObject.CompareTag("LeftMax"))
             {
                 rb.velocity = Vector2.zero;
                 patrol = "Wait";
-                Invoke("SwitchToRight", waitTime);
+                Invoke(nameof(SwitchToRight), waitTime);
                 waiting = true;
+
+                // Save this boundary as this FanHead's left patrol limit
+                leftLimitX = collision.transform.position.x;
             }
+
             if (collision.gameObject.CompareTag("RightMax"))
             {
                 rb.velocity = Vector2.zero;
                 patrol = "Wait";
-                Invoke("SwitchToLeft", waitTime);
+                Invoke(nameof(SwitchToLeft), waitTime);
                 waiting = true;
+
+                // Save this boundary as this FanHead's right patrol limit
+                rightLimitX = collision.transform.position.x;
             }
         }
 
@@ -239,51 +319,46 @@ public class FanHeadMovementJJedition : MonoBehaviour
             if (collision.gameObject.CompareTag("LeftMax"))
             {
                 patrol = "GoRight";
+                leftLimitX = collision.transform.position.x;
+                UpdateSuctionZoneSide();
             }
 
             if (collision.gameObject.CompareTag("RightMax"))
             {
                 patrol = "GoLeft";
+                rightLimitX = collision.transform.position.x;
+                UpdateSuctionZoneSide();
             }
         }
-
     }
 
- void SwitchToLeft()
-{
-    patrol = "GoLeft";
-    waiting = false;
-
-    if (spriteRenderer != null)
+    void SwitchToLeft()
     {
-        spriteRenderer.flipX = true;
+        patrol = "GoLeft";
+        waiting = false;
+
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.flipX = true;
+        }
+
+        // Keep the suction zone on the correct side after the patrol turn finishes
+        UpdateSuctionZoneSide();
     }
 
-    if (suctionZone != null)
+    void SwitchToRight()
     {
-        Vector3 localPos = suctionZone.localPosition;
-        localPos.x = Mathf.Abs(suctionOffsetX);
-        suctionZone.localPosition = localPos;
-    }
-}
+        patrol = "GoRight";
+        waiting = false;
 
-void SwitchToRight()
-{
-    patrol = "GoRight";
-    waiting = false;
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.flipX = false;
+        }
 
-    if (spriteRenderer != null)
-    {
-        spriteRenderer.flipX = false;
+        // Keep the suction zone on the correct side after the patrol turn finishes
+        UpdateSuctionZoneSide();
     }
-
-    if (suctionZone != null)
-    {
-        Vector3 localPos = suctionZone.localPosition;
-        localPos.x = -Mathf.Abs(suctionOffsetX);
-        suctionZone.localPosition = localPos;
-    }
-}
 
     void FlipCharacter() // have character face left or right depending on input
     {
@@ -292,5 +367,60 @@ void SwitchToRight()
         Vector2 currentScale = transform.localScale; // get current scale of character
         currentScale.x = -currentScale.x; // flip scale of character
         transform.localScale = currentScale; // set new scale
+    }
+
+    // This gets called by the child suction zone relay when the player enters or exits the suction area.
+    // When active, the FanHead freezes its patrol and stays in place.
+    public void SetSuctionActive(bool active)
+    {
+        suctionActive = active;
+
+        if (suctionActive)
+        {
+            isChasing = false;
+            waiting = true;
+            patrol = "Wait";
+            rb.velocity = new Vector2(0f, rb.velocity.y);
+
+            // Cancel any delayed patrol switch that was queued up from a boundary hit.
+            CancelInvoke(nameof(SwitchToLeft));
+            CancelInvoke(nameof(SwitchToRight));
+        }
+        else
+        {
+            waiting = false;
+
+            // Resume whichever patrol direction the fan is currently facing
+            if (spriteRenderer != null)
+            {
+                patrol = spriteRenderer.flipX ? "GoLeft" : "GoRight";
+            }
+            else
+            {
+                patrol = startLeft ? "GoLeft" : "GoRight";
+            }
+        }
+    }
+
+    // Keeps the child suction zone positioned on the side the fan is currently facing.
+    void UpdateSuctionZoneSide()
+    {
+        if (suctionZone == null)
+        {
+            return;
+        }
+
+        Vector3 localPos = suctionZone.localPosition;
+
+        if (patrol == "GoLeft")
+        {
+            localPos.x = Mathf.Abs(suctionOffsetX);
+        }
+        else if (patrol == "GoRight")
+        {
+            localPos.x = -Mathf.Abs(suctionOffsetX);
+        }
+
+        suctionZone.localPosition = localPos;
     }
 }

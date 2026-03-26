@@ -157,7 +157,7 @@ public class FanHeadMovement : MonoBehaviour
             if (Mathf.Abs(rb.velocity.x) > 0.01f) // NEW: only flip when actually moving
             {
                 // NEW: Assume default art faces RIGHT; flip when moving LEFT
-                spriteRenderer.flipX = rb.velocity.x < 0f; // NEW
+                //spriteRenderer.flipX = rb.velocity.x > 0f; // NEW
             }
         }                           // NEW
                                     //Do we really need to list every addition as "new"?
@@ -174,11 +174,12 @@ public class FanHeadMovement : MonoBehaviour
         {
             isChasing = true;
             playerTransform = player.transform;
+
             Vector3 scale = transform.localScale;
 
             if (player.transform.position.x > transform.position.x) //check if player's position is greater than enemy's position
             {
-                scale.x = Mathf.Abs(scale.x)  * (flip ? -1 : 1);
+                scale.x = Mathf.Abs(scale.x) * (flip ? -1 : 1);
                 transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
             }
             else

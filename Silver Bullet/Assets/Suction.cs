@@ -4,37 +4,28 @@ using UnityEngine;
 
 public class Suction : MonoBehaviour
 {
-    public GameObject fanHead;
-    public Rigidbody2D rb;
+
+    [SerializeField] float suctionDist;
     [SerializeField] float suctionStrength;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            float speed = suctionStrength * Time.deltaTime;
-            rb.velocity = Vector2.MoveTowards(transform.position, fanHead.transform.position, speed);
-        }
-    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            float speed = suctionStrength * Time.deltaTime;
-            rb.velocity = Vector2.MoveTowards(transform.position, fanHead.transform.position, speed);
-        }
-    }
+        Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (rb != null)
+        {
+            Vector2 distanceToFanHead = transform.position - collision.transform.position; //calculate distance from object to fan
+
+            float distance = distanceToFanHead.magnitude; //calculates distance and force strength
+
+            if (distance < suctionDist)
+            {
+                Vector3 normalizedDirection = distanceToFanHead.normalized; // Normalize the direction vector
+
+                float forceMagnitude = suctionStrength * (distance * distance); // Calculate force magnitude, stronger when closer
+
+                rb.AddForce(normalizedDirection * forceMagnitude); // Apply force to the rigidbody
+            }
+        }
     }
 }

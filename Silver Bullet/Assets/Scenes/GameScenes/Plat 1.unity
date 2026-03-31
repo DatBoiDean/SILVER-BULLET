@@ -11072,7 +11072,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -99
   m_Sprite: {fileID: 21300000, guid: 515b3ba7ad180da40a0e02f0008b3a66, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -13196,7 +13196,7 @@ Tilemap:
       m_TileIndex: 11
       m_TileSpriteIndex: 9
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 1
+      m_TileColorIndex: 2
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741827
@@ -17107,10 +17107,10 @@ Tilemap:
   m_TileColorArray:
   - m_RefCount: 509
     m_Data: {r: 1, g: 1, b: 1, a: 1}
+  - m_RefCount: 0
+    m_Data: {r: 3.9323e-41, g: 3.9323e-41, b: 3.9323e-41, a: 3.9323e-41}
   - m_RefCount: 1
     m_Data: {r: 0.72572166, g: 0.41161552, b: 0.41394457, a: 1}
-  - m_RefCount: 0
-    m_Data: {r: 3.9878e-41, g: 3.9878e-41, b: 3.9878e-41, a: 3.9878e-41}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}

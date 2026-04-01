@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4683570445797585097}
   - component: {fileID: 3018892234004955389}
   m_Layer: 6
-  m_Name: SawBladeCharacterIdleextraFlattened1
+  m_Name: SawBot
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 1021548615
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e1ea04c446269be47ae5754c768f7889, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3ab2e6bd66a2f64ea11afd2182c4036, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,7 +100,7 @@ Animator:
   m_GameObject: {fileID: 5020822955256881082}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7f8f257ece4cb014da36635a70eff031, type: 2}
+  m_Controller: {fileID: 9100000, guid: 019757c5d50184347bc4a21ebf9422b8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -120,12 +120,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 5020822955256881082}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca56131e3d20e5146849901c7ab52d36, type: 3}
+  m_Script: {fileID: 11500000, guid: c00a0ffc601f04f4f9247bf478b20de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyHealth: 12
-  maxEnemyHealth: 13
-  amount: 4
+  detectionDist: 0
+  waitDist: 0
+  startLeft: 0
+  player: {fileID: 0}
+  moveSpeed: 3
+  patrolSpeed: 0
+  waitTime: 0
+  isChasing: 0
+  Stuck: 0
+  feet: {fileID: 0}
+  stuckTurnTime: 3
+  stuckMinXChange: 0.02
+  damageAmount: 1
+  attackHitboxTrigger: {fileID: 0}
+  playerCharacter:
+    serializedVersion: 2
+    m_Bits: 0
+  patrol: 
+  waiting: 0
+  direction: {x: 0, y: 0}
+  sawBotAttackPoint: {fileID: 0}
+  radius: 0
+  anim: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  leftSawTransform: {fileID: 0}
+  rightSawTransform: {fileID: 0}
+  isMovingParam: IsMoving
+  inRangeParam: InRange
+  attackStateName: AttackAnimationSaw
 --- !u!114 &8018403749707389389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,38 +161,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 5020822955256881082}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53b1609b8f237d24e81eb632f37c58fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 51ffb5e5546b56743b3bac7e0c809ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionDist: 2.38
-  waitDist: 1.36
+  detectionDist: 0
+  waitDist: 0
   startLeft: 0
   player: {fileID: 0}
-  moveSpeed: 1.8
-  patrolSpeed: 2.18
-  waitTime: 0.09
+  moveSpeed: 3
+  patrolSpeed: 0
+  waitTime: 0
   isChasing: 0
   Stuck: 0
   feet: {fileID: 0}
-  stuckTurnTime: 1
-  stuckMinXChange: 0.02
-  damageAmount: 2
-  attackHitboxTrigger: {fileID: 5605932981272505700}
-  playerCharacter:
-    serializedVersion: 2
-    m_Bits: 128
+  sawDelay: 0
   patrol: 
   waiting: 0
   direction: {x: 0, y: 0}
-  sawBotAttackPoint: {fileID: 5502730204829606029}
-  radius: 1.23
-  anim: {fileID: 719634845720141138}
-  spriteRenderer: {fileID: 7145363479439799978}
-  leftSawTransform: {fileID: 0}
-  rightSawTransform: {fileID: 0}
-  isMovingParam: IsMoving
-  inRangeParam: InRange
-  attackStateName: AttackAnimationSaw
+  sawBotAttackPoint: {fileID: 0}
+  radius: 0
+  playerCharacter:
+    serializedVersion: 2
+    m_Bits: 0
+  anim: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  sinkTriggerName: Sink
 --- !u!50 &4683570445797585097
 Rigidbody2D:
   serializedVersion: 4

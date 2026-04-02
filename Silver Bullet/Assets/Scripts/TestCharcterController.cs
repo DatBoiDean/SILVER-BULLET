@@ -25,6 +25,11 @@ public class TestCharcterController : MonoBehaviour
 
     void Update()
     {
+        //Evan's To Do:
+            //Constant downward Graivty
+            //Gravity gets changed when player is jumping
+            //Gravity gradually returns to original over jump period, immediate reset when player releases jump
+            //Evan: Keep referencing Move04.cs from Game 370 to understand how it's all set up 
         if (Input.GetKeyUp(KeyCode.Space))
         {
             dynJumpForce = jumpForce;
@@ -42,7 +47,7 @@ public class TestCharcterController : MonoBehaviour
                 if (dynJumpForce > 0)
                 {
                 testRigidBody.velocity = Vector2.up * dynJumpForce;
-                dynJumpForce = dynJumpForce - (jumpForce / 600);
+                dynJumpForce = dynJumpForce + (jumpForce / 600);
                 }
                 else
                 {

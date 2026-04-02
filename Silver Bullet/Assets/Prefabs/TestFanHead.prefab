@@ -78,12 +78,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bfe8eabd258145745945b6f3df73f9cd, type: 3}
-  m_Color: {r: 0.227184, g: 0.21813813, b: 0.8113208, a: 1}
+  m_Sprite: {fileID: 21300000, guid: fdb9ae575a2bc8543a92aaf7132ce7aa, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3, y: 3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -126,7 +126,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 3, y: 3}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 3, y: 3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -170,17 +170,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 7743873617329329634}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa06dcf2615ca18408ffb8cba12fb91c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b8c1dd66e6cc7343bb09cf36572e722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionDist: 5
-  waitDist: 2
+  detectionDist: 0
+  waitDist: 0
   startLeft: 0
-  patrolSpeed: 3
-  waitTime: 5
+  patrolSpeed: 0
+  waitTime: 0
   isChasing: 0
   player: {fileID: 0}
-  moveSpeed: 2
+  moveSpeed: 3
   patrol: 
   waiting: 0
   direction: {x: 0, y: 0}
@@ -213,7 +213,6 @@ GameObject:
   - component: {fileID: 6118652041987248132}
   - component: {fileID: 1743225865583451284}
   - component: {fileID: 3261251267614361434}
-  - component: {fileID: 960512414674292822}
   m_Layer: 6
   m_Name: Suction Zone
   m_TagString: SuctionZone
@@ -353,15 +352,3 @@ PointEffector2D:
   m_ForceMode: 0
   m_Drag: 0
   m_AngularDrag: 0
---- !u!114 &960512414674292822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8433387578493723350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4d89883efe194d449331695f2b289fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

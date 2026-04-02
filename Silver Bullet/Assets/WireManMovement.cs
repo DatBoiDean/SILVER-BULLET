@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class WireManMovement : MonoBehaviour
 {
-    [SerializeField] float moveSpeed;
+    [SerializeField] float moveSpeed = 5f;
     [SerializeField] float jumpForce;
     [SerializeField] float attackRange;
 
-    [SerializeField] Rigidbody2D rb;
+    public Rigidbody2D rb;
     [SerializeField] Animator animator;
 
     public GameObject player;

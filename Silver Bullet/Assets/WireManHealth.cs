@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class WireManHealth : MonoBehaviour
 {
     public int currentEnemyHealth;
     public int maxEnemyHealth;
     public int amount;
-    [SerializeField] bool isWire;
-    // Start is called before the first frame update
+    public Rigidbody2D rb;
+
     void Start()
     {
         currentEnemyHealth = maxEnemyHealth;
@@ -17,16 +17,9 @@ public class EnemyHealth : MonoBehaviour
     public void EnemyTakeDamage(int amount)
     {
         currentEnemyHealth -= amount;
-        if (currentEnemyHealth <= 0) {
-
-            if (isWire == false)
-            {
-                Destroy(gameObject);
-            }
-        }
-        else 
-        { 
-            
+        if (currentEnemyHealth <= 0)
+        {
+            rb.velocity = Vector2.zero;
         }
     }
 }

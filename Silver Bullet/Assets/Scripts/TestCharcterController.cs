@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//To Do: Pressure Plates, and figure out how to make variations for the existing traps to help players apply what they learn from the first one
 
 public class TestCharcterController : MonoBehaviour
 {
+    public float dynJumpForce;
     public float speed = 1;
     public float jumpForce = 1;
     private float move;
@@ -13,42 +15,67 @@ public class TestCharcterController : MonoBehaviour
     bool isFacingRight = true;
     [SerializeField] Animator _animator; 
     int crouching = 1;
-    //ERA: Rudimentary "no move while preparing crouch jump" thing please god i want this to work
+    bool jumping = false;
 
     void Start()
     {
         testRigidBody = GetComponent<Rigidbody2D>();
+        dynJumpForce = jumpForce;
     }
 
     void Update()
     {
-        //so help me god if this fucking works.
-        if (Input.GetKeyDown(KeyCode.Space)) // jump
+        if (Input.GetKeyUp(KeyCode.Space))
         {
-            if (isGrounded == true)
+            dynJumpForce = jumpForce;
+            jumping = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Jump Key pressed");
+        }
+        //so help me god if this fucking works.
+        if (Input.GetKey(KeyCode.Space)) // jump
+        {
+            if (jumping == true)
             {
-                if(Input.GetKey(KeyCode.S))
-                //ERA: Implementing a rudimentary crouch jump to get higher jumps
+                if (dynJumpForce > 0)
                 {
-                testRigidBody.velocity = Vector2.up * jumpForce * 1.5f;
-                Debug.Log("Jump Key pressed");
-
-                // REMOVED: Invoke to delayed jump bool setter (caused flapping/lag and stuck states)
-                // Invoke("jumpAnim", 0.5f); //add variable for time (0.5f for now)
-
-                // NEW (minimal): fire a one-shot trigger to enter Jump state without needing isJumping bool
-                _animator.SetTrigger("JumpTrigger");
+                testRigidBody.velocity = Vector2.up * dynJumpForce;
+                dynJumpForce = dynJumpForce - (jumpForce / 600);
                 }
-
                 else
                 {
-                testRigidBody.velocity = Vector2.up * jumpForce;
+                    //shamone
+                }
+            }
+            if (isGrounded == true)
+            {
+                jumping = true;
+                // if(Input.GetKey(KeyCode.S))
+                // //ERA: Implementing a rudimentary crouch jump to get higher jumps
+                // {
+                // testRigidBody.velocity = Vector2.up * jumpForce * 1.5f;
+                // Debug.Log("Jump Key pressed");
+
+                // // REMOVED: Invoke to delayed jump bool setter (caused flapping/lag and stuck states)
+                // // Invoke("jumpAnim", 0.5f); //add variable for time (0.5f for now)
+
+                // // NEW (minimal): fire a one-shot trigger to enter Jump state without needing isJumping bool
+                // _animator.SetTrigger("JumpTrigger");
+                // }
+
+                // else
+                // {
+                //COmmented this out in case I want to deal with it later. For now, I'm just boosting the jump force
+                        //so it goes to its High Jump height
+                    //I'm stupid, I can just modify this to reflect the feedback now, duh.
                 //ERA: Normal Jump, without pressing S
-                Debug.Log("Jump Key pressed");
+                
 
                 
                 _animator.SetTrigger("JumpTrigger");
-                }
+                //}
             }
         }
     }
@@ -85,6 +112,8 @@ public class TestCharcterController : MonoBehaviour
         {
             _animator.SetBool("isRunning", false);
         }
+
+        
     }
 
     void FlipCharacter() // have character face left or right depending on input

@@ -76,9 +76,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1492900556885310369}
+  - component: {fileID: 6331124015339857526}
   - component: {fileID: 8805001103175705496}
   - component: {fileID: 8893022857443268861}
-  - component: {fileID: 6331124015339857526}
   - component: {fileID: 6160076110977145742}
   - component: {fileID: 2106024172429248124}
   - component: {fileID: 1053060233612658289}
@@ -109,6 +109,24 @@ Transform:
   - {fileID: 2208056197797477943}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6331124015339857526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4114649912291347994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ea5d63cdac5ba14891cec04a46103bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dynJumpForce: 0
+  speed: 7.5
+  jumpForce: 9
+  testRigidBody: {fileID: 8893022857443268861}
+  isGrounded: 1
+  _animator: {fileID: 1053060233612658289}
 --- !u!212 &8805001103175705496
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -188,23 +206,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &6331124015339857526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4114649912291347994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ea5d63cdac5ba14891cec04a46103bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 7.5
-  jumpForce: 6
-  testRigidBody: {fileID: 8893022857443268861}
-  isGrounded: 1
-  _animator: {fileID: 1053060233612658289}
 --- !u!114 &6160076110977145742
 MonoBehaviour:
   m_ObjectHideFlags: 0

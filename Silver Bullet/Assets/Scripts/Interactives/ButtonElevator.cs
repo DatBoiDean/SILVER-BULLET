@@ -44,6 +44,9 @@ public class ButtonElevator : MonoBehaviour
 
         if(active == true)
         {
+            if (UpInstead == false)
+            //If this lowers instead of raises, follow these rules
+            {
            if(target.transform.position.y <= vertTarget.y)
            //If the vertical position of the platform is equal or lower than its target point...
             {
@@ -52,17 +55,26 @@ public class ButtonElevator : MonoBehaviour
             }
             else
             {
-                if (UpInstead == false)
                 //If this goes down
-                {
                 target.transform.position = target.transform.position + new Vector3(0f, moveSpeed * -1, 0f);
-                    //Gradually lowers based off of MoveSpeed
-                }
-                else
-                //If it instead goes up
-                {
-                    target.transform.position = target.transform.position + new Vector3(0f, moveSpeed, 0f);
-                }
+                //Gradually lowers based off of MoveSpee
+            }
+            }
+            else
+            //If it instead raises up
+            {
+                if(target.transform.position.y >= vertTarget.y)
+           //If the vertical position of the platform is equal or greater than its target point...
+            {
+                active = false;
+                //Stop moving
+            }
+            else
+            {
+                //If this goes down
+                target.transform.position = target.transform.position + new Vector3(0f, moveSpeed, 0f);
+                //Gradually raises based off of MoveSpee
+            }
             }
         }
     }

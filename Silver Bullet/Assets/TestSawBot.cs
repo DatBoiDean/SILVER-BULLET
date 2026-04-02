@@ -34,10 +34,11 @@ public class TestSawBot : MonoBehaviour
     [SerializeField] Animator anim;  // NEW: auto finds animator in start
 
     // NEW: SpriteRenderer reference so we can flip along the X axis to face the player
-    [SerializeField] SpriteRenderer spriteRenderer; // NEW: optional – auto-found in Start if left empty
+    [SerializeField] SpriteRenderer spriteRenderer; // NEW: optional ï¿½ auto-found in Start if left empty
 
     // NEW: Name of the Trigger parameter in the Animator that plays the sink animation
-    [SerializeField] string sinkTriggerName = "Sink"; // NEW: matches my "Sink" trigger in the Screwbot controller
+    //[SerializeField] string sinkTriggerName = "Sink"; // NEW: matches my "Sink" trigger in the Screwbot controller
+        //Commented out on Sawbot - unneeded
 
     // NEW: Per-enemy patrol zone limits (set when this enemy hits its PatrolLeft/PatrolRight)
     float leftLimitX = float.NegativeInfinity;   // NEW: X of PatrolLeft / LeftMax for THIS enemy

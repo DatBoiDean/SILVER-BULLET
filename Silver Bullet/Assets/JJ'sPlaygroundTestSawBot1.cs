@@ -8,7 +8,7 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
     [SerializeField] float detectionDist;
     [SerializeField] float waitDist;
     [SerializeField] bool startLeft;
-    public GameObject player;
+    public GameObject player  = GameObject.FindWithTag("Player");
     public float moveSpeed = 3f;
     [SerializeField] float patrolSpeed;
     [SerializeField] float waitTime;
@@ -142,7 +142,7 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        player = GameObject.Find("Player");
+        player = GameObject.FindWithTag("Player");
 
         if (startLeft == true)
         {

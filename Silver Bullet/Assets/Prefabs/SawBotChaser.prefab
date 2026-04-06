@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51ffb5e5546b56743b3bac7e0c809ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionDist: 0
+  detectionDist: 99
   waitDist: 0
   startLeft: 0
   player: {fileID: 0}

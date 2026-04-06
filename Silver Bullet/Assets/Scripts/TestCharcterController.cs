@@ -15,7 +15,7 @@ public class TestCharcterController : MonoBehaviour
     bool isFacingRight = true;
     [SerializeField] Animator _animator; 
     int crouching = 1;
-    bool jumping = false;
+    public bool jumping = false;
 
     void Start()
     {
@@ -46,8 +46,8 @@ public class TestCharcterController : MonoBehaviour
             {
                 if (dynJumpForce > 0)
                 {
-                testRigidBody.velocity = Vector2.up * dynJumpForce;
-                dynJumpForce = dynJumpForce + (jumpForce / 600);
+                testRigidBody.velocity = Vector2.up * jumpForce;
+                dynJumpForce = dynJumpForce - (jumpForce / 275);
                 }
                 else
                 {

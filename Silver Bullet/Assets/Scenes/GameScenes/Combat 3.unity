@@ -11976,6 +11976,7 @@ MonoBehaviour:
   target: {fileID: 1009864425}
   cooldown: 0.1
   limit: 3
+  limitCounter: 0
   active: 0
 --- !u!1 &1005596679
 GameObject:
@@ -21732,11 +21733,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.12
+      value: -22.94
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.71
+      value: -6.78
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -21777,6 +21778,18 @@ PrefabInstance:
     - target: {fileID: 4566217908210092935, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331124015339857526, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: gravity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331124015339857526, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: jumpForce
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331124015339857526, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: jumpFactor
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

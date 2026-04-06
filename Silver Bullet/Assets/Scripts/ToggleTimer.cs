@@ -5,7 +5,8 @@ using UnityEngine;
 public class ToggleTimer : MonoBehaviour
 {
     [SerializeField] bool start;
-    [SerializeField] float timer;
+    [SerializeField] float timeron;
+    [SerializeField] float timeroff;
     [SerializeField] BoxCollider2D target;
     [SerializeField] SpriteRenderer target2;
     // Start is called before the first frame update
@@ -32,7 +33,7 @@ public class ToggleTimer : MonoBehaviour
         //Debug.Log(this + " is On");
         target.enabled = true;
         target2.enabled = true;
-        Invoke("Off", timer);
+        Invoke("Off", timeron);
         
     }
     
@@ -41,7 +42,7 @@ public class ToggleTimer : MonoBehaviour
         //Debug.Log(this + " is Off");
         target.enabled = false;
         target2.enabled = false;
-        Invoke("On", timer);
+        Invoke("On", timeroff);
         
     }
 }

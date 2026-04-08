@@ -6,7 +6,6 @@ public class WireManMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float jumpForce;
-    [SerializeField] float attackRange;
     [SerializeField] float stunTimer;
 
     public Rigidbody2D rb;

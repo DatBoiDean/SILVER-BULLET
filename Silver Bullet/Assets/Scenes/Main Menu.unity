@@ -1121,10 +1121,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1718987376}
+  - component: {fileID: 1718987380}
   - component: {fileID: 1718987379}
   - component: {fileID: 1718987378}
   - component: {fileID: 1718987377}
-  - component: {fileID: 1718987380}
   m_Layer: 5
   m_Name: Retry Button
   m_TagString: Untagged
@@ -1247,6 +1247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 0}
+  level: 3
 --- !u!1 &1830407015
 GameObject:
   m_ObjectHideFlags: 0

@@ -308,18 +308,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5612963924853655920}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4c32f7042404da4596d2c167684586a, type: 3}
+  m_Script: {fileID: 11500000, guid: f0312320b30cb4146b6d9d2857739aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabRange: 5
-  grabZone: {fileID: 4114649912291347994, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
-  player: {fileID: 0}
-  grabResetTimer: 0
-  damageAmount: 1
-  anim: {fileID: 0}
-  normalGrabRange: 5
-  attackDuration: 3
-  attackCooldown: 2
+  currentEnemyHealth: 19
+  maxEnemyHealth: 0
+  amount: 0
+  rb: {fileID: 2604800611531401552}
 --- !u!114 &6101247637501539532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,28 +324,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5612963924853655920}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 101961bf215835047873042f075407c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a3be012e5ffb3c4faa5a62493203e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpForce: 5
+  jumpForce: 0
   stunTimer: 0
-  detectionRange: 5
-  groundCheck: {fileID: 0}
-  groundCheckRadius: 0.2
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  jumpCooldown: 1
-  rb: {fileID: 0}
+  rb: {fileID: 2604800611531401552}
   animator: {fileID: 0}
-  player: {fileID: 4114649912291347994, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
-  wireManAttack: {fileID: 5224713440804446040}
-  visualRoot: {fileID: 0}
-  spriteRenderer: {fileID: 0}
-  suctionZone: {fileID: 0}
-  suctionOffsetX: 1.5
-  suctionActive: 0
+  player: {fileID: 0}
 --- !u!114 &4681436166130383738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,10 +342,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5612963924853655920}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa742177caccd92459ae2ddcb82f63ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 0bdaf1c5bf67b12499f5a38ac303e64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 1
-  amount: 0
-  rb: {fileID: 2604800611531401552}
+  grabRange: 5
+  grabZone: {fileID: 4872233764967150688}
+  player: {fileID: 0}
+  grabResetTimer: 0
+  damageAmount: 1

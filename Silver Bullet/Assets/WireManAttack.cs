@@ -53,7 +53,7 @@ public class WireManAttack : MonoBehaviour
             grabRange = -10f; //prevents grab zone from being active next to player
             grabResetTimer = Time.time;
 
-            if (grabResetTimer >= 10f)
+            if (grabResetTimer >= 5f)
             {
                 grabRange = 5f;
             }

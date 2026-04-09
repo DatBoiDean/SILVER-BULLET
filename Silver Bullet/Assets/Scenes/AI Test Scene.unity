@@ -810,6 +810,7 @@ MonoBehaviour:
   grabZone: {fileID: 1933344572}
   player: {fileID: 38306616}
   grabResetTimer: 0
+  damageAmount: 1
 --- !u!1001 &562297231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6860,7 +6861,7 @@ PointEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_ForceMagnitude: -150
+  m_ForceMagnitude: -500
   m_ForceVariation: 0
   m_DistanceScale: 15
   m_ForceSource: 0

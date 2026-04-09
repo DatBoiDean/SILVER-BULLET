@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class TryAgain : MonoBehaviour
 {
     public Button button;
+    [SerializeField] int level;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,6 @@ public class TryAgain : MonoBehaviour
     void Buttoned()
     {
         Debug.Log("Retry fired from " + gameObject.name);
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(level);
     }
 }

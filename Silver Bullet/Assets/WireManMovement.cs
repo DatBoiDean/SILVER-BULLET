@@ -13,6 +13,8 @@ public class WireManMovement : MonoBehaviour
 
     public GameObject player;
 
+    bool isFacingRight;
+
     
     // Start is called before the first frame update
     void Start()
@@ -28,22 +30,42 @@ public class WireManMovement : MonoBehaviour
         if (player != null)
         {
             rb.velocity = playerDist * moveSpeed;
-        }
 
-        var enemyHealthComponent = GetComponent<EnemyHealth>();
-
-        if (enemyHealthComponent.currentEnemyHealth <= 0)
-        {
-            rb.velocity = Vector2.zero;
-            stunTimer += 1f;
-            if (stunTimer >= 300f) 
+            // If player is to the left and enemy is facing right
+            if (player.transform.position.x < transform.position.x && isFacingRight)
             {
-                rb.velocity = playerDist * moveSpeed;
-                enemyHealthComponent.currentEnemyHealth = enemyHealthComponent.maxEnemyHealth;
-                stunTimer = 0f;
+                FlipCharacter();
+                isFacingRight = false;
             }
+            // If player is to the right and enemy is facing left
+            else if (player.transform.position.x > transform.position.x && !isFacingRight)
+            {
+                FlipCharacter();
+                isFacingRight = true;
+            }
+
+            var enemyHealthComponent = GetComponent<EnemyHealth>();
+
+            if (enemyHealthComponent.currentEnemyHealth <= 0)
+            {
+                rb.velocity = Vector2.zero;
+                stunTimer += 1f;
+                if (stunTimer >= 300f)
+                {
+                    rb.velocity = playerDist * moveSpeed;
+                    enemyHealthComponent.currentEnemyHealth = enemyHealthComponent.maxEnemyHealth;
+                    stunTimer = 0f;
+                }
+            }
+
         }
 
-        
+        void FlipCharacter() // have character face left or right depending on input
+        {
+            Vector2 currentScale = transform.localScale; // get current scale of character
+            currentScale.x = -currentScale.x; // flip scale of character
+            transform.localScale = currentScale; // set new scale
+        }
+
     }
 }

@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int currentHealth = 3;
-    public int maxHealth;
+    public int currentHealth;
+    public int maxHealth = 3;
     public Slider healthBar;
     [SerializeField] float invulnTime;
     public float invulnWait;

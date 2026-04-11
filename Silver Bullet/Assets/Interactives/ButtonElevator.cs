@@ -10,7 +10,7 @@ public class ButtonElevator : MonoBehaviour
 //FUCKING DUMBASS ENGINE I FUCKING HATE VIBE CODERS I FUCKING HATE VIBE CODERS I FUCKING HATE VIBE CODERS
 {
     public GameObject player;
-    [SerializeField] float useRange;
+    [SerializeField] float useRange = 2;
     [SerializeField] GameObject target;
     [SerializeField] Vector3 vertTarget;
     [SerializeField] float moveSpeed;

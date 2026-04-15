@@ -6,11 +6,9 @@ public class ButtonElevator : MonoBehaviour
 //DESPITE THIS SCRIPT'S NAME
 //THIS CAN ALSO WORK FOR DOORS THAT GO UP AND DOWN
 //HAVE FUN!
-//What the fuck do you mean "this cant be found" my brother in christ its right HERE
-//FUCKING DUMBASS ENGINE I FUCKING HATE VIBE CODERS I FUCKING HATE VIBE CODERS I FUCKING HATE VIBE CODERS
 {
     public GameObject player;
-    [SerializeField] float useRange = 2;
+    [SerializeField] float useRange;
     [SerializeField] GameObject target;
     [SerializeField] Vector3 vertTarget;
     [SerializeField] float moveSpeed;

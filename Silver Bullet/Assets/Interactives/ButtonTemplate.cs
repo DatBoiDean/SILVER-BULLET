@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//hate i have to add a comment and re-save things to get it to recognize
-//THE SHIT THATS BEEN IN HERE
+
 public class ButtonTemplate : MonoBehaviour
 {
     public GameObject player;

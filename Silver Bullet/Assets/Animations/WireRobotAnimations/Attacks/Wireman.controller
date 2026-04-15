@@ -11,7 +11,11 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 4430249772955406805}
+<<<<<<< HEAD
     m_Position: {x: 360, y: 100, z: 0}
+=======
+    m_Position: {x: 200, y: 0, z: 0}
+>>>>>>> parent of e234570 (Revert "JJSPplaygroundchanges")
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

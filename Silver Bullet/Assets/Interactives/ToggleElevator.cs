@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonElevator : MonoBehaviour
+public class ToggleElevator : MonoBehaviour
 //DESPITE THIS SCRIPT'S NAME
 //THIS CAN ALSO WORK FOR DOORS THAT GO UP AND DOWN
 //HAVE FUN!
@@ -12,7 +12,8 @@ public class ButtonElevator : MonoBehaviour
     public GameObject player;
     [SerializeField] float useRange = 2;
     [SerializeField] GameObject target;
-    [SerializeField] Vector3 vertTarget;
+    [SerializeField] Vector3 downTarget;
+    [SerializeField] Vector3 upTarget;
     [SerializeField] float moveSpeed;
     //KEEP THIS SHIT L O W
         //LIKE, BELOW 0.1 LOW  
@@ -49,10 +50,11 @@ public class ButtonElevator : MonoBehaviour
             if (UpInstead == false)
             //If this lowers instead of raises, follow these rules
             {
-           if(target.transform.position.y <= vertTarget.y)
+           if(target.transform.position.y <= downTarget.y)
            //If the vertical position of the platform is equal or lower than its target point...
             {
                 active = false;
+                UpInstead = true;
                 //Stop moving
             }
             else
@@ -65,10 +67,11 @@ public class ButtonElevator : MonoBehaviour
             else
             //If it instead raises up
             {
-                if(target.transform.position.y >= vertTarget.y)
+                if(target.transform.position.y >= upTarget.y)
            //If the vertical position of the platform is equal or greater than its target point...
             {
                 active = false;
+                UpInstead = false;
                 //Stop moving
             }
             else

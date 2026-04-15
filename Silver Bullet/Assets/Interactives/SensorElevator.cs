@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//buh
 public class SensorElevator : MonoBehaviour
 //DESPITE THIS SCRIPT'S NAME
 //THIS CAN ALSO WORK FOR DOORS THAT GO UP AND DOWN

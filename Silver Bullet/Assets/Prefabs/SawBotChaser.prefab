@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6821559206587534863}
   - component: {fileID: 7145363479439799978}
+  - component: {fileID: 1118552795538210297}
   - component: {fileID: 719634845720141138}
   - component: {fileID: 8922952141989458884}
   - component: {fileID: 8018403749707389389}
@@ -90,6 +91,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1118552795538210297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5020822955256881082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55579b0fb162f514f9d98c9939d1d43f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentEnemyHealth: 0
+  maxEnemyHealth: 1
+  amount: 0
+  isWire: 0
 --- !u!95 &719634845720141138
 Animator:
   serializedVersion: 5
@@ -143,7 +160,7 @@ MonoBehaviour:
   patrol: 
   waiting: 0
   direction: {x: 0, y: 0}
-  sawBotAttackPoint: {fileID: 0}
+  sawBotAttackPoint: {fileID: 5502730204829606029}
   radius: 0
   anim: {fileID: 0}
   spriteRenderer: {fileID: 0}

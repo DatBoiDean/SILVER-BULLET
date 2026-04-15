@@ -76,12 +76,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1492900556885310369}
-  - component: {fileID: 5259541179489325846}
   - component: {fileID: 6331124015339857526}
+  - component: {fileID: 2106024172429248124}
+  - component: {fileID: 5259541179489325846}
+  - component: {fileID: 6160076110977145742}
   - component: {fileID: 8805001103175705496}
   - component: {fileID: 8893022857443268861}
-  - component: {fileID: 6160076110977145742}
-  - component: {fileID: 2106024172429248124}
   - component: {fileID: 1053060233612658289}
   - component: {fileID: 3879200772662883484}
   - component: {fileID: 6069951202461910007}
@@ -110,20 +110,6 @@ Transform:
   - {fileID: 2208056197797477943}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5259541179489325846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4114649912291347994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 773895a929c9c8d42abf8344084d42ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gettingCrushed: 0
-  grounded: 0
 --- !u!114 &6331124015339857526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,11 +124,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dynJumpForce: 0
   speed: 7.5
-  jumpForce: 9
+  jumpForce: 7
   testRigidBody: {fileID: 8893022857443268861}
   isGrounded: 1
   _animator: {fileID: 1053060233612658289}
   jumping: 0
+--- !u!114 &2106024172429248124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4114649912291347994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ef6050fa8b670c45841f51785c19da4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 3
+  healthBar: {fileID: 5105081214598158887}
+  invulnTime: 0
+  invulnWait: 0
+  invuln: 0
+  fear: 0
+--- !u!114 &5259541179489325846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4114649912291347994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 773895a929c9c8d42abf8344084d42ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gettingCrushed: 0
+  grounded: 0
+--- !u!114 &6160076110977145742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4114649912291347994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656afe50355eaab40b1292f57c9e6128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPoint: {fileID: 6119025486942758768}
+  radius: 0.5
+  enemies:
+    serializedVersion: 2
+    m_Bits: 64
+  damage: 1
+  _animator: {fileID: 1053060233612658289}
 --- !u!212 &8805001103175705496
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -222,44 +260,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &6160076110977145742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4114649912291347994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 656afe50355eaab40b1292f57c9e6128, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackPoint: {fileID: 6119025486942758768}
-  radius: 0.5
-  enemies:
-    serializedVersion: 2
-    m_Bits: 64
-  damage: 1
-  _animator: {fileID: 1053060233612658289}
---- !u!114 &2106024172429248124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4114649912291347994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ef6050fa8b670c45841f51785c19da4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 3
-  healthBar: {fileID: 5105081214598158887}
-  invulnTime: 0
-  invulnWait: 0
-  invuln: 0
-  fear: 0
 --- !u!95 &1053060233612658289
 Animator:
   serializedVersion: 5

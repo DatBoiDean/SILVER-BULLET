@@ -15164,7 +15164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 5020822955256881082, guid: 292d55b42f170dd4e91d7c7bfedf8adb, type: 3}
   target: {fileID: 1009864425}
-  cooldown: 0.1
+  cooldown: 0.3
   limit: 15
   limitCounter: 0
   active: 0
@@ -26965,11 +26965,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.22
+      value: 17.31
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.6
+      value: 11.43
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.z

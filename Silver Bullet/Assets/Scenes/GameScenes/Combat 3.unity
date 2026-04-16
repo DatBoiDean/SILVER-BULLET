@@ -15185,7 +15185,7 @@ MonoBehaviour:
   target: {fileID: 243303478}
   vertTarget: {x: 0, y: 4, z: 0}
   moveSpeed: 0.05
-  UpInstead: 0
+  UpInstead: 1
   active: 0
 --- !u!1 &1005596679
 GameObject:
@@ -26965,11 +26965,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.84
+      value: 20.22
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.54
+      value: 10.6
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.z

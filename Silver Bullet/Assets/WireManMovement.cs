@@ -25,7 +25,7 @@ public class WireManMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector2 playerDist = (player.transform.position - transform.position).normalized; //calculate distance between player and enemy
+        Vector2 playerDist = new Vector2(player.transform.position.x - transform.position.x, 0).normalized; //calculate distance between player and enemy
 
         if (player != null)
         {

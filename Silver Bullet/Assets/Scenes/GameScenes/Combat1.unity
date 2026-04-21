@@ -13544,6 +13544,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4504238251981507064, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
+      propertyPath: maxEnemyHealth
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5020822955256881082, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
       propertyPath: m_Name
       value: SawBot
@@ -13602,6 +13606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8018403749707389389, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
+    - {fileID: 5848111309851313284, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

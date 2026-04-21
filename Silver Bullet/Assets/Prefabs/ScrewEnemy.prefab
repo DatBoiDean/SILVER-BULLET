@@ -17,10 +17,10 @@ GameObject:
   - component: {fileID: 5179795777745950955}
   - component: {fileID: 806344154005990720}
   - component: {fileID: 5821563445534761228}
-  - component: {fileID: 4958960478366831663}
   - component: {fileID: 5866670625588334747}
   - component: {fileID: 450959720956665397}
   - component: {fileID: 5052884333420219977}
+  - component: {fileID: 739229791533027440}
   m_Layer: 6
   m_Name: ScrewEnemy
   m_TagString: Enemy
@@ -173,8 +173,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55579b0fb162f514f9d98c9939d1d43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 2
+  currentEnemyHealth: 5
+  maxEnemyHealth: 5
   amount: 0
   isWire: 0
 --- !u!114 &5179795777745950955
@@ -223,8 +223,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.55}
-  m_Size: {x: 0.32, y: 0.8}
+  m_Offset: {x: -0.06, y: -0.55}
+  m_Size: {x: 0.33, y: 0.8}
   m_Direction: 0
 --- !u!61 &5821563445534761228
 BoxCollider2D:
@@ -271,20 +271,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.48, y: 0.9}
   m_EdgeRadius: 0
---- !u!114 &4958960478366831663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4565864420739115820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d42d611900e1034fb65fe8db22de4f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemySprite: {fileID: 1961155161893717504}
-  flashTime: 0.15
 --- !u!61 &5866670625588334747
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -378,3 +364,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &739229791533027440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4565864420739115820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 046d5105d1bd0154da6f2980c1dc5b6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 5
+  enemySprite: {fileID: 1961155161893717504}
+  flashTime: 0.26

@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5562365051768068987}
-  - component: {fileID: 7163531001932659061}
   - component: {fileID: 3863934767437364080}
   - component: {fileID: 3925271708856429925}
   - component: {fileID: 3726720012978449446}
@@ -18,6 +17,7 @@ GameObject:
   - component: {fileID: 4960967881158861039}
   - component: {fileID: 1306788625735611226}
   - component: {fileID: 6491629433909586662}
+  - component: {fileID: 6525071328041985361}
   m_Layer: 0
   m_Name: Doomba
   m_TagString: Spikes
@@ -40,22 +40,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7163531001932659061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2302176607205388544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55579b0fb162f514f9d98c9939d1d43f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 5
-  amount: 0
-  isWire: 0
 --- !u!212 &3863934767437364080
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -261,10 +245,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.39}
+  m_Offset: {x: 0, y: 0.24}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -275,7 +259,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 1}
+  m_Size: {x: 4.02, y: 2.41}
   m_EdgeRadius: 0
 --- !u!61 &1306788625735611226
 BoxCollider2D:
@@ -309,7 +293,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.21}
+  m_Offset: {x: -0.07, y: -0.03}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -320,7 +304,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 1.08}
+  m_Size: {x: 2.34, y: 1.69}
   m_EdgeRadius: 0
 --- !u!50 &6491629433909586662
 Rigidbody2D:
@@ -349,3 +333,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &6525071328041985361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2302176607205388544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 046d5105d1bd0154da6f2980c1dc5b6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 5
+  enemySprite: {fileID: 3863934767437364080}
+  flashTime: 0.26

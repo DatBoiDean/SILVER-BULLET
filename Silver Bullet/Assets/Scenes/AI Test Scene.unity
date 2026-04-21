@@ -589,8 +589,10 @@ GameObject:
   - component: {fileID: 427679023}
   - component: {fileID: 427679028}
   - component: {fileID: 427679022}
-  - component: {fileID: 427679021}
   - component: {fileID: 427679026}
+  - component: {fileID: 427679032}
+  - component: {fileID: 427679031}
+  - component: {fileID: 427679030}
   - component: {fileID: 427679029}
   m_Layer: 6
   m_Name: WireMan
@@ -599,24 +601,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &427679021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 427679020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cedc73bbe8ad0b44d99b6bc3e6be4271, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpForce: 0
-  stunTimer: 0
-  rb: {fileID: 427679022}
-  animator: {fileID: 427679026}
-  player: {fileID: 38306616}
 --- !u!50 &427679022
 Rigidbody2D:
   serializedVersion: 4
@@ -810,6 +794,56 @@ MonoBehaviour:
   grabZone: {fileID: 1933344572}
   player: {fileID: 38306616}
   damageAmount: 1
+--- !u!114 &427679030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427679020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bdaf1c5bf67b12499f5a38ac303e64f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabRange: 5
+  grabZone: {fileID: 1933344572}
+  player: {fileID: 0}
+  damageAmount: 1
+--- !u!114 &427679031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427679020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0312320b30cb4146b6d9d2857739aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentEnemyHealth: 0
+  maxEnemyHealth: 0
+  amount: 0
+  rb: {fileID: 427679022}
+--- !u!114 &427679032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427679020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a3be012e5ffb3c4faa5a62493203e7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  jumpForce: 0
+  stunTimer: 0
+  rb: {fileID: 427679022}
+  animator: {fileID: 0}
+  player: {fileID: 38306616}
 --- !u!1001 &562297231
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6244,8 +6244,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1393607485}
     m_RemovedComponents:
-    - {fileID: 5259541179489325846, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
-    - {fileID: 2106024172429248124, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
@@ -11173,7 +11172,7 @@ Animator:
   m_GameObject: {fileID: 381722479}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 35f9ebc7bc51082429098ad5f7f0da1b, type: 2}
+  m_Controller: {fileID: 9100000, guid: bf8f619e15fc0fe4dac9c921fb6c25bb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -12061,7 +12060,7 @@ Animator:
   m_GameObject: {fileID: 557757287}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 35f9ebc7bc51082429098ad5f7f0da1b, type: 2}
+  m_Controller: {fileID: 9100000, guid: bf8f619e15fc0fe4dac9c921fb6c25bb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -12141,10 +12140,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Doomba (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3726720012978449446, guid: ddf65f68c2551cf4c92eca5a2d8ca39d, type: 3}
+      propertyPath: waiting
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3863934767437364080, guid: ddf65f68c2551cf4c92eca5a2d8ca39d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a5f0084048db7e649b8f7f80aad16eeb, type: 3}
+      objectReference: {fileID: 21300000, guid: 6e656dad09093f24c855c8140b26ea84, type: 3}
     - target: {fileID: 3863934767437364080, guid: ddf65f68c2551cf4c92eca5a2d8ca39d, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -12152,7 +12155,7 @@ PrefabInstance:
     - target: {fileID: 3925271708856429925, guid: ddf65f68c2551cf4c92eca5a2d8ca39d, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 1d70b4ad5ea41c148bbcc389ff7a79e3, type: 2}
+      objectReference: {fileID: 9100000, guid: 8a6b68a47cf05f64fbbb78ea38a09690, type: 2}
     - target: {fileID: 5562365051768068987, guid: ddf65f68c2551cf4c92eca5a2d8ca39d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.5106936
@@ -12193,7 +12196,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3726720012978449446, guid: ddf65f68c2551cf4c92eca5a2d8ca39d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -12501,11 +12505,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5502730204829606029, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
   m_PrefabInstance: {fileID: 1917201249}
   m_PrefabAsset: {fileID: 0}
---- !u!58 &886632264 stripped
-CircleCollider2D:
-  m_CorrespondingSourceObject: {fileID: 5605932981272505700, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
-  m_PrefabInstance: {fileID: 1917201249}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &905842247
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12693,7 +12692,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1026057725
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12743,7 +12742,7 @@ SpriteRenderer:
   m_Size: {x: 32, y: 32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1026057726
@@ -12934,6 +12933,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 895b85d4ec71a7944a9b1d8d3d1f654f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  target: {fileID: 0}
+  cooldown: 0
+  limit: 0
+  limitCounter: 0
+  active: 0
 --- !u!1001 &1117728468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14203,13 +14208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a60ecfbfc0de5346ba2b5d5dabc5fe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 3
-  maxHealth: 9
-  healthBar: {fileID: 1893759002}
-  invulnTime: 0
-  invulnWait: 0
-  invuln: 0
-  fear: 0
 --- !u!1001 &1400109354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14643,7 +14641,7 @@ Animator:
   m_GameObject: {fileID: 1737412706}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 35f9ebc7bc51082429098ad5f7f0da1b, type: 2}
+  m_Controller: {fileID: 9100000, guid: bf8f619e15fc0fe4dac9c921fb6c25bb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -14866,6 +14864,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3620858088394488610, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1393607481}
+    - target: {fileID: 3620858088394488610, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
+      propertyPath: waitDist
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620858088394488610, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
+      propertyPath: startLeft
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620858088394488610, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
+      propertyPath: patrolSpeed
+      value: 0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620858088394488610, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
+      propertyPath: detectionDist
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620858088394488610, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
+      propertyPath: playerCharacter.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 5020822955256881082, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
       propertyPath: m_Name
       value: SawBot (2)
@@ -14923,62 +14945,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
---- !u!1 &1845987202 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5020822955256881082, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
-  m_PrefabInstance: {fileID: 1917201249}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1845987207 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 719634845720141138, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
-  m_PrefabInstance: {fileID: 1917201249}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &1845987208 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 7145363479439799978, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
-  m_PrefabInstance: {fileID: 1917201249}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1845987211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1845987202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53b1609b8f237d24e81eb632f37c58fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectionDist: 7
-  waitDist: 1
-  startLeft: 1
-  player: {fileID: 1393607481}
-  moveSpeed: 5
-  patrolSpeed: 5
-  waitTime: 0
-  isChasing: 0
-  Stuck: 0
-  feet: {fileID: 0}
-  stuckTurnTime: 3
-  stuckMinXChange: 0.02
-  damageAmount: 1
-  attackHitboxTrigger: {fileID: 886632264}
-  playerCharacter:
-    serializedVersion: 2
-    m_Bits: 128
-  patrol: 
-  waiting: 0
-  direction: {x: 0, y: 0}
-  sawBotAttackPoint: {fileID: 886632263}
-  radius: 0.63
-  anim: {fileID: 1845987207}
-  spriteRenderer: {fileID: 1845987208}
-  leftSawTransform: {fileID: 0}
-  rightSawTransform: {fileID: 0}
-  isMovingParam: IsMoving
-  inRangeParam: InRange
-  attackStateName: AttackAnimationSaw
 --- !u!1001 &1857717750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15059,17 +15025,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1737412718}
   m_SourcePrefab: {fileID: 100100000, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
---- !u!114 &1893759002 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5105081214598158887, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
-  m_PrefabInstance: {fileID: 248191151}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1906826091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15138,7 +15093,11 @@ PrefabInstance:
     - target: {fileID: 719634845720141138, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 7f8f257ece4cb014da36635a70eff031, type: 2}
+      objectReference: {fileID: 9100000, guid: 019757c5d50184347bc4a21ebf9422b8, type: 2}
+    - target: {fileID: 3620858088394488610, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1393607481}
     - target: {fileID: 5020822955256881082, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
       propertyPath: m_Name
       value: SawBot (3)
@@ -15190,7 +15149,7 @@ PrefabInstance:
     - target: {fileID: 7145363479439799978, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e1ea04c446269be47ae5754c768f7889, type: 3}
+      objectReference: {fileID: 21300000, guid: e3ab2e6bd66a2f64ea11afd2182c4036, type: 3}
     - target: {fileID: 7145363479439799978, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -15269,10 +15228,7 @@ PrefabInstance:
     - {fileID: 7956901960679870169, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5020822955256881082, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
-      insertIndex: 4
-      addedObject: {fileID: 1845987211}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
 --- !u!1001 &1977559202
 PrefabInstance:
@@ -15414,11 +15370,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2302176607205388544, guid: ddf65f68c2551cf4c92eca5a2d8ca39d, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2302176607205388544, guid: ddf65f68c2551cf4c92eca5a2d8ca39d, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Spikes
       objectReference: {fileID: 0}
     - target: {fileID: 3062514700570329300, guid: ddf65f68c2551cf4c92eca5a2d8ca39d, type: 3}
       propertyPath: m_IsTrigger
@@ -15435,7 +15391,7 @@ PrefabInstance:
     - target: {fileID: 3863934767437364080, guid: ddf65f68c2551cf4c92eca5a2d8ca39d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a5f0084048db7e649b8f7f80aad16eeb, type: 3}
+      objectReference: {fileID: 21300000, guid: 6e656dad09093f24c855c8140b26ea84, type: 3}
     - target: {fileID: 3863934767437364080, guid: ddf65f68c2551cf4c92eca5a2d8ca39d, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -15443,7 +15399,7 @@ PrefabInstance:
     - target: {fileID: 3925271708856429925, guid: ddf65f68c2551cf4c92eca5a2d8ca39d, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 1d70b4ad5ea41c148bbcc389ff7a79e3, type: 2}
+      objectReference: {fileID: 9100000, guid: 8a6b68a47cf05f64fbbb78ea38a09690, type: 2}
     - target: {fileID: 4960967881158861039, guid: ddf65f68c2551cf4c92eca5a2d8ca39d, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -15692,49 +15648,57 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 617141369269230721, guid: 33bf91c43427329408a065140d5e0f5f, type: 3}
+    - target: {fileID: 3620858088394488610, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1393607481}
+    - target: {fileID: 3620858088394488610, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
+      propertyPath: playerCharacter.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 5020822955256881082, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
+      propertyPath: m_Name
+      value: SawBot (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821559206587534863, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.803395
       objectReference: {fileID: 0}
-    - target: {fileID: 617141369269230721, guid: 33bf91c43427329408a065140d5e0f5f, type: 3}
+    - target: {fileID: 6821559206587534863, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
       propertyPath: m_LocalPosition.y
       value: 6.9411883
       objectReference: {fileID: 0}
-    - target: {fileID: 617141369269230721, guid: 33bf91c43427329408a065140d5e0f5f, type: 3}
+    - target: {fileID: 6821559206587534863, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 617141369269230721, guid: 33bf91c43427329408a065140d5e0f5f, type: 3}
+    - target: {fileID: 6821559206587534863, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 617141369269230721, guid: 33bf91c43427329408a065140d5e0f5f, type: 3}
+    - target: {fileID: 6821559206587534863, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 617141369269230721, guid: 33bf91c43427329408a065140d5e0f5f, type: 3}
+    - target: {fileID: 6821559206587534863, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 617141369269230721, guid: 33bf91c43427329408a065140d5e0f5f, type: 3}
+    - target: {fileID: 6821559206587534863, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 617141369269230721, guid: 33bf91c43427329408a065140d5e0f5f, type: 3}
+    - target: {fileID: 6821559206587534863, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 617141369269230721, guid: 33bf91c43427329408a065140d5e0f5f, type: 3}
+    - target: {fileID: 6821559206587534863, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 617141369269230721, guid: 33bf91c43427329408a065140d5e0f5f, type: 3}
+    - target: {fileID: 6821559206587534863, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1411323069447343412, guid: 33bf91c43427329408a065140d5e0f5f, type: 3}
-      propertyPath: m_Name
-      value: SawBot (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4059736773589294167, guid: 33bf91c43427329408a065140d5e0f5f, type: 3}
       propertyPath: player
@@ -15748,7 +15712,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 33bf91c43427329408a065140d5e0f5f, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

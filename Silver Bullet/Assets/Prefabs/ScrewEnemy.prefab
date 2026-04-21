@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 5866670625588334747}
   - component: {fileID: 450959720956665397}
   - component: {fileID: 5052884333420219977}
-  - component: {fileID: 739229791533027440}
+  - component: {fileID: 824141404131582645}
   m_Layer: 6
   m_Name: ScrewEnemy
   m_TagString: Enemy
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4565864420739115820}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55579b0fb162f514f9d98c9939d1d43f, type: 3}
   m_Name: 
@@ -353,7 +353,7 @@ Animator:
   m_GameObject: {fileID: 4565864420739115820}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 35f9ebc7bc51082429098ad5f7f0da1b, type: 2}
+  m_Controller: {fileID: 9100000, guid: bf8f619e15fc0fe4dac9c921fb6c25bb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -364,7 +364,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &739229791533027440
+--- !u!114 &824141404131582645
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -373,9 +373,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4565864420739115820}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 046d5105d1bd0154da6f2980c1dc5b6c, type: 3}
+  m_Script: {fileID: 11500000, guid: 83f3a3eb2621fe540a6ba07d902afb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 5
+  currentHealth: 9
   enemySprite: {fileID: 1961155161893717504}
-  flashTime: 0.26
+  flashTime: 0.2

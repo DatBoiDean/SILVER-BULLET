@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 3925271708856429925}
   - component: {fileID: 3726720012978449446}
   - component: {fileID: 3062514700570329300}
+  - component: {fileID: 5063807693149335627}
   - component: {fileID: 7103102619913322522}
   - component: {fileID: 4960967881158861039}
   - component: {fileID: 1306788625735611226}
   - component: {fileID: 6491629433909586662}
-  - component: {fileID: 6525071328041985361}
   m_Layer: 0
   m_Name: Doomba
   m_TagString: Spikes
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a5f0084048db7e649b8f7f80aad16eeb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6e656dad09093f24c855c8140b26ea84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,7 +102,7 @@ Animator:
   m_GameObject: {fileID: 2302176607205388544}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1d70b4ad5ea41c148bbcc389ff7a79e3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8a6b68a47cf05f64fbbb78ea38a09690, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -181,6 +181,39 @@ CircleCollider2D:
   m_Offset: {x: 1.25, y: -0.39}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &5063807693149335627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2302176607205388544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 920f97ec62446d340bb668ff343e0b85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBolt: 0
+  gravity: 0
+  detectionDist: 0
+  waitDist: 0
+  startLeft: 0
+  player: {fileID: 4114649912291347994, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+  moveSpeed: 3.4
+  patrolSpeed: 3.21
+  waitTime: 0
+  isChasing: 0
+  Grounded: 0
+  Stuck: 0
+  feet: {fileID: 0}
+  patrol: 
+  waiting: 0
+  direction: {x: 0, y: 0}
+  anim: {fileID: 3925271708856429925}
+  spriteRenderer: {fileID: 3863934767437364080}
+  dropStateName: DropAnimation
+  sinkDistance: 0.4
+  sinkSmoothTime: 0.15
 --- !u!58 &7103102619913322522
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -333,18 +366,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &6525071328041985361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2302176607205388544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 046d5105d1bd0154da6f2980c1dc5b6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 5
-  enemySprite: {fileID: 3863934767437364080}
-  flashTime: 0.26

@@ -161,7 +161,6 @@ GameObject:
   - component: {fileID: 1053060233612658289}
   - component: {fileID: 3879200772662883484}
   - component: {fileID: 6069951202461910007}
-  - component: {fileID: 7810796753055298696}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -214,7 +213,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4114649912291347994}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ef6050fa8b670c45841f51785c19da4, type: 3}
   m_Name: 
@@ -415,25 +414,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.81, y: 3.4166667}
   m_Direction: 0
---- !u!114 &7810796753055298696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4114649912291347994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a60ecfbfc0de5346ba2b5d5dabc5fe7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 5
-  maxHealth: 4
-  healthBar: {fileID: 5105081214598158887}
-  invulnTime: 0
-  invulnWait: 0
-  invuln: 0
-  fear: 0
 --- !u!1 &6119025486942758768
 GameObject:
   m_ObjectHideFlags: 0

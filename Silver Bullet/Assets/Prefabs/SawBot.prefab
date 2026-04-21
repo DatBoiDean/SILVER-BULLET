@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7145363479439799978}
   - component: {fileID: 719634845720141138}
   - component: {fileID: 4683570445797585097}
+  - component: {fileID: 3620858088394488610}
   - component: {fileID: 3018892234004955389}
-  - component: {fileID: 7956901960679870169}
-  - component: {fileID: 384945684815326115}
+  - component: {fileID: 7976047625810656760}
   m_Layer: 6
   m_Name: SawBot
   m_TagString: Enemy
@@ -117,7 +117,7 @@ Animator:
   m_GameObject: {fileID: 5020822955256881082}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7f8f257ece4cb014da36635a70eff031, type: 2}
+  m_Controller: {fileID: 9100000, guid: 019757c5d50184347bc4a21ebf9422b8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -155,6 +155,47 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &3620858088394488610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5020822955256881082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c00a0ffc601f04f4f9247bf478b20de2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionDist: 1.29
+  waitDist: 0.15
+  startLeft: 1
+  player: {fileID: 0}
+  moveSpeed: 3
+  patrolSpeed: 0.41
+  waitTime: 0
+  isChasing: 0
+  Stuck: 0
+  feet: {fileID: 0}
+  stuckTurnTime: 3
+  stuckMinXChange: 0.02
+  damageAmount: 1
+  attackHitboxTrigger: {fileID: 5605932981272505700}
+  playerCharacter:
+    serializedVersion: 2
+    m_Bits: 128
+  patrol: 
+  waiting: 0
+  direction: {x: 0, y: 0}
+  sawBotAttackPoint: {fileID: 5502730204829606029}
+  radius: 1
+  anim: {fileID: 719634845720141138}
+  spriteRenderer: {fileID: 7145363479439799978}
+  leftSawTransform: {fileID: 0}
+  rightSawTransform: {fileID: 0}
+  isMovingParam: IsMoving
+  inRangeParam: InRange
+  attackStateName: AttackAnimationSaw
 --- !u!70 &3018892234004955389
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -190,7 +231,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0.02, y: 0.15}
   m_Size: {x: 0.92, y: 1.9}
   m_Direction: 0
---- !u!114 &7956901960679870169
+--- !u!114 &7976047625810656760
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,53 +240,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5020822955256881082}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53b1609b8f237d24e81eb632f37c58fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 83f3a3eb2621fe540a6ba07d902afb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionDist: 7
-  waitDist: 1
-  startLeft: 0
-  player: {fileID: 0}
-  moveSpeed: 5
-  patrolSpeed: 5
-  waitTime: 0
-  isChasing: 1
-  Stuck: 0
-  feet: {fileID: 0}
-  stuckTurnTime: 3
-  stuckMinXChange: 0.02
-  damageAmount: 1
-  attackHitboxTrigger: {fileID: 5605932981272505700}
-  playerCharacter:
-    serializedVersion: 2
-    m_Bits: 128
-  patrol: 
-  waiting: 0
-  direction: {x: 0, y: 0}
-  sawBotAttackPoint: {fileID: 5502730204829606029}
-  radius: 0.83
-  anim: {fileID: 719634845720141138}
-  spriteRenderer: {fileID: 7145363479439799978}
-  leftSawTransform: {fileID: 0}
-  rightSawTransform: {fileID: 0}
-  isMovingParam: IsMoving
-  inRangeParam: InRange
-  attackStateName: AttackAnimationSaw
---- !u!114 &384945684815326115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5020822955256881082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 046d5105d1bd0154da6f2980c1dc5b6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 8
+  currentHealth: 3
   enemySprite: {fileID: 7145363479439799978}
-  flashTime: 0.23
+  flashTime: 0.2
 --- !u!1 &5502730204829606029
 GameObject:
   m_ObjectHideFlags: 0

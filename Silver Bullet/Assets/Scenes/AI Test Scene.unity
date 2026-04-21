@@ -790,10 +790,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17aeb85877b247e43a2db7221345df48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabRange: 5
-  grabZone: {fileID: 1933344572}
-  player: {fileID: 38306616}
-  damageAmount: 1
 --- !u!114 &427679030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -806,10 +802,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bdaf1c5bf67b12499f5a38ac303e64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabRange: 5
-  grabZone: {fileID: 1933344572}
-  player: {fileID: 0}
-  damageAmount: 1
 --- !u!114 &427679031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -822,10 +814,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0312320b30cb4146b6d9d2857739aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 0
-  amount: 0
-  rb: {fileID: 427679022}
 --- !u!114 &427679032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -838,12 +826,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a3be012e5ffb3c4faa5a62493203e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpForce: 0
-  stunTimer: 0
-  rb: {fileID: 427679022}
-  animator: {fileID: 0}
-  player: {fileID: 38306616}
 --- !u!1001 &562297231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6820,6 +6802,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5929828514175447465, guid: 635f945a4a0e8fe45a1da1939ffc7809, type: 3}
+      propertyPath: suctionDist
+      value: 0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 7743873617329329634, guid: 635f945a4a0e8fe45a1da1939ffc7809, type: 3}
+      propertyPath: m_Name
+      value: TestFanHead
+      objectReference: {fileID: 0}
     - target: {fileID: 3751315612320535302, guid: 760c28ed34b331b4aa5977caa686b9aa, type: 3}
       propertyPath: player
       value: 
@@ -6831,10 +6821,6 @@ PrefabInstance:
     - target: {fileID: 3751315612320535302, guid: 760c28ed34b331b4aa5977caa686b9aa, type: 3}
       propertyPath: patrolSpeed
       value: 0.94
-      objectReference: {fileID: 0}
-    - target: {fileID: 7743873617329329634, guid: 635f945a4a0e8fe45a1da1939ffc7809, type: 3}
-      propertyPath: m_Name
-      value: TestFanHead
       objectReference: {fileID: 0}
     - target: {fileID: 3751315612320535302, guid: 3f462067926813f459f7f4f8b8e701d7, type: 3}
       propertyPath: waitDist

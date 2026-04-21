@@ -9693,7 +9693,7 @@ SpriteRenderer:
   m_Size: {x: 32, y: 32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &411275279
@@ -15300,6 +15300,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 895b85d4ec71a7944a9b1d8d3d1f654f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  target: {fileID: 0}
+  cooldown: 0
+  limit: 0
+  limitCounter: 0
+  active: 0
 --- !u!114 &997951705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15312,6 +15318,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f27733ce85c374299ebb3c9f6ab1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  useRange: 0
+  target: {fileID: 0}
+  vertTarget: {x: 0, y: 0, z: 0}
+  moveSpeed: 0
+  UpInstead: 0
+  active: 0
 --- !u!1 &1005596679
 GameObject:
   m_ObjectHideFlags: 0
@@ -26015,6 +26028,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f27733ce85c374299ebb3c9f6ab1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  useRange: 0
+  target: {fileID: 0}
+  vertTarget: {x: 0, y: 0, z: 0}
+  moveSpeed: 0
+  UpInstead: 0
+  active: 0
 --- !u!1 &1320224176
 GameObject:
   m_ObjectHideFlags: 0

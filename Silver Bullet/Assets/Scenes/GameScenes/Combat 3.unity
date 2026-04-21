@@ -9578,6 +9578,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Doomba (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4960967881158861039, guid: ddf65f68c2551cf4c92eca5a2d8ca39d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5562365051768068987, guid: ddf65f68c2551cf4c92eca5a2d8ca39d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -21.37264

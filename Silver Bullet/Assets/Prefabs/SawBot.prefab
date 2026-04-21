@@ -167,18 +167,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00a0ffc601f04f4f9247bf478b20de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionDist: 1.29
-  waitDist: 0.15
+  detectionDist: 4.05
+  waitDist: 1.1
   startLeft: 1
   player: {fileID: 0}
-  moveSpeed: 3
-  patrolSpeed: 0.41
-  waitTime: 0
+  moveSpeed: 4.11
+  patrolSpeed: 3.26
+  waitTime: 0.85
   isChasing: 0
   Stuck: 0
   feet: {fileID: 0}
-  stuckTurnTime: 3
-  stuckMinXChange: 0.02
+  stuckTurnTime: 0.64
+  stuckMinXChange: 0.25
   damageAmount: 1
   attackHitboxTrigger: {fileID: 5605932981272505700}
   playerCharacter:
@@ -188,7 +188,7 @@ MonoBehaviour:
   waiting: 0
   direction: {x: 0, y: 0}
   sawBotAttackPoint: {fileID: 5502730204829606029}
-  radius: 1
+  radius: 1.06
   anim: {fileID: 719634845720141138}
   spriteRenderer: {fileID: 7145363479439799978}
   leftSawTransform: {fileID: 0}

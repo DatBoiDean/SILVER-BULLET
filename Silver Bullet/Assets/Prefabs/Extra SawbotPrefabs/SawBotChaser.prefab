@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7145363479439799978}
   - component: {fileID: 1118552795538210297}
   - component: {fileID: 719634845720141138}
-  - component: {fileID: 8922952141989458884}
   - component: {fileID: 8018403749707389389}
   - component: {fileID: 4683570445797585097}
   - component: {fileID: 3018892234004955389}
@@ -128,47 +127,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8922952141989458884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5020822955256881082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c00a0ffc601f04f4f9247bf478b20de2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectionDist: 99
-  waitDist: 1
-  startLeft: 0
-  player: {fileID: 4114649912291347994, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
-  moveSpeed: 5
-  patrolSpeed: 5
-  waitTime: 0
-  isChasing: 1
-  Stuck: 0
-  feet: {fileID: 0}
-  stuckTurnTime: 3
-  stuckMinXChange: 0.02
-  damageAmount: 1
-  attackHitboxTrigger: {fileID: 0}
-  playerCharacter:
-    serializedVersion: 2
-    m_Bits: 0
-  patrol: 
-  waiting: 0
-  direction: {x: 0, y: 0}
-  sawBotAttackPoint: {fileID: 5502730204829606029}
-  radius: 0
-  anim: {fileID: 0}
-  spriteRenderer: {fileID: 0}
-  leftSawTransform: {fileID: 0}
-  rightSawTransform: {fileID: 0}
-  isMovingParam: IsMoving
-  inRangeParam: InRange
-  attackStateName: AttackAnimationSaw
 --- !u!114 &8018403749707389389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,7 +134,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5020822955256881082}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51ffb5e5546b56743b3bac7e0c809ace, type: 3}
   m_Name: 
@@ -195,11 +153,11 @@ MonoBehaviour:
   patrol: 
   waiting: 0
   direction: {x: 0, y: 0}
-  sawBotAttackPoint: {fileID: 0}
+  sawBotAttackPoint: {fileID: 5502730204829606029}
   radius: 0
   playerCharacter:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   anim: {fileID: 0}
   spriteRenderer: {fileID: 0}
 --- !u!50 &4683570445797585097

@@ -214,7 +214,7 @@ MonoBehaviour:
   stuckTurnTime: 3
   stuckMinXChange: 0.02
   damageAmount: 1
-  attackHitboxTrigger: {fileID: 0}
+  attackHitboxTrigger: {fileID: 5605932981272505700}
   playerCharacter:
     serializedVersion: 2
     m_Bits: 128

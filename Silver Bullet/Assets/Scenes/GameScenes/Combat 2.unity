@@ -193,7 +193,7 @@ PrefabInstance:
     - target: {fileID: 8351387745368313516, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
       propertyPath: spriteRenderer
       value: 
-      objectReference: {fileID: 557757297}
+      objectReference: {fileID: 1174350775}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11184,6 +11184,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &381722501 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1961155161893717504, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
+  m_PrefabInstance: {fileID: 1101366713}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &445558991
 GameObject:
   m_ObjectHideFlags: 0
@@ -12823,7 +12828,7 @@ PrefabInstance:
     - target: {fileID: 8351387745368313516, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
       propertyPath: spriteRenderer
       value: 
-      objectReference: {fileID: 557757297}
+      objectReference: {fileID: 381722501}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13012,6 +13017,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &1174350775 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1961155161893717504, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
+  m_PrefabInstance: {fileID: 40164225}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1290290030
 GameObject:
   m_ObjectHideFlags: 0
@@ -14149,7 +14159,7 @@ PrefabInstance:
     - target: {fileID: 8351387745368313516, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
       propertyPath: anim
       value: 
-      objectReference: {fileID: 381722491}
+      objectReference: {fileID: 557757299}
     - target: {fileID: 8351387745368313516, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
       propertyPath: player
       value: 
@@ -14644,6 +14654,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &1737412728 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1961155161893717504, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
+  m_PrefabInstance: {fileID: 1857717750}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1748543016
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15027,7 +15042,7 @@ PrefabInstance:
     - target: {fileID: 8351387745368313516, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
       propertyPath: anim
       value: 
-      objectReference: {fileID: 1174350765}
+      objectReference: {fileID: 1737412718}
     - target: {fileID: 8351387745368313516, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
       propertyPath: player
       value: 
@@ -15035,7 +15050,7 @@ PrefabInstance:
     - target: {fileID: 8351387745368313516, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
       propertyPath: spriteRenderer
       value: 
-      objectReference: {fileID: 557757297}
+      objectReference: {fileID: 1737412728}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15725,6 +15740,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1393607481}
+    - target: {fileID: 4059736773589294167, guid: 33bf91c43427329408a065140d5e0f5f, type: 3}
+      propertyPath: startLeft
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

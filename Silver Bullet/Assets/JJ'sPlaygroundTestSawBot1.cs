@@ -193,13 +193,9 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         }
 
         float dist = Vector3.Distance(player.transform.position, transform.position);
-        //Measures distance between this object and the player.
-        //print("Dist:" + dist);
-        //use this for debugging
 
         // Checks if player is inside enemy patrol zone (between its left/right limits)
         bool playerWithinPatrol = true;
-        // default true until we know our limits
 
         float px = player.transform.position.x;
 
@@ -211,26 +207,17 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
             playerWithinPatrol = (px >= minX && px <= maxX);
         }
 
-        // === CHASE TOGGLE, NOW ZONE-AWARE ===
-        // Order matters here:
-        // 1. If player is too close, SawBot stops to rev / attack
-        // 2. If player is in chase band, SawBot chases
-        // 3. Otherwise, SawBot patrols
-
         if (dist <= waitDist)
         {
-            // Player is close enough for rev / attack behavior
             isChasing = false;
         }
         else if (playerWithinPatrol && dist <= detectionDist)
         {
-            // Player is inside the chase zone, but not close enough to attack yet
             isChasing = true;
             playerTransform = player.transform;
         }
         else
         {
-            // Player is outside detection zone or outside patrol zone
             isChasing = false;
         }
 
@@ -240,42 +227,32 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
             {
                 waiting = false;
 
-                // New approach, made it so it detects where the player's x position is and acts accordingly.
-                // This also has a bonus of letting the thing patrol in the same direction as the player, if the player
-                // shakes them off.
+                float dx = playerTransform.position.x - transform.position.x;
 
-                // always choose left/right based on player position (no dead zone)
-                float dx = playerTransform.position.x - transform.position.x; // player - enemy X offset
-
-                if (dx < 0f) // player is to the left
+                if (dx < 0f)
                 {
                     direction = Vector2.left;
                     patrol = "GoLeft";
                     facingLeft = true;
                 }
-                else // player is to the right (or exactly aligned)
+                else
                 {
                     direction = Vector2.right;
                     patrol = "GoRight";
                     facingLeft = false;
                 }
 
-                // Keep the sprite synced with the chase direction.
                 if (spriteRenderer != null)
                 {
                     spriteRenderer.flipX = facingLeft;
                 }
 
-                // Keep smooth horizontal slide while preserving vertical velocity
                 rb.velocity = new Vector2(direction.x * moveSpeed, rb.velocity.y);
 
-                // Reset the backup stuck timer while chasing so patrol logic does not
-                // accidentally force a turn during chase behavior.
                 ResetStuckTurnCheck();
             }
             else
             {
-                // Default patrol movement
                 if (patrol == "GoLeft")
                 {
                     rb.velocity = new Vector2(-patrolSpeed, rb.velocity.y);
@@ -291,20 +268,14 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
                     rb.velocity = new Vector2(0f, rb.velocity.y);
                 }
 
-                // Normal patrol turning now comes from the LeftMax and RightMax boundary triggers.
-                // This backup check only exists so the bot can recover if it gets jammed on something
-                // and never reaches one of those patrol boundary objects.
                 HandleStuckTurnCheck();
             }
 
-            // Update Sawbot movement bool in the Animator
             if (anim != null)
             {
                 bool inRangeNow = dist <= waitDist;
                 bool isMovingHorizontally = Mathf.Abs(rb.velocity.x) > 0.1f;
 
-                // If the player is close enough to trigger rev / attack behavior,
-                // do not keep forcing the walking state.
                 if (inRangeNow)
                 {
                     isMovingHorizontally = false;
@@ -314,17 +285,13 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
                 anim.SetBool(inRangeParam, inRangeNow);
             }
 
-            // Flip sprite based on movement direction so it faces where it's sliding
             if (spriteRenderer != null && Mathf.Abs(rb.velocity.x) > 0.01f)
             {
-                // Assume default art faces RIGHT; flip when moving LEFT
                 facingLeft = rb.velocity.x < 0f;
                 spriteRenderer.flipX = facingLeft;
             }
         }
 
-        // If the player leaves the close-range attack zone,
-        // the SawBot must leave its waiting state and become active again.
         if (dist > waitDist)
         {
             waiting = false;
@@ -338,16 +305,13 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
 
             if (playerWithinPatrol && dist <= detectionDist)
             {
-                // Resume chasing if the player is still in detection range
                 isChasing = true;
                 playerTransform = player.transform;
             }
             else
             {
-                // Otherwise go back to patrol
                 isChasing = false;
 
-                // If the bot got left in Wait state, restore patrol direction
                 if (patrol == "Wait")
                 {
                     patrol = facingLeft ? "GoLeft" : "GoRight";
@@ -360,34 +324,19 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
             patrol = "Wait";
             waiting = true;
 
-            // Once the SawBot is close enough to stop moving,
-            // do not leave it stuck facing its last patrol direction.
-            // Explicitly turn it toward the player's current X position.
             FacePlayer();
 
-            // Force horizontal stop when in rev / attack range
             rb.velocity = new Vector2(0f, rb.velocity.y);
 
-            // While sitting in close-range attack mode, clear the patrol stuck timer.
             ResetStuckTurnCheck();
         }
-        //Evan's lazy man's way of making the enemy just not move when theyre too close. i sure hope it actually works
 
-        // If we are in the attack animation and facing LEFT,
-        // override the two saw transforms using the flipped coordinates frame-by-frame.
         ApplyFlippedAttackSawPositions();
-
-        // Continuously check if the player Hurtbox is overlapping the active attack hitbox
-        // This makes damage independent of whether the player is moving or standing still
         CheckAttackHitboxOverlap();
     }
 
-    // This backup check watches whether the bot is actually changing X while patrolling.
-    // If it is trying to move but stays in nearly the same spot for too long,
-    // force a turn so it can recover from getting hung up on something.
     void HandleStuckTurnCheck()
     {
-        // Only use this during active patrol movement, not while waiting or not moving.
         if (waiting || patrol == "Wait")
         {
             ResetStuckTurnCheck();
@@ -410,31 +359,25 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
 
             if (stuckTurnTimer >= stuckTurnTime)
             {
-                // This forced turn is only a fallback for a stuck bot.
-                // Normal patrol turns should still come from LeftMax / RightMax.
                 ReversePatrolDirection();
 
-                // Reset again after forcing the turn so it does not instantly flip back.
                 ResetStuckTurnCheck();
                 lastRecordedX = transform.position.x;
             }
         }
         else
         {
-            // The bot moved enough on X, so clear the timer and store this new position.
             stuckTurnTimer = 0f;
             lastRecordedX = currentX;
         }
     }
 
-    // Central reset helper for the backup stuck-turn timer.
     void ResetStuckTurnCheck()
     {
         stuckTurnTimer = 0f;
         lastRecordedX = transform.position.x;
     }
 
-    // Reverses patrol direction as a backup recovery when the bot gets stuck.
     void ReversePatrolDirection()
     {
         if (patrol == "GoLeft")
@@ -448,18 +391,14 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
             facingLeft = true;
         }
 
-        // Keep the sprite art lined up after an automatic patrol turn.
         if (spriteRenderer != null)
         {
             spriteRenderer.flipX = facingLeft;
         }
 
-        // Reset horizontal velocity so the turn feels cleaner
         rb.velocity = new Vector2(0f, rb.velocity.y);
     }
 
-    // When the SawBot is close enough to stop moving,
-    // this keeps it visually locked onto the player instead of the old patrol direction.
     void FacePlayer()
     {
         if (player == null)
@@ -469,8 +408,6 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
 
         float dx = player.transform.position.x - transform.position.x;
 
-        // If the player is almost perfectly centered, keep the current facing
-        // so the sprite does not jitter left and right.
         if (Mathf.Abs(dx) < 0.01f)
         {
             return;
@@ -484,10 +421,8 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         }
     }
 
-    // Called by an Animation Event at the exact frame the blade should become dangerous
     public void BeginAttackHitWindow()
     {
-        // Start of a brand-new swing, so allow one fresh hit
         attackHitWindowActive = true;
         hasHitPlayerThisSwing = false;
 
@@ -499,7 +434,6 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         Debug.Log("Attack hit window started");
     }
 
-    // Called by an Animation Event when the dangerous strike window ends
     public void EndAttackHitWindow()
     {
         attackHitWindowActive = false;
@@ -512,8 +446,6 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         Debug.Log("Attack hit window ended");
     }
 
-    // This checks the attack hitbox every physics step while the hit window is active.
-    // That way, the player can still get hit while standing still inside the attack range.
     void CheckAttackHitboxOverlap()
     {
         if (!attackHitWindowActive)
@@ -549,7 +481,6 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
 
         attackOverlapResults.Clear();
 
-        // Query every collider currently overlapping the active attack hitbox
         ContactFilter2D filter = new ContactFilter2D();
         filter.SetLayerMask(playerCharacter);
         filter.useLayerMask = true;
@@ -566,7 +497,6 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
                 continue;
             }
 
-            // ONLY allow the dedicated player Hurtbox to count for damage
             if (hit.gameObject.name != "Hurtbox")
             {
                 continue;
@@ -574,15 +504,15 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
 
             Debug.Log("SawBot overlap check found Hurtbox.");
 
-            PlayerHealthJJsplayground1 playerHealthComponent =
-                hit.GetComponentInParent<PlayerHealthJJsplayground1>();
+            // CHANGED: use "hit" because this function is looping through overlap results
+            PlayerHealth playerHealth = hit.GetComponentInParent<PlayerHealth>();
 
-            if (playerHealthComponent != null)
+            // CHANGED: use the same variable name that was just declared above
+            if (playerHealth != null)
             {
                 Debug.Log("SawBot hit Hurtbox for damage: " + damageAmount);
-                playerHealthComponent.PlayerTakeDamage(damageAmount);
+                playerHealth.PlayerTakeDamage(damageAmount);
 
-                // Only allow one hit per swing
                 hasHitPlayerThisSwing = true;
                 return;
             }
@@ -598,22 +528,18 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
 
         AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
 
-        // Only do the frame override while we are actually in the attack state
         if (!stateInfo.IsName(attackStateName) && !stateInfo.IsName("Base Layer." + attackStateName))
         {
             return;
         }
 
-        // If facing right, let the original animation keyframes do their normal job
         if (!facingLeft)
         {
             return;
         }
 
-        // Attack clip has 7 keyed frames in this setup
         int totalFrames = 7;
 
-        // normalizedTime keeps increasing on loops, so use only the fractional cycle part
         float normalized = stateInfo.normalizedTime % 1f;
 
         int frameIndex = Mathf.FloorToInt(normalized * totalFrames);
@@ -628,10 +554,7 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
             frameIndex = totalFrames - 1;
         }
 
-        // Secondary Blade = left blade
         leftSawTransform.localPosition = leftBladeAttackLeftFacing[frameIndex];
-
-        // Primary = right blade
         rightSawTransform.localPosition = rightBladeAttackLeftFacing[frameIndex];
     }
 
@@ -646,7 +569,6 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Keep patrol boundary logic first
         if (collision.gameObject.CompareTag("LeftMax"))
         {
             if (isChasing == false)
@@ -656,7 +578,6 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
                 Invoke(nameof(SwitchToRight), waitTime);
                 waiting = true;
 
-                // Store this patrol edge as this enemy's left patrol limit
                 leftLimitX = collision.transform.position.x;
             }
             else
@@ -664,7 +585,6 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
                 patrol = "GoRight";
                 facingLeft = false;
 
-                // Keep the sprite art correct after hitting the left boundary.
                 if (spriteRenderer != null)
                 {
                     spriteRenderer.flipX = facingLeft;
@@ -673,7 +593,6 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
                 leftLimitX = collision.transform.position.x;
             }
 
-            // The enemy definitely reached a new patrol point, so clear the stuck backup timer.
             ResetStuckTurnCheck();
             return;
         }
@@ -687,7 +606,6 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
                 Invoke(nameof(SwitchToLeft), waitTime);
                 waiting = true;
 
-                // Store this patrol edge as this enemy's right patrol limit
                 rightLimitX = collision.transform.position.x;
             }
             else
@@ -695,7 +613,6 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
                 patrol = "GoLeft";
                 facingLeft = true;
 
-                // Keep the sprite art correct after hitting the right boundary.
                 if (spriteRenderer != null)
                 {
                     spriteRenderer.flipX = facingLeft;
@@ -704,7 +621,6 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
                 rightLimitX = collision.transform.position.x;
             }
 
-            // The enemy definitely reached a new patrol point, so clear the stuck backup timer.
             ResetStuckTurnCheck();
             return;
         }
@@ -721,7 +637,6 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
             spriteRenderer.flipX = facingLeft;
         }
 
-        // A delayed patrol switch counts as a fresh movement state, so reset the backup timer.
         ResetStuckTurnCheck();
     }
 
@@ -736,7 +651,6 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
             spriteRenderer.flipX = facingLeft;
         }
 
-        // A delayed patrol switch counts as a fresh movement state, so reset the backup timer.
         ResetStuckTurnCheck();
     }
 }

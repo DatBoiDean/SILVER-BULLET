@@ -12452,6 +12452,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8458a2a0c0698c7478f7f99be7680250, type: 3}
+--- !u!114 &997417890 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5105081214598158887, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+  m_PrefabInstance: {fileID: 1343369054}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1006412611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12692,6 +12703,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 229fc04466f642844bce973e9e0182d3, type: 3}
+--- !u!1 &1230813741 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4114649912291347994, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+  m_PrefabInstance: {fileID: 1343369054}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1323143384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12797,6 +12813,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1788713738665071743, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 997417890}
     - target: {fileID: 4114649912291347994, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_Name
       value: Player
@@ -20808,6 +20828,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 824141404131582645, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
+      propertyPath: currentEnemyHealth
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2132422714311580189, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.4
@@ -20852,6 +20876,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScrewEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5900429069323312950, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1230813741}
+    - target: {fileID: 8351387745368313516, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1230813741}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

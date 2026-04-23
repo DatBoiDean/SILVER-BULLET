@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6821559206587534863}
-  - component: {fileID: 4504238251981507064}
   - component: {fileID: 7145363479439799978}
   - component: {fileID: 719634845720141138}
   - component: {fileID: 4683570445797585097}
@@ -39,22 +38,6 @@ Transform:
   - {fileID: 8240235399516970545}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4504238251981507064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5020822955256881082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55579b0fb162f514f9d98c9939d1d43f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentEnemyHealth: 7
-  maxEnemyHealth: 3
-  amount: 0
-  isWire: 0
 --- !u!212 &7145363479439799978
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -168,22 +151,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionDist: 4.05
-  waitDist: 1.1
-  startLeft: 1
+  waitDist: 1.01
+  startLeft: 0
   player: {fileID: 0}
   moveSpeed: 4.11
-  patrolSpeed: 3.26
+  patrolSpeed: 3
   waitTime: 0.85
   isChasing: 0
   Stuck: 0
   feet: {fileID: 0}
-  stuckTurnTime: 0.64
+  stuckTurnTime: 1.55
   stuckMinXChange: 0.25
-  damageAmount: 1
+  damageAmount: 2
   attackHitboxTrigger: {fileID: 5605932981272505700}
   playerCharacter:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   patrol: 
   waiting: 0
   direction: {x: 0, y: 0}
@@ -243,9 +226,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f3a3eb2621fe540a6ba07d902afb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 3
+  currentEnemyHealth: 0
+  maxEnemyHealth: 3
   enemySprite: {fileID: 7145363479439799978}
   flashTime: 0.2
+  isWire: 0
 --- !u!1 &5502730204829606029
 GameObject:
   m_ObjectHideFlags: 0

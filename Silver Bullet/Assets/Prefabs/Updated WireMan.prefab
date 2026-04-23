@@ -291,9 +291,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb98171f74c2f84195da9ad19a2d07a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabRange: 5
+  grabRange: 6.38
   grabZone: {fileID: 590963932551097103}
-  player: {fileID: 4114649912291347994, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+  player: {fileID: 0}
   damageAmount: 1
 --- !u!114 &2587946929030634258
 MonoBehaviour:
@@ -307,12 +307,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffd27d7ccaddee54b87281d30d7f05ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpForce: 10
-  stunTimer: 0.18
+  moveSpeed: 4.43
+  jumpForce: 10.18
+  stunTimer: 0.16
   rb: {fileID: 6624282803464095820}
   animator: {fileID: 6988453791228538919}
-  player: {fileID: 4114649912291347994, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+  player: {fileID: 0}
 --- !u!114 &3123779754949052360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,8 +325,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f3a3eb2621fe540a6ba07d902afb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyHealth: 9
-  maxEnemyHealth: 5
+  currentEnemyHealth: 10
+  maxEnemyHealth: 10
   enemySprite: {fileID: 1467324954570949793}
   flashTime: 0.2
   isWire: 1
@@ -344,7 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wireManMovement: {fileID: 2587946929030634258}
   rb: {fileID: 6624282803464095820}
-  jumpForce: 21
+  jumpForce: 34.9
 --- !u!95 &6988453791228538919
 Animator:
   serializedVersion: 5

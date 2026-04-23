@@ -29,7 +29,7 @@ public class WireManMovement : MonoBehaviour
 
         if (player != null)
         {
-            rb.velocity = playerDist * moveSpeed;
+            rb.velocity = new Vector2(playerDist.x * moveSpeed, rb.velocity.y);
 
             // If player is to the left and enemy is facing right
             if (player.transform.position.x < transform.position.x && isFacingRight)
@@ -68,7 +68,7 @@ public class WireManMovement : MonoBehaviour
         }
 
     }
-
+/*
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision != null)
@@ -83,5 +83,5 @@ public class WireManMovement : MonoBehaviour
         {
             Debug.Log("collision null");
         }
+        */
     }
-}

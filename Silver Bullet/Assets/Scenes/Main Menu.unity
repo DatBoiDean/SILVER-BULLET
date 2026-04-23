@@ -694,12 +694,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "CONTROLS\n\nA / D: Move Left / Right\nLeft Click: Attack (No Animation
-    yet)\nSpace Bar: Jump\nEsc - Close the game\n\nEnemies can be nailed into the
-    ground by jumping on their heads\n\tThis disables them and turns them into a
-    platform. Use them wisely!\nSpikes in the ceilings are crushers - They instantly
-    kill you when they crush you.\n\tEnemies can also activate the crushers.\n\nSpikes
-    in the floor damage you, but launch you higher than a normal jump."
+  m_text: "CONTROLS\n\nA / D: Move Left / Right\nLeft Click: Attack\nSpace Bar: Jump
+    (Hold for higher jump)\nEsc - Close the game (unless in webpage)\n\nEnemies can
+    be nailed into the ground by jumping on their heads\n\tThis disables them and
+    turns them into a platform. Use them wisely!\nSpikes in the ceilings are crushers
+    - They instantly kill you when they crush you.\n\tEnemies can also activate the
+    crushers.\n\nSpikes in the floor damage you, but launch you higher than a normal
+    jump."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -726,8 +727,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10
-  m_fontSizeBase: 10
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

@@ -5,7 +5,7 @@ using UnityEngine;
 public class WireManMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5f;
-    [SerializeField] float jumpForce;
+    [SerializeField] float jumpForce = 1f;
     [SerializeField] float stunTimer;
 
     public Rigidbody2D rb;
@@ -25,7 +25,7 @@ public class WireManMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector2 playerDist = new Vector2(player.transform.position.x - transform.position.x, 0).normalized; //calculate distance between player and enemy
+        Vector2 playerDist = new Vector2(player.transform.position.x - transform.position.x, 0).normalized; //calculate distance between player and enemy's x position
 
         if (player != null)
         {
@@ -48,7 +48,7 @@ public class WireManMovement : MonoBehaviour
 
             if (enemyHealthComponent.currentEnemyHealth <= 0)
             {
-                rb.velocity = Vector2.zero;
+                rb.velocity = Vector2.zero; //temporarily disable movement
                 stunTimer += 1f;
                 if (stunTimer >= 300f)
                 {
@@ -67,5 +67,21 @@ public class WireManMovement : MonoBehaviour
             transform.localScale = currentScale; // set new scale
         }
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision != null)
+        {
+            if (collision.CompareTag("WireManPlatform"))
+            {
+                rb.AddForce(Vector2.up * jumpForce);
+            }
+        }
+
+        else
+        {
+            Debug.Log("collision null");
+        }
     }
 }

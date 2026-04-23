@@ -296,7 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grabRange: 5
   grabZone: {fileID: 590963932551097103}
-  player: {fileID: 0}
+  player: {fileID: 4114649912291347994, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
   damageAmount: 1
 --- !u!114 &2587946929030634258
 MonoBehaviour:
@@ -311,11 +311,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpForce: 0
+  jumpForce: 10
   stunTimer: 0
   rb: {fileID: 6624282803464095820}
   animator: {fileID: 4305360575843669973}
-  player: {fileID: 0}
+  player: {fileID: 4114649912291347994, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
 --- !u!114 &3123779754949052360
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,6 +17,7 @@ TagManager:
   - Win
   - Ceiling
   - SuctionZone
+  - WireManPlatform
   layers:
   - Default
   - TransparentFX

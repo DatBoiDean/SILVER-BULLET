@@ -48,7 +48,7 @@ public class TestCharcterController : MonoBehaviour
                 if (dynJumpForce > 0)
                 {
                 testRigidBody.velocity = Vector2.up * jumpForce;
-                dynJumpForce = dynJumpForce - (jumpForce / 275);
+                dynJumpForce = dynJumpForce - ((jumpForce / 275) * 4);
                 }
                 else
                 {

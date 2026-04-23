@@ -44,7 +44,7 @@ public class WireManMovement : MonoBehaviour
                 isFacingRight = true;
             }
 
-            var enemyHealthComponent = GetComponent<EnemyHealth>();
+            var enemyHealthComponent = GetComponent<EnemyHealth1>();
 
             if (enemyHealthComponent.currentEnemyHealth <= 0)
             {

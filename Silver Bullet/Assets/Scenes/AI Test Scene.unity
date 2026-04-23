@@ -227,7 +227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6331124015339857526, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: jumpForce
-      value: 8
+      value: 10.09
       objectReference: {fileID: 0}
     - target: {fileID: 8805001103175705496, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_FlipX
@@ -7264,7 +7264,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 546119239253932752, guid: 9de8cae395657974aad1401ef1710e9f, type: 3}
       propertyPath: jumpForce
-      value: 35.6
+      value: 30.7
       objectReference: {fileID: 0}
     - target: {fileID: 1467324954570949793, guid: 9de8cae395657974aad1401ef1710e9f, type: 3}
       propertyPath: m_FlipX
@@ -7278,6 +7278,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 38306616}
+    - target: {fileID: 2564314155677293749, guid: 9de8cae395657974aad1401ef1710e9f, type: 3}
+      propertyPath: damageAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2587946929030634258, guid: 9de8cae395657974aad1401ef1710e9f, type: 3}
       propertyPath: player
       value: 
@@ -7286,9 +7290,17 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2587946929030634258, guid: 9de8cae395657974aad1401ef1710e9f, type: 3}
+      propertyPath: moveSpeed
+      value: 5.28
+      objectReference: {fileID: 0}
     - target: {fileID: 3123779754949052360, guid: 9de8cae395657974aad1401ef1710e9f, type: 3}
       propertyPath: maxEnemyHealth
-      value: 1
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3123779754949052360, guid: 9de8cae395657974aad1401ef1710e9f, type: 3}
+      propertyPath: currentEnemyHealth
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5242861057728532889, guid: 9de8cae395657974aad1401ef1710e9f, type: 3}
       propertyPath: m_Enabled

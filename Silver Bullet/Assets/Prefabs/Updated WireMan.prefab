@@ -198,7 +198,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: fde0355a0b081724a8d4fb47ed92aeb7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -264,7 +264,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 2.4
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 10.66
@@ -309,7 +309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpForce: 10
-  stunTimer: 0
+  stunTimer: 0.18
   rb: {fileID: 6624282803464095820}
   animator: {fileID: 6988453791228538919}
   player: {fileID: 4114649912291347994, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
@@ -325,8 +325,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f3a3eb2621fe540a6ba07d902afb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 3
+  currentEnemyHealth: 9
+  maxEnemyHealth: 5
   enemySprite: {fileID: 1467324954570949793}
   flashTime: 0.2
   isWire: 1
@@ -344,7 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wireManMovement: {fileID: 2587946929030634258}
   rb: {fileID: 6624282803464095820}
-  jumpForce: 19.6
+  jumpForce: 21
 --- !u!95 &6988453791228538919
 Animator:
   serializedVersion: 5

@@ -6,6 +6,7 @@ using UnityEngine;
 public class TestCharcterController : MonoBehaviour
 {
     public float dynJumpForce;
+    [SerializeField] float jumpTime;
     public float speed = 1;
     public float jumpForce = 1;
     private float move;
@@ -20,7 +21,7 @@ public class TestCharcterController : MonoBehaviour
     void Start()
     {
         testRigidBody = GetComponent<Rigidbody2D>();
-        dynJumpForce = jumpForce;
+        dynJumpForce = jumpTime;
     }
 
     void Update()
@@ -32,7 +33,7 @@ public class TestCharcterController : MonoBehaviour
             //Evan: Keep referencing Move04.cs from Game 370 to understand how it's all set up 
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            dynJumpForce = jumpForce;
+            dynJumpForce = jumpTime;
             jumping = false;
         }
         if (Input.GetKeyDown(KeyCode.Space))

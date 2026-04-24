@@ -200,9 +200,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dynJumpForce: 0
-  jumpTime: 3.5
+  jumpTime: 3
   speed: 7.5
-  jumpForce: 10.32
+  jumpForce: 10
   testRigidBody: {fileID: 8893022857443268861}
   isGrounded: 1
   _animator: {fileID: 1053060233612658289}

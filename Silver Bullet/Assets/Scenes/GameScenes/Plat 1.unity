@@ -10479,7 +10479,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 229fc04466f642844bce973e9e0182d3, type: 3}
---- !u!1001 &311343625
+--- !u!1001 &513677727
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10487,336 +10487,55 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
+    - target: {fileID: 1095162330080429209, guid: 8d80f56a546a063459468880adb1c9a7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.97
+      value: -33.007866
       objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
+    - target: {fileID: 1095162330080429209, guid: 8d80f56a546a063459468880adb1c9a7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -25.43
+      value: -20.632633
       objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
+    - target: {fileID: 1095162330080429209, guid: 8d80f56a546a063459468880adb1c9a7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.081878774
       objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
+    - target: {fileID: 1095162330080429209, guid: 8d80f56a546a063459468880adb1c9a7, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
+    - target: {fileID: 1095162330080429209, guid: 8d80f56a546a063459468880adb1c9a7, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
+    - target: {fileID: 1095162330080429209, guid: 8d80f56a546a063459468880adb1c9a7, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
+    - target: {fileID: 1095162330080429209, guid: 8d80f56a546a063459468880adb1c9a7, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
+    - target: {fileID: 1095162330080429209, guid: 8d80f56a546a063459468880adb1c9a7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
+    - target: {fileID: 1095162330080429209, guid: 8d80f56a546a063459468880adb1c9a7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
+    - target: {fileID: 1095162330080429209, guid: 8d80f56a546a063459468880adb1c9a7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2614568563166105983, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
-    - target: {fileID: 2614568563166105983, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
+    - target: {fileID: 1581496038641680041, guid: 8d80f56a546a063459468880adb1c9a7, type: 3}
       propertyPath: m_Name
-      value: JUMP COLLIDER FOR WIRE ENEMY (7)
+      value: EscQuit,Frames (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
---- !u!1001 &341647910
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -18.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -24.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614568563166105983, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
-    - target: {fileID: 2614568563166105983, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Name
-      value: JUMP COLLIDER FOR WIRE ENEMY (8)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5187124353450774324, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Size.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5187124353450774324, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Size.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5187124353450774324, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Offset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5187124353450774324, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Offset.y
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
---- !u!1001 &354787537
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.328125
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -25.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.61
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614568563166105983, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
-    - target: {fileID: 2614568563166105983, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Name
-      value: JUMP COLLIDER FOR WIRE ENEMY (4)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
---- !u!1001 &386918695
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2310389388684548486, guid: 9de8cae395657974aad1401ef1710e9f, type: 3}
-      propertyPath: m_Name
-      value: Updated WireMan (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2564314155677293749, guid: 9de8cae395657974aad1401ef1710e9f, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 553206685}
-    - target: {fileID: 2587946929030634258, guid: 9de8cae395657974aad1401ef1710e9f, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 553206685}
-    - target: {fileID: 8625550759521074016, guid: 9de8cae395657974aad1401ef1710e9f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -13.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625550759521074016, guid: 9de8cae395657974aad1401ef1710e9f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -13.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625550759521074016, guid: 9de8cae395657974aad1401ef1710e9f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625550759521074016, guid: 9de8cae395657974aad1401ef1710e9f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625550759521074016, guid: 9de8cae395657974aad1401ef1710e9f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625550759521074016, guid: 9de8cae395657974aad1401ef1710e9f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625550759521074016, guid: 9de8cae395657974aad1401ef1710e9f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625550759521074016, guid: 9de8cae395657974aad1401ef1710e9f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625550759521074016, guid: 9de8cae395657974aad1401ef1710e9f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8625550759521074016, guid: 9de8cae395657974aad1401ef1710e9f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9de8cae395657974aad1401ef1710e9f, type: 3}
---- !u!1001 &399049743
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 7.0414944
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -31.91
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -8.27
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614568563166105983, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
-    - target: {fileID: 2614568563166105983, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Name
-      value: JUMP COLLIDER FOR WIRE ENEMY (3)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
---- !u!1 &553206685 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4114649912291347994, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
-  m_PrefabInstance: {fileID: 1101493392}
-  m_PrefabAsset: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: 8d80f56a546a063459468880adb1c9a7, type: 3}
 --- !u!1001 &625185674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11343,71 +11062,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1001 &1010774993
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.8165977
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -31.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.36
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614568563166105983, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
-    - target: {fileID: 2614568563166105983, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Name
-      value: JUMP COLLIDER FOR WIRE ENEMY (10)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
 --- !u!1001 &1059954959
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11874,128 +11528,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
---- !u!1001 &1346924613
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -21.97
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -25.43
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614568563166105983, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
-    - target: {fileID: 2614568563166105983, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Name
-      value: JUMP COLLIDER FOR WIRE ENEMY
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
---- !u!1001 &1376468313
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -11.76
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -14.69
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.93045604
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.36640358
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -42.988
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614568563166105983, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
-    - target: {fileID: 2614568563166105983, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Name
-      value: JUMP COLLIDER FOR WIRE ENEMY (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
 --- !u!1 &1455857853
 GameObject:
   m_ObjectHideFlags: 0
@@ -12080,67 +11612,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1481595027
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -18.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -9.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614568563166105983, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
-    - target: {fileID: 2614568563166105983, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Name
-      value: JUMP COLLIDER FOR WIRE ENEMY (2)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
 --- !u!1 &1555889686
 GameObject:
   m_ObjectHideFlags: 0
@@ -18288,140 +17759,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1001 &1593596002
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 7.457732
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -20
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -19.37
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614568563166105983, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
-    - target: {fileID: 2614568563166105983, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Name
-      value: JUMP COLLIDER FOR WIRE ENEMY (9)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
---- !u!1001 &1609701218
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 10.093766
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.4730578
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -6.89
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614568563166105983, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
-    - target: {fileID: 2614568563166105983, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Name
-      value: JUMP COLLIDER FOR WIRE ENEMY (6)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
 --- !u!1001 &1653847569
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18479,75 +17816,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8458a2a0c0698c7478f7f99be7680250, type: 3}
---- !u!1001 &1728952419
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5.861877
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.4730578
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -20.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 490673389700401214, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614568563166105983, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
-    - target: {fileID: 2614568563166105983, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
-      propertyPath: m_Name
-      value: JUMP COLLIDER FOR WIRE ENEMY (5)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b2bf3aa58bf1ad2499ff8e76ae344f27, type: 3}
 --- !u!1001 &1775421107
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18771,16 +18039,5 @@ SceneRoots:
   - {fileID: 1101493392}
   - {fileID: 2063881186}
   - {fileID: 38167386}
-  - {fileID: 386918695}
-  - {fileID: 1346924613}
-  - {fileID: 311343625}
-  - {fileID: 341647910}
-  - {fileID: 1593596002}
-  - {fileID: 1376468313}
-  - {fileID: 1481595027}
-  - {fileID: 399049743}
-  - {fileID: 1010774993}
-  - {fileID: 354787537}
-  - {fileID: 1728952419}
-  - {fileID: 1609701218}
   - {fileID: 7615406986555600511}
+  - {fileID: 513677727}

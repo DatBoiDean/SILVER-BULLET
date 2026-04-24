@@ -9,6 +9,7 @@ public class TargetFramerate : MonoBehaviour
     {
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 50;
+        Screen.SetResolution(1920, 1080, true); 
         //I wonder
     }
 

@@ -1542,7 +1542,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4175784654023991669, guid: c0742f506665789478f42b89dda2d49c, type: 3}
       propertyPath: m_Name
-      value: SPACE REMOVE ME
+      value: REMOVE AFTER IGDA
       objectReference: {fileID: 0}
     - target: {fileID: 5045940414338130606, guid: c0742f506665789478f42b89dda2d49c, type: 3}
       propertyPath: level

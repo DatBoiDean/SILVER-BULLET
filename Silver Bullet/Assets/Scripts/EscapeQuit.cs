@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement; 
 public class EscapeQuit : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -16,8 +16,10 @@ public class EscapeQuit : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("Escape Key Pressed, fired from " + gameObject.name);
-            Debug.Log("Quitting Application, fired from " + gameObject.name);
-            Application.Quit();
+            Debug.Log("Loading Main Menu, fired from "+ gameObject.name);
+            SceneManager.LoadScene(0);
+            //Debug.Log("Quitting Application, fired from " + gameObject.name);
+            //Application.Quit();
         }
     }
 }

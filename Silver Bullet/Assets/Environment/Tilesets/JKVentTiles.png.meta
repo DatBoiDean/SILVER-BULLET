@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f106a0a2acc92104986c49c34b9982ca
+guid: 596ea774b329b3f448971ed7e272d7e5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,7 +113,7 @@ TextureImporter:
       name: JKVentTiles_0
       rect:
         serializedVersion: 2
-        x: 50
+        x: 0
         y: 150
         width: 50
         height: 50
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78fd5e699602e8b4b840b3d5bff2b150
-      internalID: -816583306
+      spriteID: fac8224d4146e3047ab1b8b11f4549ee
+      internalID: -2007256883
       vertices: []
       indices: 
       edges: []
@@ -134,6 +134,27 @@ TextureImporter:
       name: JKVentTiles_1
       rect:
         serializedVersion: 2
+        x: 50
+        y: 150
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc97ee08301144543bc9082b2f6b1f07
+      internalID: -1241547183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JKVentTiles_2
+      rect:
+        serializedVersion: 2
         x: 100
         y: 150
         width: 50
@@ -145,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f86b9118df9176458d0ffd2d17d70d9
-      internalID: 992247272
+      spriteID: 1853de9845eb2a04aa1097996a57fbda
+      internalID: -1210181947
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: JKVentTiles_2
+      name: JKVentTiles_3
       rect:
         serializedVersion: 2
         x: 150
@@ -166,14 +187,56 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f26482528e2719469017d981d908dff
-      internalID: -821642024
+      spriteID: afa883c9b93695140874fda86fb6995e
+      internalID: -1405507225
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: JKVentTiles_3
+      name: JKVentTiles_4
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 150
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf93a136018cb2346962758c42a79710
+      internalID: -506727595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JKVentTiles_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 100
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6798ab2b09b23304db8161560cd72dcd
+      internalID: -812895889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JKVentTiles_6
       rect:
         serializedVersion: 2
         x: 50
@@ -187,71 +250,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 175fe052f6596a24cae4a71886c29554
-      internalID: 790600102
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: JKVentTiles_4
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 100
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 481e19eca6136fd479003849938bc8d4
-      internalID: -361284572
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: JKVentTiles_5
-      rect:
-        serializedVersion: 2
-        x: 150
-        y: 100
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 57cc7770d1873554eb393be04e97cae6
-      internalID: 2103227966
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: JKVentTiles_6
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 50
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d4f39e50c37416a4893d2dd88f08f28a
-      internalID: -1723120435
+      spriteID: a1781f58e5d7e764298866c2452b7ae8
+      internalID: 1848080354
       vertices: []
       indices: 
       edges: []
@@ -260,6 +260,132 @@ TextureImporter:
       name: JKVentTiles_7
       rect:
         serializedVersion: 2
+        x: 100
+        y: 100
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 732be58e0bd941e498eaf2b2c4e2afcd
+      internalID: 553646450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JKVentTiles_8
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 100
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 220f4fead49e3c04a846ba7e131aefcc
+      internalID: 901252412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JKVentTiles_9
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 100
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0607e1ecdf39fbd45be2a996d6332c79
+      internalID: -1250989647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JKVentTiles_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 50
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1ab687fa8f0f6141a1b520390238dcf
+      internalID: 1951228048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JKVentTiles_11
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 50
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe0172f50d9c951418245544e8e51431
+      internalID: -1305236400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JKVentTiles_12
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 50
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 420574249952dad4eb711af743db79ee
+      internalID: 970573407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JKVentTiles_13
+      rect:
+        serializedVersion: 2
         x: 150
         y: 50
         width: 50
@@ -271,14 +397,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ebf80e1e676cd924cbf2fea8bd20a0e1
-      internalID: 1241498855
+      spriteID: cde3a41780a237b469ad7f8b0a3ac97b
+      internalID: -741031942
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: JKVentTiles_8
+      name: JKVentTiles_14
       rect:
         serializedVersion: 2
         x: 200
@@ -292,14 +418,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c395a894b3c56ed42b00183a083e62e8
-      internalID: -880696667
+      spriteID: 981cd84d7f13691489b9b345b25a7b51
+      internalID: 406173745
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: JKVentTiles_9
+      name: JKVentTiles_15
       rect:
         serializedVersion: 2
         x: 0
@@ -313,14 +439,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20247bc0e6c82f74f8f16c97521068ae
-      internalID: -1546868278
+      spriteID: 5d7677d8f4ea9d042bbcdb8a921f97aa
+      internalID: -545644659
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: JKVentTiles_10
+      name: JKVentTiles_16
       rect:
         serializedVersion: 2
         x: 50
@@ -334,14 +460,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c11084cf397e8824d92717247ad1a0e9
-      internalID: 2113286321
+      spriteID: 25192b9259d8d9446abd851f2a7127dc
+      internalID: -676922701
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: JKVentTiles_11
+      name: JKVentTiles_17
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 683f901279746c145a32f14a8c1e4994
+      internalID: -6169112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JKVentTiles_18
       rect:
         serializedVersion: 2
         x: 150
@@ -355,14 +502,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3355c2b9e8ee27341921d9fc875102a2
-      internalID: -365195076
+      spriteID: 8f7e4984855109149aecb292d779bf22
+      internalID: -251590488
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: JKVentTiles_12
+      name: JKVentTiles_19
       rect:
         serializedVersion: 2
         x: 200
@@ -376,8 +523,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 133a67e3900a7fe4dbc54fd1e94922b9
-      internalID: -1938564069
+      spriteID: 2c3d8a63b11386a44b8825875283112c
+      internalID: 2068513536
       vertices: []
       indices: 
       edges: []
@@ -393,19 +540,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      JKVentTiles_0: -816583306
-      JKVentTiles_1: 992247272
-      JKVentTiles_10: 2113286321
-      JKVentTiles_11: -365195076
-      JKVentTiles_12: -1938564069
-      JKVentTiles_2: -821642024
-      JKVentTiles_3: 790600102
-      JKVentTiles_4: -361284572
-      JKVentTiles_5: 2103227966
-      JKVentTiles_6: -1723120435
-      JKVentTiles_7: 1241498855
-      JKVentTiles_8: -880696667
-      JKVentTiles_9: -1546868278
+      JKVentTiles_0: -2007256883
+      JKVentTiles_1: -1241547183
+      JKVentTiles_10: 1951228048
+      JKVentTiles_11: -1305236400
+      JKVentTiles_12: 970573407
+      JKVentTiles_13: -741031942
+      JKVentTiles_14: 406173745
+      JKVentTiles_15: -545644659
+      JKVentTiles_16: -676922701
+      JKVentTiles_17: -6169112
+      JKVentTiles_18: -251590488
+      JKVentTiles_19: 2068513536
+      JKVentTiles_2: -1210181947
+      JKVentTiles_3: -1405507225
+      JKVentTiles_4: -506727595
+      JKVentTiles_5: -812895889
+      JKVentTiles_6: 1848080354
+      JKVentTiles_7: 553646450
+      JKVentTiles_8: 901252412
+      JKVentTiles_9: -1250989647
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

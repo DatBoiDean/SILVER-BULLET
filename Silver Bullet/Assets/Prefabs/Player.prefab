@@ -154,6 +154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1492900556885310369}
   - component: {fileID: 6331124015339857526}
+  - component: {fileID: 33883818081593603}
   - component: {fileID: 6160076110977145742}
   - component: {fileID: 8805001103175705496}
   - component: {fileID: 1788713738665071743}
@@ -200,13 +201,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dynJumpForce: 0
-  jumpTime: 3
+  jumpTime: 4
   speed: 7.5
-  jumpForce: 10
+  jumpForce: 12
   testRigidBody: {fileID: 8893022857443268861}
   isGrounded: 1
   _animator: {fileID: 1053060233612658289}
   jumping: 0
+--- !u!114 &33883818081593603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4114649912291347994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baa20b8463caa8746a49e9373160fef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  steamFling: 7
 --- !u!114 &6160076110977145742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,10 +323,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

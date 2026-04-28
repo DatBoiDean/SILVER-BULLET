@@ -14281,9 +14281,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 85090172}
   useRange: 2
-  target: {fileID: 0}
+  target: {fileID: 850854699}
   vertTarget: {x: 0, y: -23, z: 0}
-  moveSpeed: 0.02
+  moveSpeed: 4
   UpInstead: 0
   active: 0
 --- !u!212 &1159164586
@@ -20281,7 +20281,7 @@ MonoBehaviour:
   useRange: 2
   target: {fileID: 1941294242}
   vertTarget: {x: 0, y: 4, z: 0}
-  moveSpeed: 0.02
+  moveSpeed: 4
   UpInstead: 1
   active: 0
 --- !u!114 &1785920455 stripped

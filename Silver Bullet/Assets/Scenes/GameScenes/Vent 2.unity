@@ -1972,16 +1972,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 11, y: -11, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 13
-      m_TileSpriteIndex: 13
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 12, y: -11, z: 0}
     second:
       serializedVersion: 2
@@ -3620,7 +3610,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 70df52008826e014399c299c317ed8bd, type: 2}
   - m_RefCount: 24
     m_Data: {fileID: 11400000, guid: acb5ad25669ed624099c949662535a07, type: 2}
-  - m_RefCount: 63
+  - m_RefCount: 62
     m_Data: {fileID: 11400000, guid: 9c61bc946eee22a42a7c94bb25bd870f, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: be37cfc6d7e949348bab4e6516b32b3c, type: 2}
@@ -3657,7 +3647,7 @@ Tilemap:
     m_Data: {fileID: -812895889, guid: 596ea774b329b3f448971ed7e272d7e5, type: 3}
   - m_RefCount: 24
     m_Data: {fileID: 553646450, guid: 596ea774b329b3f448971ed7e272d7e5, type: 3}
-  - m_RefCount: 63
+  - m_RefCount: 62
     m_Data: {fileID: -1241547183, guid: 596ea774b329b3f448971ed7e272d7e5, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 406173745, guid: 596ea774b329b3f448971ed7e272d7e5, type: 3}
@@ -3668,7 +3658,7 @@ Tilemap:
   - m_RefCount: 3
     m_Data: {fileID: 1665057619, guid: 1822791845ea5dd4bad2e9180b02e4b3, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 194
+  - m_RefCount: 193
     m_Data:
       e00: 1
       e01: 0
@@ -3687,7 +3677,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 194
+  - m_RefCount: 193
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - m_RefCount: 0
     m_Data: {r: 6.1475e-41, g: 6.1475e-41, b: 6.1475e-41, a: 6.1475e-41}
@@ -3802,8 +3792,8 @@ MonoBehaviour:
   player: {fileID: 1833261520}
   useRange: 2
   target: {fileID: 510919889}
-  vertTarget: {x: 0, y: 8, z: 0}
-  moveSpeed: 0.02
+  vertTarget: {x: 0, y: 4, z: 0}
+  moveSpeed: 2
   UpInstead: 1
   active: 0
 --- !u!4 &458002695
@@ -8109,7 +8099,7 @@ MonoBehaviour:
   useRange: 2
   target: {fileID: 759775749}
   horizTarget: {x: 4, y: 0, z: 0}
-  moveSpeed: 0.02
+  moveSpeed: 2
   RightInstead: 1
   active: 0
 --- !u!114 &718956730
@@ -8128,7 +8118,7 @@ MonoBehaviour:
   useRange: 2
   target: {fileID: 587363771}
   horizTarget: {x: 0, y: 0, z: 0}
-  moveSpeed: 0.02
+  moveSpeed: 2
   RightInstead: 0
   active: 0
 --- !u!1 &759775749
@@ -9219,11 +9209,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6707821274226758899, guid: 229fc04466f642844bce973e9e0182d3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.44
+      value: 12.45
       objectReference: {fileID: 0}
     - target: {fileID: 6707821274226758899, guid: 229fc04466f642844bce973e9e0182d3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.5061
+      value: -10.52
       objectReference: {fileID: 0}
     - target: {fileID: 6707821274226758899, guid: 229fc04466f642844bce973e9e0182d3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9819,7 +9809,7 @@ MonoBehaviour:
   useRange: 2
   target: {fileID: 1323337381}
   vertTarget: {x: 0, y: 0, z: 0}
-  moveSpeed: 0.02
+  moveSpeed: 2
   UpInstead: 0
   active: 0
 --- !u!4 &893463353
@@ -11221,7 +11211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3726720012978449446, guid: ddf65f68c2551cf4c92eca5a2d8ca39d, type: 3}
       propertyPath: patrolSpeed
-      value: 12
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5562365051768068987, guid: ddf65f68c2551cf4c92eca5a2d8ca39d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12383,9 +12373,9 @@ CompositeCollider2D:
         Y: -80000000
     - - X: 170000000
         Y: -100000000
-      - X: 110000000
+      - X: 120000000
         Y: -100000000
-      - X: 110000000
+      - X: 120000000
         Y: -110000000
       - X: 170000000
         Y: -110000000
@@ -12508,8 +12498,8 @@ CompositeCollider2D:
       - {x: 28.000029, y: -11}
     - - {x: 16.999971, y: -11}
       - {x: 16.999971, y: -10}
-      - {x: 11, y: -10.00003}
-      - {x: 11.00003, y: -11}
+      - {x: 12, y: -10.00003}
+      - {x: 12.00003, y: -11}
     - - {x: 31.999971, y: -14}
       - {x: 31.999971, y: -13}
       - {x: 26, y: -13.00003}
@@ -12842,16 +12832,6 @@ Tilemap:
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
   - first: {x: 31, y: -14, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 17
-      m_TileSpriteIndex: 17
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 11, y: -11, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 17
@@ -14047,7 +14027,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 39348a7dc7f99784ba1d008efc531ef2, type: 2}
-  - m_RefCount: 135
+  - m_RefCount: 134
     m_Data: {fileID: 11400000, guid: a43b61dcba16de342bab61217c8fe148, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
@@ -14084,10 +14064,10 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -2044363324, guid: 179ae5901151d804b918edc7ea602e43, type: 3}
-  - m_RefCount: 135
+  - m_RefCount: 134
     m_Data: {fileID: 277635656, guid: 179ae5901151d804b918edc7ea602e43, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 136
+  - m_RefCount: 135
     m_Data:
       e00: 1
       e01: 0
@@ -14106,7 +14086,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 136
+  - m_RefCount: 135
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -14218,7 +14198,7 @@ MonoBehaviour:
   useRange: 2
   target: {fileID: 1323337381}
   vertTarget: {x: 0, y: 3, z: 0}
-  moveSpeed: 0.02
+  moveSpeed: 2
   UpInstead: 1
   active: 0
 --- !u!4 &1320068569
@@ -16430,7 +16410,7 @@ MonoBehaviour:
   useRange: 2
   target: {fileID: 327083738}
   horizTarget: {x: 0, y: 0, z: 0}
-  moveSpeed: 0.02
+  moveSpeed: 2
   RightInstead: 0
   active: 0
 --- !u!1001 &1833261519
@@ -16443,11 +16423,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -29.27
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 27.02
+      value: -2.03
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -17107,7 +17087,7 @@ MonoBehaviour:
   useRange: 2
   target: {fileID: 587363771}
   horizTarget: {x: -4, y: 0, z: 0}
-  moveSpeed: 0.02
+  moveSpeed: 2
   RightInstead: 0
   active: 0
 --- !u!1 &2079717872
@@ -17197,7 +17177,7 @@ MonoBehaviour:
   useRange: 2
   target: {fileID: 327083738}
   horizTarget: {x: 4, y: 0, z: 0}
-  moveSpeed: 0.02
+  moveSpeed: 2
   RightInstead: 1
   active: 0
 --- !u!114 &2079717876
@@ -17216,7 +17196,7 @@ MonoBehaviour:
   useRange: 2
   target: {fileID: 587363771}
   horizTarget: {x: -4, y: 0, z: 0}
-  moveSpeed: 0.02
+  moveSpeed: 2
   RightInstead: 0
   active: 0
 --- !u!4 &2079717877

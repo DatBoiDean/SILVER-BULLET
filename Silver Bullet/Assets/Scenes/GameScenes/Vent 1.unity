@@ -9847,7 +9847,7 @@ MonoBehaviour:
   useRange: 2
   target: {fileID: 1194215986}
   vertTarget: {x: 0, y: -24, z: 0}
-  moveSpeed: 0.2
+  moveSpeed: 4
   UpInstead: 0
   active: 0
 --- !u!4 &1017730815
@@ -15554,7 +15554,7 @@ MonoBehaviour:
   useRange: 2
   target: {fileID: 1194215986}
   vertTarget: {x: 0, y: 0, z: 0}
-  moveSpeed: 0.2
+  moveSpeed: 4
   UpInstead: 0
   active: 0
 --- !u!4 &1616255622
@@ -16424,7 +16424,7 @@ MonoBehaviour:
   useRange: 2
   target: {fileID: 1194215986}
   vertTarget: {x: 0, y: 10, z: 0}
-  moveSpeed: 0.2
+  moveSpeed: 4
   UpInstead: 1
   active: 0
 --- !u!4 &2106491309

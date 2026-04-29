@@ -13624,7 +13624,7 @@ GameObject:
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &997951701
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13769,10 +13769,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   useRange: 0
-  target: {fileID: 0}
-  vertTarget: {x: 0, y: 0, z: 0}
-  moveSpeed: 0
-  UpInstead: 0
+  target: {fileID: 243303478}
+  vertTarget: {x: 0, y: 4, z: 0}
+  moveSpeed: 2
+  UpInstead: 1
   active: 0
 --- !u!1 &1005596679
 GameObject:
@@ -23003,9 +23003,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   useRange: 0
-  target: {fileID: 0}
-  vertTarget: {x: 0, y: 0, z: 0}
-  moveSpeed: 0
+  target: {fileID: 1215569437}
+  vertTarget: {x: 0, y: -6, z: 0}
+  moveSpeed: 4
   UpInstead: 0
   active: 0
 --- !u!1 &1320224176

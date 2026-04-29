@@ -17,6 +17,7 @@ public class TestCharcterController : MonoBehaviour
     [SerializeField] Animator _animator; 
     int crouching = 1;
     public bool jumping = false;
+    public bool wall = false;
 
     void Start()
     {
@@ -98,7 +99,17 @@ public class TestCharcterController : MonoBehaviour
             crouching = 1;
         }
         move = Input.GetAxisRaw("Horizontal");
+        if (isGrounded == false)
+        {
+        if (wall == false)
+        {
         testRigidBody.velocity = new Vector2(move * speed * crouching, testRigidBody.velocity.y);
+        }
+        }
+        else if (isGrounded == true)
+        {
+            testRigidBody.velocity = new Vector2(move * speed * crouching, testRigidBody.velocity.y);
+        }
 
         if (move > 0 && !isFacingRight) // flip if moving chacracter left 
         {
@@ -164,6 +175,10 @@ public class TestCharcterController : MonoBehaviour
         {
             isGrounded = true;
         }
+        if (collision.gameObject.CompareTag("Untagged"))
+        {
+            wall = true;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -175,6 +190,10 @@ public class TestCharcterController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             isGrounded = false;
+        }
+        if (collision.gameObject.CompareTag("Untagged"))
+        {
+            wall = false;
         }
     }
 

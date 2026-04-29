@@ -150,12 +150,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00a0ffc601f04f4f9247bf478b20de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionDist: 4.05
-  waitDist: 1.01
+  detectionDist: 8
+  waitDist: 0.75
   startLeft: 0
   player: {fileID: 0}
-  moveSpeed: 4.11
-  patrolSpeed: 3
+  moveSpeed: 4
+  patrolSpeed: 1
   waitTime: 0.85
   isChasing: 0
   Stuck: 0

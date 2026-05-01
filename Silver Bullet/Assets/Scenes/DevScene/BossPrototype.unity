@@ -3600,6 +3600,17 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!114 &720887295 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5105081214598158887, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+  m_PrefabInstance: {fileID: 2119950451}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &758358242
 GameObject:
   m_ObjectHideFlags: 0
@@ -4056,6 +4067,7 @@ MonoBehaviour:
   currentEnemyHealth: 8
   maxEnemyHealth: 8
   amount: 0
+  isWire: 0
 --- !u!61 &1334033508
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4088,7 +4100,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01, y: -0.12}
+  m_Offset: {x: -0.3210845, y: 0.17336726}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4099,7 +4111,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.03, y: 2.89}
+  m_Size: {x: 4.18204, y: 3.4767346}
   m_EdgeRadius: 0
 --- !u!212 &1334033509
 SpriteRenderer:
@@ -4162,7 +4174,7 @@ Transform:
   m_GameObject: {fileID: 1334033506}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.905, y: -1.4691, z: 0}
+  m_LocalPosition: {x: 7.64, y: -1.73, z: 0}
   m_LocalScale: {x: 0.67226094, y: 1.2328688, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4292,7 +4304,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 452915455
-  m_SortingLayer: -1
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.19665647, g: 0.135, b: 0.24528301, a: 0.87058824}
@@ -4544,6 +4556,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1788713738665071743, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 720887295}
     - target: {fileID: 2308845828385361019, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_Layer
       value: 0

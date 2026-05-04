@@ -18,6 +18,7 @@ TagManager:
   - Ceiling
   - SuctionZone
   - WireManPlatform
+  - Despawn
   layers:
   - Default
   - TransparentFX

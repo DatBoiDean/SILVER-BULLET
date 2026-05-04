@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 4275535875298433089}
   - component: {fileID: -3687592150125003128}
   m_Layer: 6
-  m_Name: Updated WireMan
+  m_Name: Backup Updated Wireman
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

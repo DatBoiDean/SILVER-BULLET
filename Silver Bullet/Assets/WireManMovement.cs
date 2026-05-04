@@ -20,6 +20,7 @@ public class WireManMovement : MonoBehaviour
     void Start()
     {
         stunTimer = Time.deltaTime;
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame

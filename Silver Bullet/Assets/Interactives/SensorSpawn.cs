@@ -28,6 +28,7 @@ public class SensorSpawn : MonoBehaviour
         if (limitCounter >= limit)
         {
             active = false;
+            Destroy(gameObject);
         }
         if (active == false)
         {

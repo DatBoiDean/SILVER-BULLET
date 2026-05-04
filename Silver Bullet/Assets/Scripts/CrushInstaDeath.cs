@@ -33,6 +33,8 @@ public class CrushInstaDeath : MonoBehaviour
             gettingCrushed = true;
 
         }
+        if (col.gameObject.CompareTag("Wireman"))
+        {Destroy(gameObject);}
 
     }
     
@@ -56,6 +58,9 @@ public class CrushInstaDeath : MonoBehaviour
         {
             grounded = true;
         }
+        if (col.gameObject.CompareTag("Wireman"))
+        {Destroy(gameObject);}
+        //To ensure the WM doesn't get snagged on obstacle enemies
     }
 
     void OnCollisionExit2D(Collision2D col)
@@ -69,4 +74,5 @@ public class CrushInstaDeath : MonoBehaviour
             grounded = false;
         }
     }
+    
 }

@@ -19,6 +19,7 @@ TagManager:
   - SuctionZone
   - WireManPlatform
   - Despawn
+  - Wireman
   layers:
   - Default
   - TransparentFX

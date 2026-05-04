@@ -250,6 +250,10 @@ public class TestEnemyChaseBolt : MonoBehaviour
         {
             Grounded = true;
         }
+        if (collision.gameObject.CompareTag("Spikes"))
+        {
+            Grounded = true;
+        }
     }
 
     void OnCollisionStay2D(Collision2D collision)
@@ -258,11 +262,19 @@ public class TestEnemyChaseBolt : MonoBehaviour
         {
             Grounded = true;
         }
+        if (collision.gameObject.CompareTag("Spikes"))
+        {
+            Grounded = true;
+        }
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
+        {
+            Grounded = false;
+        }
+        if (collision.gameObject.CompareTag("Spikes"))
         {
             Grounded = false;
         }

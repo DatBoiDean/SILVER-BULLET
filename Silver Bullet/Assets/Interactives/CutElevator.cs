@@ -50,6 +50,8 @@ public class CutElevator : MonoBehaviour
            if(target.transform.position.y <= vertTarget.y)
            //If the vertical position of the platform is equal or lower than its target point...
             {
+                Destroy(gameObject);
+                //Destroys self. Hopefully!
                 active = false;
                 //Stop moving
             }

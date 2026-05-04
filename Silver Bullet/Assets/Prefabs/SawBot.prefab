@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6821559206587534863}
+  - component: {fileID: 4765773868712835094}
   - component: {fileID: 7145363479439799978}
   - component: {fileID: 719634845720141138}
   - component: {fileID: 4683570445797585097}
@@ -38,6 +39,20 @@ Transform:
   - {fileID: 8240235399516970545}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4765773868712835094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5020822955256881082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd2ffa87c17a87249b1dad65568062ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gettingCrushed: 0
+  grounded: 0
 --- !u!212 &7145363479439799978
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -226,8 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f3a3eb2621fe540a6ba07d902afb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
   maxEnemyHealth: 3
+  currentEnemyHealth: 0
   enemySprite: {fileID: 7145363479439799978}
   flashTime: 0.2
   isWire: 0

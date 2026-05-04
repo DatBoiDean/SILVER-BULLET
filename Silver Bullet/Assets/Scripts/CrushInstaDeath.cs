@@ -52,11 +52,19 @@ public class CrushInstaDeath : MonoBehaviour
         {
             grounded = true;
         }
+        if (col.gameObject.CompareTag("Enemy"))
+        {
+            grounded = true;
+        }
     }
 
     void OnCollisionExit2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Ground"))
+        {
+            grounded = false;
+        }
+        if (col.gameObject.CompareTag("Enemy"))
         {
             grounded = false;
         }

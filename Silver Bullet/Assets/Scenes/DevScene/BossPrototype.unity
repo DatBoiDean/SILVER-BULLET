@@ -4331,6 +4331,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Computer Boss Final Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 6133371401959029146, guid: f124c9f56841ee94c83a9dbe59d45afb, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.78
+      objectReference: {fileID: 0}
     - target: {fileID: 7336899762778397830, guid: f124c9f56841ee94c83a9dbe59d45afb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.33

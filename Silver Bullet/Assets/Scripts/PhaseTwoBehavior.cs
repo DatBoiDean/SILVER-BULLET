@@ -5,9 +5,13 @@ using UnityEngine;
 
 public class PhaseTwoBehavior : MonoBehaviour
 {
-    public EnemyHealth enemyHealth;
+    public EnemyHealth1 enemyHealth1;
     [SerializeField] GameObject obstacleToSpawn;
     [SerializeField] float spawnDelay = 1f;
+
+     // Reference to the shooter animation script
+    public ObjectShooterAnimation shooterAnimation;
+
     // Start is called before the first frame update
 
 
@@ -18,8 +22,10 @@ public class PhaseTwoBehavior : MonoBehaviour
 
     void Run()
     {
-        if (enemyHealth.currentEnemyHealth == 2)
+        if (enemyHealth1.currentEnemyHealth == 2)
         {
+            // Play the shooter animation before spawning
+            shooterAnimation.PlayShootAnimation();
             Instantiate(obstacleToSpawn, transform.position, Quaternion.identity);
         }
             Invoke("Run",spawnDelay);

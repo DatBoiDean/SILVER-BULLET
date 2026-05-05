@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class PhaseOneBehavior : MonoBehaviour
 {
-    public EnemyHealth enemyHealth;
+    public EnemyHealth1 enemyHealth1;
     [SerializeField] GameObject obstacleToSpawn;
     [SerializeField] float spawnDelay = 1f;
+   
+
+       // This connects to the animation script
+    public ObjectShooterAnimation shooterAnimation; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +22,10 @@ public class PhaseOneBehavior : MonoBehaviour
 
     IEnumerator PhaseOneRoutine()
     {
-        while (enemyHealth.currentEnemyHealth == enemyHealth.maxEnemyHealth) // spawn this type of obstacle while boss health is full
+        while (enemyHealth1.currentEnemyHealth == enemyHealth1.maxEnemyHealth) // spawn this type of obstacle while boss health is full
         {
+            // Play shooter animation before spawning the object
+            shooterAnimation.PlayShootAnimation();
             Instantiate(obstacleToSpawn, transform.position, Quaternion.identity);
             yield return new WaitForSeconds(spawnDelay);
         }

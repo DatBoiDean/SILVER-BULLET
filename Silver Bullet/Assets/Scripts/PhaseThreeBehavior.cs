@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PhaseThreeBehavior : MonoBehaviour
 {
-    public EnemyHealth enemyHealth;
+    public EnemyHealth1 enemyHealth1;
     [SerializeField] GameObject groundObstacle;
     [SerializeField] float spawnDelay = 1f;
 
@@ -16,7 +16,7 @@ public class PhaseThreeBehavior : MonoBehaviour
 
     void GroundObstacleSpawn()
     {
-        if (enemyHealth.currentEnemyHealth == 1)
+        if (enemyHealth1.currentEnemyHealth == 1)
         {
             Debug.Log("Spawning " + groundObstacle);
             Instantiate(groundObstacle, transform.position, Quaternion.identity);

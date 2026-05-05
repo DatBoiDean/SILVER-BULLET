@@ -8,6 +8,9 @@ public class PlayerHealth : MonoBehaviour
 {
     public int currentHealth;
     public int maxHealth = 3;
+    [SerializeField] GameObject GreenHP;
+    [SerializeField] GameObject BlueHP;
+    [SerializeField] GameObject RedHP;
     public Slider healthBar;
     [SerializeField] float invulnTime;
     public float invulnWait;

@@ -24,4 +24,12 @@ public class DespawnSelf : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Despawn"))
+        {
+            Destroy(gameObject);
+        }
+    }
         }

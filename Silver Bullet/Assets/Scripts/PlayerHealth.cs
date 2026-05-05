@@ -3,16 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int currentHealth;
-    public int maxHealth = 3;
+    public static int currentHealth;
+    [SerializeField] int disableThresh;
+    [SerializeField] Image thing;
+    [SerializeField] static int maxHealth = 15;
+    [SerializeField] GameObject GreenHP;
+    [SerializeField] GameObject BlueHP;
+    [SerializeField] static int score;
+    //just reusing old code for this segment
     public Slider healthBar;
     [SerializeField] float invulnTime;
     public float invulnWait;
     public bool invuln;
     public float fear;
+    public string hptext;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,10 +28,30 @@ public class PlayerHealth : MonoBehaviour
         healthBar.maxValue = maxHealth;
         healthBar.value = currentHealth;
         fear = 0;
+        
     }
 
     void Update()
     {
+        hptext = currentHealth.ToString();
+        if(TryGetComponent<TextMeshProUGUI>(out TextMeshProUGUI text))
+        {
+            text.text = hptext + "/" + maxHealth;
+        }
+
+        if (TryGetComponent<SphereCollider>(out SphereCollider literallyirrelevant))
+        {
+            if (currentHealth <= disableThresh)
+            {
+                thing.enabled = false;
+            }
+            else
+            {
+                thing.enabled = true;
+            }
+        }
+        
+
         if (fear < 0)
         {
             fear = 0f;

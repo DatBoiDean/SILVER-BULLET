@@ -54,6 +54,10 @@ public class CrushInstaDeath : MonoBehaviour
         {
             grounded = true;
         }
+        if (col.gameObject.CompareTag("Spikes"))
+        {
+            grounded = true;
+        }
         if (col.gameObject.CompareTag("Enemy"))
         {
             grounded = true;
@@ -70,6 +74,10 @@ public class CrushInstaDeath : MonoBehaviour
             grounded = false;
         }
         if (col.gameObject.CompareTag("Enemy"))
+        {
+            grounded = false;
+        }
+        if (col.gameObject.CompareTag("Spikes"))
         {
             grounded = false;
         }

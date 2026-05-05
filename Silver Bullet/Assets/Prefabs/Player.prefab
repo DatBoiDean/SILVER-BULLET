@@ -208,6 +208,7 @@ MonoBehaviour:
   isGrounded: 1
   _animator: {fileID: 1053060233612658289}
   jumping: 0
+  wall: 0
 --- !u!114 &33883818081593603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,7 +307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 3
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 5105081214598158887}
   invulnTime: 0
   invulnWait: 0
   invuln: 0
@@ -578,3 +579,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1561374069755871176, guid: 769f8ef71e792eb418f8667bba922adf, type: 3}
   m_PrefabInstance: {fileID: 797007496439693823}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5105081214598158887 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5609073122825739224, guid: 769f8ef71e792eb418f8667bba922adf, type: 3}
+  m_PrefabInstance: {fileID: 797007496439693823}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

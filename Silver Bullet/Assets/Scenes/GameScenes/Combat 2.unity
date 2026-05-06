@@ -186,6 +186,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScrewEnemy (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4565864420739115820, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5900429069323312950, guid: 17bc3d9d61b68f045b6c35c8aa629fc4, type: 3}
       propertyPath: player
       value: 
@@ -6791,11 +6795,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -27.55
+      value: -29.46
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.3
+      value: 23.43
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12123,6 +12127,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Doomba (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2302176607205388544, guid: ddf65f68c2551cf4c92eca5a2d8ca39d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3726720012978449446, guid: ddf65f68c2551cf4c92eca5a2d8ca39d, type: 3}
       propertyPath: waiting
       value: 0
@@ -13490,7 +13498,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -18773,6 +18781,10 @@ PrefabInstance:
     - target: {fileID: 5020822955256881082, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
       propertyPath: m_Name
       value: SawBot (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5020822955256881082, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5605932981272505700, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
       propertyPath: m_Radius

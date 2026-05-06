@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3018892234004955389}
   - component: {fileID: 2262969689750764147}
   - component: {fileID: 6208553286430774215}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: SawBotChaser
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -205,8 +205,8 @@ MonoBehaviour:
   waitDist: 1.15
   startLeft: 0
   player: {fileID: 0}
-  moveSpeed: 4
-  patrolSpeed: 1
+  moveSpeed: 5
+  patrolSpeed: 2
   waitTime: 0.85
   isChasing: 0
   Stuck: 0
@@ -214,7 +214,7 @@ MonoBehaviour:
   stuckTurnTime: 1.55
   stuckMinXChange: 0.25
   damageAmount: 2
-  attackHitboxTrigger: {fileID: 0}
+  attackHitboxTrigger: {fileID: 5605932981272505700}
   playerCharacter:
     serializedVersion: 2
     m_Bits: 0
@@ -259,7 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8240235399516970545}
   - component: {fileID: 5605932981272505700}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}

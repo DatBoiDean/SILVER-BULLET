@@ -24130,7 +24130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useRange: 0
   target: {fileID: 1245761527}
-  vertTarget: {x: 0, y: -6, z: 0}
+  vertTarget: {x: 0, y: -20, z: 0}
   moveSpeed: 4
   UpInstead: 0
   active: 0
@@ -24991,11 +24991,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.11
+      value: -26.79
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.37
+      value: 23.61
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.z

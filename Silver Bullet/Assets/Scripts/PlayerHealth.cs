@@ -11,11 +11,11 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] int disableThresh;
     [SerializeField] Image thing;
     [SerializeField] static int maxHealth = 15;
-    [SerializeField] GameObject GreenHP;
-    [SerializeField] GameObject BlueHP;
+    // [SerializeField] GameObject GreenHP;
+    // [SerializeField] GameObject BlueHP;
     [SerializeField] static int score;
     //just reusing old code for this segment
-    public Slider healthBar;
+    // public Slider healthBar;
     [SerializeField] float invulnTime;
     public float invulnWait;
     public bool invuln;
@@ -25,8 +25,8 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        healthBar.maxValue = maxHealth;
-        healthBar.value = currentHealth;
+        // healthBar.maxValue = maxHealth;
+        // healthBar.value = currentHealth;
         fear = 0;
         
     }
@@ -79,7 +79,7 @@ public class PlayerHealth : MonoBehaviour
         if (invuln == false)
         {
             currentHealth -= damageAmount;
-            healthBar.value = currentHealth;
+            // healthBar.value = currentHealth;
             if (currentHealth <= 0)
             {
                 Debug.Log("Player Killed fired from " + gameObject.name);

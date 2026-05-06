@@ -11895,7 +11895,7 @@ MonoBehaviour:
   useRange: 2
   target: {fileID: 1323337381}
   vertTarget: {x: 0, y: 0, z: 0}
-  moveSpeed: 2
+  moveSpeed: 1
   UpInstead: 0
   active: 0
 --- !u!4 &893463353
@@ -16125,23 +16125,9 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 1038083759}
-    m_ColliderPaths:
-    - - X: -110000000
-        Y: 110000000
-      - X: -230000000
-        Y: 110000000
-      - X: -230000000
-        Y: 70000000
-      - X: -110000000
-        Y: 70000000
+  m_ColliderPaths: []
   m_CompositePaths:
-    m_Paths:
-    - - {x: -11.00003, y: 7}
-      - {x: -11.00003, y: 11}
-      - {x: -23, y: 10.99997}
-      - {x: -22.999971, y: 7}
+    m_Paths: []
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
@@ -16180,7 +16166,7 @@ TilemapCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1038083755}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -19934,7 +19920,7 @@ MonoBehaviour:
   useRange: 2
   target: {fileID: 1323337381}
   vertTarget: {x: 0, y: 3, z: 0}
-  moveSpeed: 2
+  moveSpeed: 1
   UpInstead: 1
   active: 0
 --- !u!4 &1320068569

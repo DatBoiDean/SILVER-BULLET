@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] AudioSource ouch;
+    [SerializeField] AudioSource bonk;
     [SerializeField] float attackRange;
     public int damageInterval;
     public int damageAmount;
@@ -80,6 +81,7 @@ void Update()
                 {
                     if (Stuck == false)
                     {
+                        bonk.Play();
                         Stuck = true;
                     }
                 }

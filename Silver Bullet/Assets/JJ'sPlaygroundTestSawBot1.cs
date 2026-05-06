@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class JJsPlaygroundTestSawBot1 : MonoBehaviour
 {
+    [SerializeField] AudioSource shwing;
     [Header("Detection / Chase")]
     [SerializeField] float detectionDist;
     [SerializeField] float waitDist;
@@ -432,6 +433,7 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         }
 
         Debug.Log("Attack hit window started");
+        shwing.Play();
     }
 
     public void EndAttackHitWindow()

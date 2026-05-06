@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class EnemyHealth1 : MonoBehaviour
 {
+    [SerializeField] AudioSource ouch;
     public int maxEnemyHealth = 3;
     public int currentEnemyHealth;
 
@@ -33,7 +34,7 @@ public class EnemyHealth1 : MonoBehaviour
     public void EnemyTakeDamage(int damageAmount)
     {
         currentEnemyHealth -= damageAmount;
-
+        ouch.Play();
         bossTookDamage = true;
 
         StopAllCoroutines();

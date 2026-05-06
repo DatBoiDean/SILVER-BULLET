@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
+    [SerializeField] AudioSource ouch;
     [SerializeField] float attackRange;
     public int damageInterval;
     public int damageAmount;
@@ -33,6 +34,7 @@ void Update()
                     {
                         Debug.Log("Player health component found");
                         playerHealthComponent.PlayerTakeDamage(damageAmount);
+                        ouch.Play();
 
                         nextDamageTime = Time.time + damageInterval;
                     }

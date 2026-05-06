@@ -23978,6 +23978,7 @@ GameObject:
   - component: {fileID: 1317996812}
   - component: {fileID: 1317996809}
   - component: {fileID: 1317996811}
+  - component: {fileID: 1317996813}
   m_Layer: 0
   m_Name: ElevatorSensor
   m_TagString: Untagged
@@ -24111,6 +24112,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useRange: 0
   target: {fileID: 1215569437}
+  vertTarget: {x: 0, y: -6, z: 0}
+  moveSpeed: 4
+  UpInstead: 0
+  active: 0
+--- !u!114 &1317996813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317996808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f27733ce85c374299ebb3c9f6ab1e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useRange: 0
+  target: {fileID: 1245761527}
   vertTarget: {x: 0, y: -6, z: 0}
   moveSpeed: 4
   UpInstead: 0
@@ -24972,11 +24991,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.06
+      value: 20.11
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.76
+      value: 7.37
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.z

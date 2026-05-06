@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6821559206587534863}
   - component: {fileID: 7145363479439799978}
-  - component: {fileID: 1118552795538210297}
   - component: {fileID: 719634845720141138}
-  - component: {fileID: 8018403749707389389}
   - component: {fileID: 728258504879125090}
   - component: {fileID: 4683570445797585097}
   - component: {fileID: 3018892234004955389}
+  - component: {fileID: 2262969689750764147}
+  - component: {fileID: 6208553286430774215}
   m_Layer: 6
   m_Name: SawBotChaser
   m_TagString: Enemy
@@ -91,22 +91,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1118552795538210297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5020822955256881082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55579b0fb162f514f9d98c9939d1d43f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentEnemyHealth: 0
-  maxEnemyHealth: 1
-  amount: 0
-  isWire: 0
 --- !u!95 &719634845720141138
 Animator:
   serializedVersion: 5
@@ -128,39 +112,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8018403749707389389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5020822955256881082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51ffb5e5546b56743b3bac7e0c809ace, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectionDist: 99
-  waitDist: 0
-  startLeft: 0
-  player: {fileID: 0}
-  moveSpeed: 3
-  patrolSpeed: 0
-  waitTime: 0
-  isChasing: 0
-  Stuck: 0
-  feet: {fileID: 0}
-  sawDelay: 0
-  patrol: 
-  waiting: 0
-  direction: {x: 0, y: 0}
-  sawBotAttackPoint: {fileID: 5502730204829606029}
-  radius: 0
-  playerCharacter:
-    serializedVersion: 2
-    m_Bits: 128
-  anim: {fileID: 0}
-  spriteRenderer: {fileID: 0}
 --- !u!114 &728258504879125090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,6 +188,67 @@ CapsuleCollider2D:
   m_Offset: {x: 0.02, y: 0.15}
   m_Size: {x: 0.92, y: 1.9}
   m_Direction: 0
+--- !u!114 &2262969689750764147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5020822955256881082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c00a0ffc601f04f4f9247bf478b20de2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shwing: {fileID: 0}
+  detectionDist: 150
+  waitDist: 1.15
+  startLeft: 0
+  player: {fileID: 0}
+  moveSpeed: 4
+  patrolSpeed: 1
+  waitTime: 0.85
+  isChasing: 0
+  Stuck: 0
+  feet: {fileID: 0}
+  stuckTurnTime: 1.55
+  stuckMinXChange: 0.25
+  damageAmount: 2
+  attackHitboxTrigger: {fileID: 0}
+  playerCharacter:
+    serializedVersion: 2
+    m_Bits: 0
+  patrol: 
+  waiting: 0
+  direction: {x: 0, y: 0}
+  sawBotAttackPoint: {fileID: 0}
+  radius: 1.06
+  anim: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  leftSawTransform: {fileID: 0}
+  rightSawTransform: {fileID: 0}
+  isMovingParam: IsMoving
+  inRangeParam: InRange
+  attackStateName: AttackAnimationSaw
+--- !u!114 &6208553286430774215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5020822955256881082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83f3a3eb2621fe540a6ba07d902afb7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ouch: {fileID: 0}
+  maxEnemyHealth: 3
+  currentEnemyHealth: 0
+  enemySprite: {fileID: 0}
+  flashTime: 0.2
+  isWire: 0
+  bossTookDamage: 0
 --- !u!1 &5502730204829606029
 GameObject:
   m_ObjectHideFlags: 0

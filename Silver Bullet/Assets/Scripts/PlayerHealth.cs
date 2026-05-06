@@ -7,6 +7,7 @@ using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public int scene;
     [SerializeField] AudioSource ouch;
     public static int currentHealth;
     [SerializeField] int disableThresh;
@@ -29,8 +30,10 @@ public class PlayerHealth : MonoBehaviour
         // healthBar.maxValue = maxHealth;
         // healthBar.value = currentHealth;
         //fear = 0;
+        scene = SceneManager.GetActiveScene().buildIndex;
         
     }
+
 
     void Update()
     {
@@ -88,7 +91,7 @@ public class PlayerHealth : MonoBehaviour
                 Debug.Log("Player Killed fired from " + gameObject.name);
                 Debug.Log("Loading Lose screen fired from " + gameObject.name);
                 //Feel free to just comment out the Load Scene thing for testing
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene(scene);
                 Destroy(gameObject);
             }
 

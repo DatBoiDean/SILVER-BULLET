@@ -14,6 +14,8 @@ public class EnemyHealth1 : MonoBehaviour
 
     [SerializeField] bool isWire;
 
+    public bool bossTookDamage;
+
     void Start()
     {
         currentEnemyHealth = maxEnemyHealth;
@@ -31,6 +33,8 @@ public class EnemyHealth1 : MonoBehaviour
     public void EnemyTakeDamage(int damageAmount)
     {
         currentEnemyHealth -= damageAmount;
+
+        bossTookDamage = true;
 
         StopAllCoroutines();
         StartCoroutine(FlashRed());

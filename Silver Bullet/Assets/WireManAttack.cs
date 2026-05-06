@@ -44,12 +44,12 @@ public class WireManAttack : MonoBehaviour
 
             if (playerTookDamage)
             {
-                StartCoroutine(resetOnDamage());
+                StartCoroutine(ResetOnDamage());
             }
         }
     }
 
-    IEnumerator resetOnDamage()
+    IEnumerator ResetOnDamage()
     {
         Debug.Log("Reset on damage started");
         grabRange = -10f;

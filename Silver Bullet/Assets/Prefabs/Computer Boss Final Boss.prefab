@@ -293,8 +293,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f3a3eb2621fe540a6ba07d902afb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxEnemyHealth: 10
-  currentEnemyHealth: 10
+  ouch: {fileID: 0}
+  isFinal: 1
+  maxEnemyHealth: 3
+  currentEnemyHealth: 3
   enemySprite: {fileID: 5046063502139095937}
   flashTime: 0.29
   isWire: 0

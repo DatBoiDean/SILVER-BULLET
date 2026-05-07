@@ -1,9 +1,10 @@
 using System.Collections;
 using UnityEngine;
-
+using UnityEngine.SceneManagement; 
 public class EnemyHealth1 : MonoBehaviour
 {
     [SerializeField] AudioSource ouch;
+    [SerializeField] bool isFinal = false;
     public int maxEnemyHealth = 3;
     public int currentEnemyHealth;
 
@@ -46,6 +47,10 @@ public class EnemyHealth1 : MonoBehaviour
         {
             if (!isWire)
             {
+                if (isFinal ==true)
+                {
+                    SceneManager.LoadScene(1);
+                }
                 Destroy(gameObject);
             }
             else if (rb != null) // ← FIXED: null check before using rb

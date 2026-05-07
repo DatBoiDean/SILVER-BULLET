@@ -4939,6 +4939,10 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 2.96
       objectReference: {fileID: 0}
+    - target: {fileID: 6160076110977145742, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6331124015339857526, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: jumpForce
       value: 13.1

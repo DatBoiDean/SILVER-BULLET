@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TestAttack : MonoBehaviour
 {
+
+    [SerializeField] AudioSource swish;
     public GameObject attackPoint;
     public float radius;
     public LayerMask enemies;
@@ -42,6 +44,7 @@ public class TestAttack : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            swish.Play();
             Attack();
         }
     }

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class WireManAnimationController : MonoBehaviour
 {
+    [SerializeField] AudioSource yoink;
     [Header("References")]
     [Tooltip("Drag the WireManMovement script here.")]
     public WireManMovement wireManMovement;

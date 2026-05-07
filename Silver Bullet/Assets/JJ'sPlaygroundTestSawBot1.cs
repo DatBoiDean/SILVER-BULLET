@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class JJsPlaygroundTestSawBot1 : MonoBehaviour
 {
+    [SerializeField] AudioSource shwing;
     [Header("Detection / Chase")]
     [SerializeField] float detectionDist;
     [SerializeField] float waitDist;
@@ -138,11 +139,15 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         new Vector3(-0.26f, -0.29f, 0f)  // Frame 7 hold
     };
 
+    void Awake()
+    {
+        player = GameObject.Find("Player");
+    }
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        player = GameObject.FindWithTag("Player");
+        player = GameObject.Find("Player");
 
         if (startLeft == true)
         {
@@ -432,6 +437,7 @@ public class JJsPlaygroundTestSawBot1 : MonoBehaviour
         }
 
         Debug.Log("Attack hit window started");
+        shwing.Play();
     }
 
     public void EndAttackHitWindow()

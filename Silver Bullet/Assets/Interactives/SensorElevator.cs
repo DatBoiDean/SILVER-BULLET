@@ -7,7 +7,7 @@ public class SensorElevator : MonoBehaviour
 //THIS CAN ALSO WORK FOR DOORS THAT GO UP AND DOWN
 //HAVE FUN!
 {
-    public GameObject player;
+    //public GameObject player;
     [SerializeField] float useRange;
     [SerializeField] GameObject target;
     [SerializeField] Vector3 vertTarget;
@@ -26,21 +26,21 @@ public class SensorElevator : MonoBehaviour
     void Update()
     {
         Vector3 targetLocation = target.transform.position;
-        float dist = Vector3.Distance(player.transform.position, transform.position);
+        //float dist = Vector3.Distance(player.transform.position, transform.position);
         //Measures distance between player object and this object
 
-        if (dist <= useRange)
-        //if player is in range
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            //and interact key is pressed
-            {
-                Debug.Log("Button Pressed");
-                //confirm in console
-                active = true;
-                //and set it to be active
-            }
-        }
+        // if (dist <= useRange)
+        // //if player is in range
+        // {
+        //     if (Input.GetKeyDown(KeyCode.E))
+        //     //and interact key is pressed
+        //     {
+        //         Debug.Log("Button Pressed");
+        //         //confirm in console
+        //         active = true;
+        //         //and set it to be active
+        //     }
+        // }
 
         if(active == true)
         {

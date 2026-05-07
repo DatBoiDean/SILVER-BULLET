@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class TestCharcterController : MonoBehaviour
 {
+    [SerializeField] AudioSource walk;
     public float dynJumpForce;
     [SerializeField] float jumpTime;
     public float speed = 1;
@@ -101,6 +102,7 @@ public class TestCharcterController : MonoBehaviour
         move = Input.GetAxisRaw("Horizontal");
         if (isGrounded == false)
         {
+            walk.mute = true;
         if (wall == false)
         {
         testRigidBody.velocity = new Vector2(move * speed * crouching, testRigidBody.velocity.y);
@@ -108,6 +110,7 @@ public class TestCharcterController : MonoBehaviour
         }
         else if (isGrounded == true)
         {
+            walk.mute = false;
             testRigidBody.velocity = new Vector2(move * speed * crouching, testRigidBody.velocity.y);
         }
 

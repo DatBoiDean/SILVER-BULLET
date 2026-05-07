@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class WireManAttack : MonoBehaviour
 {
+    [SerializeField] AudioSource bonk;
     [SerializeField] float grabRange = 5f;
     [SerializeField] GameObject grabZone;
-    [SerializeField] GameObject player;
+    GameObject player;
     
     [SerializeField] int damageAmount = 1;
 
     bool playerTookDamage = false;
+
+    void Awake()
+    {
+        player = GameObject.Find("Player");
+    }
 
     // Update is called once per frame
     void Update()
@@ -39,6 +45,7 @@ public class WireManAttack : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             playerHealthComponent.PlayerTakeDamage(damageAmount);
+            bonk.Play();
 
             playerTookDamage = true;
 

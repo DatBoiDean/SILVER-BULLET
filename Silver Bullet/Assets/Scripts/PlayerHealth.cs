@@ -7,29 +7,33 @@ using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public int scene;
+    [SerializeField] AudioSource ouch;
     public static int currentHealth;
     [SerializeField] int disableThresh;
     [SerializeField] Image thing;
     [SerializeField] static int maxHealth = 15;
-    [SerializeField] GameObject GreenHP;
-    [SerializeField] GameObject BlueHP;
+    // [SerializeField] GameObject GreenHP;
+    // [SerializeField] GameObject BlueHP;
     [SerializeField] static int score;
     //just reusing old code for this segment
-    public Slider healthBar;
-    [SerializeField] float invulnTime;
+    // public Slider healthBar;
+    //[SerializeField] float invulnTime;
     public float invulnWait;
     public bool invuln;
-    public float fear;
+    //public float fear;
     public string hptext;
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
-        healthBar.maxValue = maxHealth;
-        healthBar.value = currentHealth;
-        fear = 0;
+        // healthBar.maxValue = maxHealth;
+        // healthBar.value = currentHealth;
+        //fear = 0;
+        scene = SceneManager.GetActiveScene().buildIndex;
         
     }
+
 
     void Update()
     {
@@ -52,40 +56,42 @@ public class PlayerHealth : MonoBehaviour
         }
         
 
-        if (fear < 0)
-        {
-            fear = 0f;
-        }
+        // if (fear < 0)
+        // {
+        //     fear = 0f;
+        // }
         
-        if (fear >= 0)
-        {
-            if (fear >= invulnTime)
-            {
-                invulnWait = invulnTime - invulnTime;
-                //Basically reduces invuln time to zero without underflowing
-                //put stuff in here to interact with the fear meter
-            }
-            else
-            {
-                invulnWait = invulnTime - fear;
-                //Otherwise, reduces invuln wait by the normal value
-                //put stuff in here to interact with the fear meter
-            }
-        }
+        // if (fear >= 0)
+        // {
+        //     if (fear >= invulnTime)
+        //     {
+        //         invulnWait = invulnTime - invulnTime;
+        //         //Basically reduces invuln time to zero without underflowing
+        //         //put stuff in here to interact with the fear meter
+        //     }
+        //     else
+        //     {
+        //         invulnWait = invulnTime - fear;
+        //         //Otherwise, reduces invuln wait by the normal value
+        //         //put stuff in here to interact with the fear meter
+        //     }
+        // }
     }
 
     public void PlayerTakeDamage(int damageAmount)
     {
+
         if (invuln == false)
         {
+            ouch.Play();
             currentHealth -= damageAmount;
-            healthBar.value = currentHealth;
+            // healthBar.value = currentHealth;
             if (currentHealth <= 0)
             {
                 Debug.Log("Player Killed fired from " + gameObject.name);
                 Debug.Log("Loading Lose screen fired from " + gameObject.name);
                 //Feel free to just comment out the Load Scene thing for testing
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene(scene);
                 Destroy(gameObject);
             }
 
@@ -110,17 +116,21 @@ public class PlayerHealth : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Spikes"))
         {
+            if (invuln == false)
+            {
             PlayerTakeDamage(1);
+            InvulnWait();
+            }
         }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Fear"))
-        {
-            fear = fear + 0.1f;
-            Debug.Log("Fear at " + fear);
-        }
+        // if (collision.gameObject.CompareTag("Fear"))
+        // {
+        //     fear = fear + 0.1f;
+        //     Debug.Log("Fear at " + fear);
+        // }
 
         if (collision.gameObject.CompareTag("Win"))
         {
@@ -130,18 +140,18 @@ public class PlayerHealth : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Fear"))
-        {
-            if (fear > 0)
-            {
-                fear = fear - 0.1f;
-                Debug.Log("Fear at " + fear);
-            }
-            if (fear <= 0)
-            {
-                fear = 0;
-                Debug.Log("Fear would underflow to 0, setting fear to 0.");
-            }
-        }
+        // if (collision.gameObject.CompareTag("Fear"))
+        // {
+        //     if (fear > 0)
+        //     {
+        //         fear = fear - 0.1f;
+        //         Debug.Log("Fear at " + fear);
+        //     }
+        //     if (fear <= 0)
+        //     {
+        //         fear = 0;
+        //         Debug.Log("Fear would underflow to 0, setting fear to 0.");
+        //     }
+        // }
     }
 }   

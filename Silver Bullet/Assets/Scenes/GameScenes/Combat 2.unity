@@ -18545,10 +18545,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1393607481}
     - target: {fileID: 3620858088394488610, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
-      propertyPath: waitDist
-      value: 0.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 3620858088394488610, guid: 14065f57a28b583418c50f8456e498ff, type: 3}
       propertyPath: waitTime
       value: 0.72
       objectReference: {fileID: 0}

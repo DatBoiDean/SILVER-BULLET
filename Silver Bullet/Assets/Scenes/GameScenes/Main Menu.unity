@@ -839,8 +839,10 @@ MonoBehaviour:
 
     Left Click: Attack
 
-    Space
-    Bar: Jump
+    E:
+    Use Buttons
+
+    Space Bar: Jump
 
     Esc - Return to Main Menu'
   m_isRightToLeft: 0

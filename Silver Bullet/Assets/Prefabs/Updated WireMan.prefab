@@ -396,7 +396,6 @@ MonoBehaviour:
   bonk: {fileID: 3202192304665794381}
   grabRange: 6.38
   grabZone: {fileID: 590963932551097103}
-  player: {fileID: 0}
   damageAmount: 1
 --- !u!114 &2587946929030634258
 MonoBehaviour:
@@ -410,7 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffd27d7ccaddee54b87281d30d7f05ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6
+  moveSpeed: 7
   jumpForce: 10.18
   stunTimer: 0.16
   rb: {fileID: 6624282803464095820}
@@ -429,6 +428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ouch: {fileID: 0}
+  isFinal: 0
   maxEnemyHealth: 10
   currentEnemyHealth: 10
   enemySprite: {fileID: 1467324954570949793}
@@ -530,7 +530,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0210633ed2fd4eb4ea46f87e3637b6b8, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -539,9 +539,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 15
+  MaxDistance: 35
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0

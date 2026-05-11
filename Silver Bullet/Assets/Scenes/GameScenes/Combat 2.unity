@@ -6795,11 +6795,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -29.46
+      value: -4.09
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.43
+      value: -10.29
       objectReference: {fileID: 0}
     - target: {fileID: 1492900556885310369, guid: ae13678e1ec85654d80d2659fe81cfb4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13039,7 +13039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 895b85d4ec71a7944a9b1d8d3d1f654f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 5020822955256881082, guid: a07673c5ed56b55488709decf7647bd7, type: 3}
+  enemy: {fileID: 6946181413775693013, guid: 7f3beeddaadefd84ca2c5bcd00bb5ef6, type: 3}
   target: {fileID: 307375966}
   cooldown: 1
   limit: 5
